@@ -12,7 +12,7 @@ class EasyTraxParse:
         self.split_lines_by_spacing()
         self.look_for_sample_indexes_in_split_lines()
         self.use_sample_indexes_to_get_sample_data()
-        self.print_sample_dictionary_to_console()
+        return self.samples_dictionary, self.job_dictionary
 
     def split_lines_by_spacing(self):
         for item in self.chm_file:
@@ -70,8 +70,9 @@ class EasyTraxParse:
                 sample_name_date_time_list = item[:index_samples_start_at]
                 sample_time = sample_name_date_time_list.pop()
                 sample_date = sample_name_date_time_list.pop()
+                sampling_information = sample_name_date_time_list.pop()
                 sample_name = " ".join(sample_name_date_time_list)
-                sample_name_date_time.append([sample_name, sample_date, sample_time])
+                sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
                 sample_information.append(item[index_samples_start_at:])
         return [sample_name_date_time, sample_information]
 
@@ -81,12 +82,12 @@ class EasyTraxParse:
                 if item[0] in self.samples_dictionary:
                     pass
                 else:
-                    self.samples_dictionary[item[0]] = ["no date", "no time"]
+                    self.samples_dictionary[item[0]] = ["no location", "no date", "no time"]
             else:
                 if item[0] in self.samples_dictionary:
                     pass
                 else:
-                    self.samples_dictionary[item[0]] = [item[1], item[2]]
+                    self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]
 
     def generate_data_triplets(self, analyte_information, units, samples_binary_list):
         sample_number_index = 0
@@ -105,11 +106,6 @@ class EasyTraxParse:
                 self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
                 item_index += 1
             sample_number_index += 1
-
-    def print_sample_dictionary_to_console(self):
-        for key, value in self.samples_dictionary.items():
-            print(key)
-            print(value)
 
 
 

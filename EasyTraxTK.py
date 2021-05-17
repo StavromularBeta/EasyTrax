@@ -1,5 +1,6 @@
 import tkinter as Tk
 import EasyTraxParse as Parse
+import EasyTraxConvert as Convert
 
 
 class MainApplication(Tk.Frame):
@@ -22,7 +23,9 @@ class MainApplication(Tk.Frame):
         self.clear_text()
         self.get_chm_file_from_job_number()
         parsing_script = Parse.EasyTraxParse(self.job_number, self.chm_file_contents)
-        parsing_script.easy_trax_parse_controller()
+        samples_dictionary, job_dictionary = parsing_script.easy_trax_parse_controller()
+        converting_script = Convert.EasyTraxConvert(samples_dictionary, job_dictionary)
+        converting_script.easy_trax_convert_controller()
 
     def clear_text(self):
         self.job_number_entry.delete(0, 'end')
