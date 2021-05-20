@@ -1,0 +1,187 @@
+     Cranbrook, City Of - E                           11May21    12:22p            W161158 pg2
+     *A                                                  FWS
+     40 - 10th Avenue                                         water
+     Cranbrook, BC                                             15
+     V1C 2M8
+                      TEL: (800) 728-2726                Arrival temp.:   9.3C
+                      group                              Sampler: Joe Dragovan
+
+     Samples: Distribution Route 1 - 14) Lagoon WD Pre 4194D  10May21 13:30p
+                                     15) Lagoon WD Post 4194E  10May21 13:30p
+
+                                 14      15            Maximum Limits Permissible
+          ELEMENTS              SAMPLE  SAMPLE  UNITS  In Drinking Water*
+
+       1) Aluminium     Al      0.096   0.114   mg/L   no limit listed
+       2) Antimony      Sb     <0.500  <0.500   ug/L   6.00 ug/L
+       3) Arsenic       As     <0.500  <0.500   ug/L   10.0 ug/L
+       4) Barium        Ba      0.096   0.064   mg/L   1.00 mg/L
+       5) Beryllium     Be     <0.003  <0.003   mg/L   no limit listed
+       6) Boron         B       0.081   0.556   mg/L   5.00 mg/L
+       7) Cadmium       Cd     <0.010  <0.010   ug/L   5.00 ug/L
+       8) Calcium       Ca      63.4    41.4    mg/L   200 mg/L
+       9) Chromium      Cr     <0.010  <0.010   mg/L   0.050 mg/L
+      10) Cobalt        Co     <0.020  <0.020   mg/L   no limit listed
+      11) Copper        Cu     <0.008   0.009   mg/L   1.00 mg/L
+      12) Gold          Au     <0.040  <0.040   mg/L   no limit listed
+      13) Iron          Fe      0.015   0.029   mg/L   0.300 mg/L
+      14) Lanthanum     La     <0.020  <0.020   mg/L   no limit listed
+      15) Lead          Pb     <0.500   2.48    ug/L   5.00 ug/L
+      16) Magnesium     Mg      30.9    38.1    mg/L   50.0 mg/L
+      17) Manganese     Mn      0.032   0.010   mg/L   0.120 MAC 0.020 AO
+      18) Mercury       Hg     <0.010  <0.010   ug/L   1.00 ug/L
+      19) Molybdenum    Mo     <0.020  <0.020   mg/L   no limit listed
+      20) Nickel        Ni     <0.050  <0.050   mg/L   no limit listed
+      21) Phosphorus    P      <0.010  <0.010   mg/L   no limit listed
+      22) Potassium     K       1.52    1.52    mg/L   no limit listed
+      23) Scandium      Sc     <0.050  <0.050   mg/L   no limit listed
+      24) Selenium      Se     <0.500  <0.500   ug/L   5.0 ug/L
+      25) Silicon       Si      3.02    1.87    mg/L   no limit listed
+      26) Silver        Ag     <0.010  <0.010   mg/L   no limit listed
+      27) Sodium        Na      34.2    24.0    mg/L   200 mg/L
+      28) Strontium     Sr      0.230   0.130   mg/L   no limit listed
+      29) Tin           Sn     <0.020  <0.020   mg/L   no limit listed
+      30) Titanium      Ti     <0.010  <0.010   mg/L   no limit listed
+      31) Tungsten      W      <0.050  <0.050   mg/L   no limit listed
+      32) Vanadium      V      <0.010  <0.010   mg/L   no limit listed
+      33) Zinc          Zn      0.013   0.115   mg/L   5.00 mg/L
+      Hardness (mg/L CaCO3)     285     260     mg/L   150-300 mg/L = hard
+      pH                        7.22    8.12    units  7.0 to 10.5
+
+     * As per Canadian or B.C. Health Act Safe Drinking Water Regulation BC Reg 230/92,
+       & 390 Sch 120, 2001. Task Force of Canadian Council of Resource & Envir. Ministers
+       Guidelines for Canadian Drinking Water Quality, 2019.
+
+                                    ____________________           _____________________
+                                     R. Bilodeau                    H. Hartmann
+                                     Analytical Chemist             Sr.Analytical Chemist
+
+
+     M.B. LABS LTD
+     T: 250 656-1334          E: info@mblabs.com           W: www.mblabs.com
+     .
+
+
+
+
+     Cranbrook, City Of - E                           11May21    12:22p            W161158 pg3
+     *A                                                  FWS
+     40 - 10th Avenue                                         water
+     Cranbrook, BC                                             15
+     V1C 2M8
+                      TEL: (800) 728-2726                Arrival temp.:   9.3C
+                      group                              Sampler: Joe Dragovan
+
+     Samples: Distribution Route
+
+                                            Alkalinity          NH3-N              Cl-              Colour
+     SAMPLE               DATE    TIME        (mg/L)            (ug/L)            (mg/L)            (TCU)
+
+   1 Phillips RAW   30666 10May21 08:50a       125               ND                ---               4.58
+   2 Phillips POT   30653 10May21 08:30a       120               ND                1.65              2.87
+  14 Lagoon WD Pre  4194D 10May21 13:30p       170               39.2              215               1.44
+  15 Lagoon WD Post 4194E 10May21 13:30p       165               101               157               1.82
+     Lab Blank                                 ND                ND                ND                ND
+
+     So                                        0.100             0.254             0.015             0.300
+
+     REF. VALUE                                200               20.0              100               5.00
+     STD ñ 2SD                                 199 ñ 11.3        19.0 ñ 1.66       108 ñ 7.88        4.99 ñ 0.348
+
+
+                                               E.C.               F-               TKN                Mn              NO3-N
+     SAMPLE               DATE    TIME       (uS/cm)            (mg/L)            (mg/L)            (mg/L)            (mg/L)
+
+   1 Phillips RAW   30666 10May21 08:50a       214               ---               0.073             0.008             ---
+   2 Phillips POT   30653 10May21 08:30a       217               0.064             0.089             0.007             ---
+  14 Lagoon WD Pre  4194D 10May21 13:30p       884               0.031             0.232             0.032             0.546
+  15 Lagoon WD Post 4194E 10May21 13:30p       728               0.062             0.101             0.010             0.319
+     Lab Blank                                 ND                ND                ND                ND                ND
+
+     So                                        0.300             0.007             0.012             0.001
+
+     REF. VALUE                                147               1.00              1.00              1.00              1.00
+     STD ñ 2SD                                 147 ñ 7.38        0.980 ñ 0.077     1.10 ñ 0.079      1.04 ñ 0.0690     1.00 ñ 0.057
+
+
+                                              NO3-N             NO2-N          Ortho-PO43--P          pH             TPO43--P
+     SAMPLE               DATE    TIME        (ug/L)            (ug/L)            (ug/L)                              (ug/L)
+
+   1 Phillips RAW   30666 10May21 08:50a       10.2              ND                6.40              7.70              10.9
+   2 Phillips POT   30653 10May21 08:30a       20.5              ND                ---               7.49              ---
+  14 Lagoon WD Pre  4194D 10May21 13:30p       ---               52.4              ---               7.22              ---
+  15 Lagoon WD Post 4194E 10May21 13:30p       ---               609               ---               8.12              ---
+     Lab Blank                                 ND                ND                ND                n/a               ND
+
+     So                                        0.160             0.300             0.150             0.001             0.150
+
+     REF. VALUE                                20.0              10.0              10.0              7.00              10.0
+     STD ñ 2SD                                 19.9 ñ 1.40       9.95 ñ 0.647                        7.00 ñ 0.020      9.94 ñ 0.772
+
+                                                                 ...contin/
+
+
+
+
+
+
+
+
+
+
+
+     Cranbrook, City Of - E                           11May21    12:22p            W161158 pg4
+     *A                                                  FWS
+     40 - 10th Avenue                                         water
+     Cranbrook, BC                                             15
+     V1C 2M8
+                      TEL: (800) 728-2726                Arrival temp.:   9.3C
+                      group                              Sampler: Joe Dragovan
+
+     Samples: Distribution Route
+
+                                            D.TPO43--P          SO42-             T.O.C.             T&L               TDS
+     SAMPLE               DATE    TIME        (ug/L)            (mg/L)            (mg/L)            (mg/L)            (mg/L)
+
+   1 Phillips RAW   30666 10May21 08:50a       7.30              ---               4.17              ---               124
+   2 Phillips POT   30653 10May21 08:30a       ---               ND                6.62              0.047             126
+  14 Lagoon WD Pre  4194D 10May21 13:30p       ---               2.66              3.07              ---               513
+  15 Lagoon WD Post 4194E 10May21 13:30p       ---               8.22              1.24              ---               422
+     Lab Blank                                 ND                ND                ND                ND                ND
+
+     So                                        0.150             0.075             0.030             0.070             0.010
+
+     REF. VALUE                                10.0              10.0              5.00              1.00              200
+     STD ñ 2SD                                 9.95 ñ 0.825      10.6 ñ 0.882      4.88 ñ 0.398      0.999 ñ 0.059     200 ñ 10.2
+
+
+                                               TSS            Turbidity            UVT
+     SAMPLE               DATE    TIME        (mg/L)            (NTU)              (%)
+
+   1 Phillips RAW   30666 10May21 08:50a       ND                0.900             91.0
+   2 Phillips POT   30653 10May21 08:30a       ND                0.770             93.6
+  14 Lagoon WD Pre  4194D 10May21 13:30p       5.00              0.200             99.6
+  15 Lagoon WD Post 4194E 10May21 13:30p       ND                0.900             99.6
+     Lab Blank                                 ND                ND                ND
+
+     So                                        0.400             0.015             0003
+
+     REF. VALUE                                21.0              0.500             90.0
+     STD ñ 2SD                                 20.5 ñ 1.66       0.505 ñ 0.042     90.3 ñ 0.02
+
+SD  = standard deviation;      REF VALUE = primary or secondary reference material
+     STD = secondary standard calibrated to primary standard reference material
+     So  = standard deviation at zero analyte concentration; method detection limit
+           is generally considered to be 3x So value
+     ND  = none detected n/a = not applicable
+
+
+                                    ____________________           _____________________
+                                     R. Bilodeau                    H. Hartmann
+                                     Analytical Chemist             Sr.Analytical Chemist
+
+
+     M.B. LABS LTD
+     T: 250 656-1334          E: info@mblabs.com           W: www.mblabs.com
+     .
+

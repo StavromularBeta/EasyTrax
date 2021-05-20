@@ -35,6 +35,7 @@ class EasyTraxConvert:
                                          'E.C.': [8, 'Conductivity'],
                                          'TKN': [689, 'Total Kjeldahl Nitrogen / TKN'],
                                          'Ortho-PO43--': [748, 'o-Phosphate (as P)'],
+                                         'Ortho-PO43--P': [748, 'o-Phosphate (as P)'],
                                          'TPO43--P': [3507, 'Phosphate (total, as P)'],
                                          'D.TPO43--P': [3508, 'Phosphate (dissolved, as P)'],
                                          'SO42-': [205, 'Sulphate'],
@@ -55,6 +56,7 @@ class EasyTraxConvert:
                                          'Ba': [178, 'Barium (Total)'],
                                          'Be': [179, 'Beryllium (Total)'],
                                          'B': [180, 'Boron (Total)'],
+                                         'Ca': [150, 'Calcium (Total)'],
                                          'Cd': [182, 'Cadmium (Total)'],
                                          'Cr': [186, 'Chromium (Total)'],
                                          'Co': [542, 'Cobalt (Total)'],
@@ -117,9 +119,10 @@ class EasyTraxConvert:
         client_id = self.get_water_trax_client_id()
         report_id = self.job_dictionary['job number']
         report_lines = []
-        sample_id = 1
         for key, value in self.samples_dictionary.items():
+            analytes_reported = []
             sample_name = key
+            sample_id = sample_name.split(" ")[0]
             if sample_name == 'Lab Blank':
                 pass
             else:
@@ -132,15 +135,17 @@ class EasyTraxConvert:
                     unit_code = value_triplet[1]
                     value = value_triplet[2]
                     wtx_format_line = str(version_no) + '|' + str(transaction_purpose) + '|F|' + str(mb_labs_id) +\
-                        '||' + str(client_id) + '|' + str(sample_location) + '|' + str(report_id) + '||' +\
+                        '||' + str(client_id) + '|' + str(sample_location) + '|' + str(report_id) + 'T||' +\
                         self.job_dictionary['job number'] + '-' + str(sample_id) +\
                         '||' + str(sample_date) + '|' + str(sample_time) + '|||' + str(analyte_code) +\
                         '|' + str(value) + '|' + str(unit_code)
                     if value == '---':
                         pass
+                    elif analyte_code in analytes_reported:
+                        pass
                     else:
                         report_lines.append(wtx_format_line)
-                sample_id += 1
+                        analytes_reported.append(analyte_code)
         return report_lines
 
     def get_water_trax_client_id(self):
