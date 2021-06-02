@@ -51,6 +51,29 @@ you can upload the second part manually and save it as file W161000B).
 
 As this program is developed, more data formats will be supported.
 
+**Documentation**
+
+as of June 2nd, 2021:
+
+fully documented files:
+
+- EasyTraxParseFC.py
+
+partially documented files:
+
+undocumented files:
+
+- EasyTraxConvert.py
+
+- EasyTraxParse.py (depreciated)
+
+- EasyTraxTK.py
+
+documentation can be found written into the python files themselves.
+Files have help() accessible docstrings as well as comments throughout.
+
+**Contact Information**
+
 This readme and program was written by Peter Levett (MB Laboratories ltd.). This readme
 was last updated June 2nd, 2021. Any questions or concerns about this program
 can be sent to peterlevett@gmail.com.
