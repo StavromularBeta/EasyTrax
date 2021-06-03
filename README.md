@@ -19,8 +19,8 @@ opened using notepad.
 
 - run **EasyTraxTK.py**
 
-- type the file name into the box provided, and hit the button labeled
-  "Create with FirstChoice File". The .WTX file format will be created
+- type the file name (jobnumber) into the box provided, and hit the button labeled
+  "Create WTX File". The .WTX file format will be created
   and saved in WTX_reports. 
   
 - log in to lab.watertrax.com and sign in using the lab credentials
@@ -57,15 +57,13 @@ as of June 2nd, 2021:
 
 fully documented files:
 
-- EasyTraxParseFC.py
+- EasyTraxParse.py
 
 partially documented files:
 
 undocumented files:
 
 - EasyTraxConvert.py
-
-- EasyTraxParse.py (depreciated)
 
 - EasyTraxTK.py
 
