@@ -1,5 +1,5 @@
 import tkinter as Tk
-import EasyTraxParse as ParseFC
+import EasyTraxParse as Parse
 import EasyTraxConvert as Convert
 
 
@@ -26,7 +26,7 @@ class MainApplication(Tk.Frame):
         self.get_file_from_job_number()
         if self.mb_file_contents:
             print('file found')
-            parsing_script = ParseFC.EasyTraxParse(self.job_number, self.mb_file_contents)
+            parsing_script = Parse.EasyTraxParse(self.job_number, self.mb_file_contents)
             samples_dictionary, job_dictionary = parsing_script.easy_trax_parse_controller()
             converting_script = Convert.EasyTraxConvert(samples_dictionary, job_dictionary)
             converting_script.easy_trax_convert_controller()

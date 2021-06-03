@@ -53,7 +53,7 @@ As this program is developed, more data formats will be supported.
 
 **Documentation**
 
-as of June 2nd, 2021:
+as of June 3rd, 2021:
 
 fully documented files:
 
@@ -61,9 +61,9 @@ fully documented files:
 
 partially documented files:
 
-undocumented files:
-
 - EasyTraxConvert.py
+
+undocumented files:
 
 - EasyTraxTK.py
 
@@ -73,6 +73,6 @@ Files have help() accessible docstrings as well as comments throughout.
 **Contact Information**
 
 This readme and program was written by Peter Levett (MB Laboratories ltd.). This readme
-was last updated June 2nd, 2021. Any questions or concerns about this program
+was last updated June 3rd, 2021. Any questions or concerns about this program
 can be sent to peterlevett@gmail.com.
 

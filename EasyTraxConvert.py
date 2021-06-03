@@ -3,6 +3,100 @@ import errno
 
 
 class EasyTraxConvert:
+    """Converts data in an intermediate format to a ready to upload text file in WTX format.
+
+    when passed a dictionary in the format
+        key : [value1, value2, value3, [list1], [list2], [list3]... [listx]]
+            where key is the sample name
+            value1, value2, value3 are sample location code, sample date, sample time
+            list1, list2, list3... listx are triplet lists of [analyte, units, value] and
+                x is the total amount of analytes for each sample (can be different for each sample)
+
+    A WTX file is produced from this information. A job dictionary, containing simple key : value pairs for
+    job-level data (job number, client), is also passed. For each sample, there will be x amount of lines, where
+    x is the amount of analytes analyzed for a given sample. Each line therefore represents one test on one sample.
+    Samples don't have to have the same amount of lines. Some of the information in these lines will be conserved
+    across the job (things like version number, lab ID, client ID). Some of the information will be conserved across
+    each sample (like sample name and location code).
+
+    There are 30 fields per line in a WTX report, delimited by the pipe character '|'. Many of these fields are
+    optional. MB Labs utilizes 14 mandatory fields in these reports, and none of the optional fields. If a field is not
+    being used, it must be fully delimited ('||'). The order these fields appear in is how they are identified.
+    Any optional fields that come after all mandatory fields don't need to be included, and can be ignored.
+
+    Information on what these fields are, their order, and their importance can be found in WTX_Report_Format_Doc.pdf,
+    which has been included in this program for reference.
+
+    Last Updated: 03June21, P.L.
+
+    Attributes
+    ----------
+    samples_dictionary : dict
+        the dictionary containing sample information. the format is given in the above pre-amble.
+
+    job_dictionary: dict
+        the dictionary containing job-level information. Currently only the job number and the client identifier.
+
+    wtx_format_report: list
+        the list where WTX formatted report lines are appended once made.
+
+    WaterTraxRequiredFileFieldDict: dict
+        a dictionary containing watertrax information that won't change from day to day, such as:
+             our lab ID
+             client ID's
+
+    WaterTraxAnalyteCodeDict: dict
+        a dictionary containing key : value pairs in the format Mb Labs name : [analyte code, WTX description]
+            MB Labs name - what we call the analyte on our in house reports
+            analyte code - the analyte code provided by watertrax for the given analyte
+            WTX description - the WTX description of the analyte name, which can be found in the table of analyte codes
+                (these aren't used in the program, but they are for confirmation that we've picked the right code, as
+                there can be many different codes for the same analyte with different methodologies).
+
+    WaterTraxUnitsCodeDict: dict
+        a dictionary containing key : value pairs in the format unit : unit code
+
+    date_dict:
+        used to convert MB labs date formats (02 Jan 21) into WTX date formats (01022021)
+
+    Methods
+    -------
+    easy_trax_convert_controller()
+        called by EasyTraxTK, the main function that controls the class.
+
+    populate_water_trax_report_list()
+        creates the WTX report lines for the WTX report. Gets the hard-set values from WaterTraxRequiredFileFieldDict,
+        gets the client ID using get_water_trax_client_id(), and then iterates through the samples dictionary,
+        turning each triplet list of data into WTX line.
+
+        get_water_trax_client_id()
+            matches the passed 'job identifier' key in job_dictionary to a corresponding client id in
+            WaterTraxRequiredFileFieldDict[6].
+
+        convert_triplet_list(triplet_list)
+            swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn't
+            changed or looked at at this point.
+
+        format_watertrax_date()
+            formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)
+
+        format_watertrax_time()
+            formats the MB labs time format to the WTX format (13:30p to 13:30)
+
+    print_sample_dictionary_to_console()
+        useful for debugging, allows you to print the sample dictionary to the console (prior to it being turned into a
+        WTX report)
+
+    generate_report_directories_and_files()
+        generates the report directories and files. Reports are added to a folder called WTX_reports, and contained
+        in this directory in a folder of the same name.
+
+        mkdir_p()
+            tries to make the desired directory.
+
+        safe_open_w()
+            safely opens the file in order to write to it.
+    """
 
     def __init__(self, samples_dictionary, job_dictionary):
         self.samples_dictionary = samples_dictionary
@@ -17,11 +111,11 @@ class EasyTraxConvert:
                                                # 4) WTX Lab ID
                                                4: 3393,
                                                # 6) WTX Client ID
-                                               6: [["BC Ferries", "", 11273],
+                                               6: [["BC Ferries", "BC Ferry", 11273],
                                                    ["City of Cranbrook", "Cranbrook, City", 17573],
                                                    ["City of Comox", "", 16581],
                                                    ["City of Campbell River", "", 10625],
-                                                   ["North Salt Spring Waterworks District", "", 16672]]
+                                                   ["North Salt Spring Waterworks District", "N. Saltspring", 16672]]
                                                }
         self.WaterTraxAnalyteCodeDict = {
                                          # MISCELLANEOUS
@@ -94,7 +188,6 @@ class EasyTraxConvert:
                                        '(TCU)': 116,
                                        '(NTU)': 114
                                        }
-        self.WaterTraxReportList = []
         self.date_dict = {'Jan': '01',
                           'Feb': '02',
                           'Mar': '03',
@@ -188,9 +281,9 @@ class EasyTraxConvert:
             print(value)
 
     def generate_report_directories_and_files(self):
-        """creates a file at a given target and names it based on the key in finished_reports_dictionary - the key will
-        be the 6 digit job number for multi sample reports, and the -XX number for single reports. The directory is
+        """creates a file at a given target and names it based on the jobnumber of the report. The directory is
         always named using the 6 digit job number. """
+
         target = r'T:\ANALYST WORK FILES\Peter\EasyTrax\WTX_reports\ '
         try:
             jobnumber = str(self.job_dictionary['job number'])
@@ -205,6 +298,7 @@ class EasyTraxConvert:
 
     def mkdir_p(self, path):
         """tries to make the directory."""
+
         try:
             os.makedirs(path)
         except OSError as exc:  # Python >2.5
@@ -215,5 +309,6 @@ class EasyTraxConvert:
 
     def safe_open_w(self, path):
         """ Open "path" for writing, creating any parent directories as needed. """
+
         self.mkdir_p(os.path.dirname(path))
         return open(path, 'w')
