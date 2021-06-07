@@ -53,17 +53,12 @@ As this program is developed, more data formats will be supported.
 
 **Documentation**
 
-as of June 3rd, 2021:
+as of June 7th, 2021:
 
 fully documented files:
 
 - EasyTraxParse.py
 - EasyTraxConvert.py
-
-partially documented files:
-
-undocumented files:
-
 - EasyTraxTK.py
 
 documentation can be found written into the python files themselves.
