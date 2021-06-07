@@ -202,10 +202,33 @@ class EasyTraxConvert:
                           'Dec': '12'}
 
     def easy_trax_convert_controller(self):
+        """executes the various methods/functions in the script in the right order.
+
+        is called in EasyTraxTK. Doesn't return anything, output is written to files
+        which are saved onto the computer.
+        """
+
         self.wtx_format_report = self.populate_water_trax_report_list()
         self.generate_report_directories_and_files()
 
     def populate_water_trax_report_list(self):
+        """writes the lines of watertrax code.
+
+        the 5 variables consistent in the report (version_no, transaction_purpose, mb_labs_id, client_id,
+        report_id) are going to be the same for every line. We then iterate through the samples in the samples
+        dictionary. There are 5 variables consistent in the sample (sample_name, sample_id, sample_location,
+        sample_date, sample_time). These will be the same in every line for a particular sample.
+        Finally, for each sample, we go through the triplet list [analyte, unit, value] and create a line for
+        each triplet. Finally, we check for two conditions, and don't add the list if either condition is true:
+        first, that the value is not '---', which indicates that there is no value for the analyte, and that this
+        triplet pair is just a placeholder. The second condition checks to see if the analyte has already been
+        included in the report for the sample, which can happen if analytes are included in more than one place
+        on the report.
+
+        :return: report_lines : list
+            the sample dictionary for a given report converted into WTX format. """
+
+        # below variables are the same in every line in the report
         version_no = self.WaterTraxRequiredFileFieldDict[1]
         transaction_purpose = self.WaterTraxRequiredFileFieldDict[2][0]
         mb_labs_id = self.WaterTraxRequiredFileFieldDict[4]
@@ -213,7 +236,9 @@ class EasyTraxConvert:
         report_id = self.job_dictionary['job number']
         report_lines = []
         for key, value in self.samples_dictionary.items():
+            # aka for each sample
             analytes_reported = []
+            # below variables are the same in every line for a given sample
             sample_name = key
             sample_id = sample_name.split(" ")[0]
             if sample_name == 'Lab Blank':
@@ -224,6 +249,7 @@ class EasyTraxConvert:
                 sample_time = self.format_watertrax_time(value[2])
                 triplet_list = self.convert_triplet_list(value[3:])
                 for value_triplet in triplet_list:
+                    # for each test in the sample
                     analyte_code = value_triplet[0]
                     unit_code = value_triplet[1]
                     value = value_triplet[2]
@@ -242,6 +268,11 @@ class EasyTraxConvert:
         return report_lines
 
     def get_water_trax_client_id(self):
+        """matches a client identifier token to a client id in WaterTraxRequiredFileFieldDict.
+
+         if no client ID is found, an error message is returned. Otherwise, returns a 5 digit code
+         representing the client the report belongs to from the value corresponding to key : 6. """
+
         client_identifier = self.job_dictionary['client identifier']
         value_to_return = ""
         for item in self.WaterTraxRequiredFileFieldDict[6]:
@@ -253,6 +284,11 @@ class EasyTraxConvert:
             return value_to_return
 
     def convert_triplet_list(self, triplet_list):
+        """swaps out the analyte and the unit for an analyte and unit code.
+
+        Found in WaterTraxAnalyteCodeDict and WaterTraxUnitsCodeDict respectively. Does not alter the actual value.
+        Might be a good place to check the value isn't '---' in the future.
+        """
         converted_list = []
         # Eventually an error will be thrown here when the analyte or unit is not in the dictionary,
         # can then handle. 18May21
@@ -263,6 +299,7 @@ class EasyTraxConvert:
         return converted_list
 
     def format_watertrax_date(self, date_value):
+        """formats our date into the correct WTX format (mmddyyy). """
         day = date_value[0:2]
         month = self.date_dict[date_value[2:5]]
         year = "20" + date_value[5:7]
@@ -270,12 +307,14 @@ class EasyTraxConvert:
         return wtx_formatted_date
 
     def format_watertrax_time(self, time_value):
+        """formats our time into the correct WTX format (hh:mm). """
         hour = time_value[0:2]
         minute = time_value[3:5]
         wtx_formatted_time = hour + ':' + minute
         return wtx_formatted_time
 
     def print_sample_dictionary_to_console(self):
+        """prints the sample dictionary to the console. """
         for key, value in self.samples_dictionary.items():
             print(key)
             print(value)

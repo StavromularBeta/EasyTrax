@@ -58,10 +58,9 @@ as of June 3rd, 2021:
 fully documented files:
 
 - EasyTraxParse.py
+- EasyTraxConvert.py
 
 partially documented files:
-
-- EasyTraxConvert.py
 
 undocumented files:
 
