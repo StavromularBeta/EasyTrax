@@ -117,9 +117,12 @@ class EasyTraxParse:
         self.mb_file = fc_file
         self.mb_file_split_lines = []
         self.sample_list_indexes = []
+        self.backup_sample_list_indexes = []
+        self.backup_line_split_by_sample = []
         self.analyte_list_indexes = []
         self.job_dictionary = {}
         self.samples_dictionary = {}
+        self.backup_samples_dictionary_entries = {}
         self.metal_triplets_dictionary = {}
 
     def easy_trax_parse_controller(self):
@@ -133,7 +136,9 @@ class EasyTraxParse:
         self.split_lines_by_spacing()
         self.get_client_name_and_jobnumber()
         self.look_for_sample_indexes_in_split_lines()
+        self.look_for_backup_sample_indexes_in_split_lines()
         self.look_for_analyte_indexes_in_split_lines()
+        self.generate_backup_samples_dictionary_entries()
         self.use_sample_indexes_to_get_sample_data()
         self.use_analyte_indexes_to_get_sample_data()
         self.combine_metal_triplet_dictionary_with_samples_dictionary()
@@ -182,6 +187,16 @@ class EasyTraxParse:
             if len(item) > 0:
                 if item[0] == 'SAMPLE':
                     self.sample_list_indexes.append(self.mb_file_split_lines.index(item))
+
+    def look_for_backup_sample_indexes_in_split_lines(self):
+        """ looks for the string 'Samples:' in the list of lines, adds those indices to self.backup_sample_list_indices.
+
+        first filters out empty lines. If a line has something, checks to see if the first index is Samples:. If it
+        is, adds the index of the line to sample_list_indexes."""
+        for item in self.mb_file_split_lines:
+            if len(item) > 0:
+                if item[0] == 'Samples:':
+                    self.backup_sample_list_indexes.append(self.mb_file_split_lines.index(item))
 
     def look_for_analyte_indexes_in_split_lines(self):
         """ looks for the string 'ELEMENTS' in the list of lines, adds those indices to self.analyte_list_indexes.
@@ -332,6 +347,33 @@ class EasyTraxParse:
                 else:
                     self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]
 
+    def generate_backup_samples_dictionary_entries(self):
+        empty_list = False
+        backup_sample_list_index = self.backup_sample_list_indexes[0]
+        backup_sample_lines = []
+        while not empty_list:
+            backup_samples_line = self.mb_file_split_lines[backup_sample_list_index]
+            if len(backup_samples_line) == 0:
+                empty_list = True
+            else:
+                backup_sample_lines.append(backup_samples_line)
+                backup_sample_list_index += 1
+        backup_sample_lines = [item for sublist in backup_sample_lines for item in sublist]
+        keep_adding = False
+        single_sample = []
+        for item in backup_sample_lines:
+            if ')' in item:
+                if keep_adding:
+                    self.backup_line_split_by_sample.append(single_sample)
+                    single_sample = [item]
+                else:
+                    single_sample.append(item)
+                    keep_adding = True
+            else:
+                if keep_adding:
+                    single_sample.append(item)
+        self.backup_line_split_by_sample.append(single_sample)
+
     def generate_data_triplets(self, analyte_information, units, samples_binary_list):
         """ generates data triplets [analyte, unit, value] and adds via the sample name key to the samples dictionary
 
@@ -449,6 +491,7 @@ class EasyTraxParse:
         the sample number, and the keys for metals_triplet_dictionary are the sample numbers. """
 
         samples_dictionary_keys = []
+        self.generate_solo_sample_dictionary_entry()
         for key in self.samples_dictionary.keys():
             samples_dictionary_keys.append(key)
         for key, value in self.metal_triplets_dictionary.items():
@@ -457,3 +500,21 @@ class EasyTraxParse:
                     key = item
                     for triplet in value:
                         self.samples_dictionary[key].append(triplet)
+
+    def generate_solo_sample_dictionary_entry(self):
+        # not going to fire at all if there isn't anything in samples dictionary.
+        samples_dictionary_keys = ['default']
+        for key in self.samples_dictionary.keys():
+            samples_dictionary_keys.append(key)
+        if self.backup_line_split_by_sample[0]:
+            for sublist in self.backup_line_split_by_sample:
+                sample_number = sublist[0][0:2]
+                for item in samples_dictionary_keys:
+                    if sample_number not in item:
+                        time = sublist.pop()
+                        date = sublist.pop()
+                        location_code = sublist.pop()
+                        sublist[0] = sublist[0][0:2]
+                        new_key = ' '.join(sublist)
+                        self.samples_dictionary[new_key] = [location_code, date, time]
+

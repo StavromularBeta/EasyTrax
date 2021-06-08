@@ -57,9 +57,12 @@ as of June 7th, 2021:
 
 fully documented files:
 
-- EasyTraxParse.py
 - EasyTraxConvert.py
 - EasyTraxTK.py
+
+partially documented files:
+
+- EasyTraxParse.py (added more functionality 08June21, need to document)
 
 documentation can be found written into the python files themselves.
 Files have help() accessible docstrings as well as comments throughout.
