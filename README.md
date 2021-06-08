@@ -53,7 +53,7 @@ As this program is developed, more data formats will be supported.
 
 **Documentation**
 
-as of June 7th, 2021:
+as of June 8th, 2021:
 
 fully documented files:
 
@@ -70,7 +70,7 @@ Files have help() accessible docstrings as well as comments throughout.
 **Contact Information**
 
 This readme and program was written by Peter Levett (MB Laboratories ltd.). This readme
-was last updated June 3rd, 2021. Any questions or concerns about this program
+was last updated June 8th, 2021. Any questions or concerns about this program
 can be sent to peterlevett@gmail.com.
 
 
