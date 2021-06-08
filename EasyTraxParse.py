@@ -138,7 +138,8 @@ class EasyTraxParse:
         self.look_for_sample_indexes_in_split_lines()
         self.look_for_backup_sample_indexes_in_split_lines()
         self.look_for_analyte_indexes_in_split_lines()
-        self.generate_backup_samples_dictionary_entries()
+        if self.backup_sample_list_indexes:
+            self.generate_backup_samples_dictionary_entries()
         self.use_sample_indexes_to_get_sample_data()
         self.use_analyte_indexes_to_get_sample_data()
         self.combine_metal_triplet_dictionary_with_samples_dictionary()
@@ -506,11 +507,22 @@ class EasyTraxParse:
         samples_dictionary_keys = ['default']
         for key in self.samples_dictionary.keys():
             samples_dictionary_keys.append(key)
-        if self.backup_line_split_by_sample[0]:
-            for sublist in self.backup_line_split_by_sample:
-                sample_number = sublist[0][0:2]
-                for item in samples_dictionary_keys:
-                    if sample_number not in item:
+        if self.backup_line_split_by_sample:
+            if self.backup_line_split_by_sample[0]:
+                for sublist in self.backup_line_split_by_sample:
+                    sample_number = sublist[0][0:2]
+                    try:
+                        if int(sample_number):
+                            pass
+                    except ValueError:
+                        sample_number = sublist[0][0:1]
+                    sample_already_present = False
+                    for item in samples_dictionary_keys:
+                        if sample_number in item:
+                            sample_already_present = True
+                        else:
+                            pass
+                    if not sample_already_present:
                         time = sublist.pop()
                         date = sublist.pop()
                         location_code = sublist.pop()
