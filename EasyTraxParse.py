@@ -59,11 +59,10 @@ class EasyTraxParse:
         get_job_number_from_first_line(list_to_check)
             finds the job number in the first line.
 
-    look_for_sample_indexes_in_split_lines()
-        looks for the string 'SAMPLE' in the list of lines, adds those indices to self.sample_list_indices
-
-    look_for_analyte_indexes_in_split_lines()
-        looks for the string 'ELEMENTS' in the list of lines, adds those indices to self.analyte_list_indexes
+    look_for_anchor_indexes_in_split_lines()
+        looks for the string 'SAMPLE' in the list of lines, adds those indices to self.sample_list_indices.
+        looks for the string 'Samples:' in the list of lines, adds those indices to self.backup_sample_list_indices.
+        looks for the string 'ELEMENTS' in the list of lines, adds those indices to self.analyte_list_indexes.
 
     use_sample_indexes_to_get_sample_data()
         iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
@@ -139,6 +138,7 @@ class EasyTraxParse:
         if self.backup_sample_list_indexes:
             self.generate_backup_samples_dictionary_entries()
         self.use_sample_indexes_to_get_sample_data()
+        self.generate_backup_sample_dictionary_entries()
         self.use_analyte_indexes_to_get_sample_data()
         self.combine_metal_triplet_dictionary_with_samples_dictionary()
         return self.samples_dictionary, self.job_dictionary
@@ -199,6 +199,33 @@ class EasyTraxParse:
                     self.analyte_list_indexes.append(self.mb_file_split_lines.index(item))
                 else:
                     pass
+
+    def generate_backup_samples_dictionary_entries(self):
+        empty_list = False
+        backup_sample_list_index = self.backup_sample_list_indexes[0]
+        backup_sample_lines = []
+        while not empty_list:
+            backup_samples_line = self.mb_file_split_lines[backup_sample_list_index]
+            if len(backup_samples_line) == 0:
+                empty_list = True
+            else:
+                backup_sample_lines.append(backup_samples_line)
+                backup_sample_list_index += 1
+        backup_sample_lines = [item for sublist in backup_sample_lines for item in sublist]
+        keep_adding = False
+        single_sample = []
+        for item in backup_sample_lines:
+            if ')' in item:
+                if keep_adding:
+                    self.backup_line_split_by_sample.append(single_sample)
+                    single_sample = [item]
+                else:
+                    single_sample.append(item)
+                    keep_adding = True
+            else:
+                if keep_adding:
+                    single_sample.append(item)
+        self.backup_line_split_by_sample.append(single_sample)
 
     def use_sample_indexes_to_get_sample_data(self):
         """ iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
@@ -339,33 +366,6 @@ class EasyTraxParse:
                 else:
                     self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]
 
-    def generate_backup_samples_dictionary_entries(self):
-        empty_list = False
-        backup_sample_list_index = self.backup_sample_list_indexes[0]
-        backup_sample_lines = []
-        while not empty_list:
-            backup_samples_line = self.mb_file_split_lines[backup_sample_list_index]
-            if len(backup_samples_line) == 0:
-                empty_list = True
-            else:
-                backup_sample_lines.append(backup_samples_line)
-                backup_sample_list_index += 1
-        backup_sample_lines = [item for sublist in backup_sample_lines for item in sublist]
-        keep_adding = False
-        single_sample = []
-        for item in backup_sample_lines:
-            if ')' in item:
-                if keep_adding:
-                    self.backup_line_split_by_sample.append(single_sample)
-                    single_sample = [item]
-                else:
-                    single_sample.append(item)
-                    keep_adding = True
-            else:
-                if keep_adding:
-                    single_sample.append(item)
-        self.backup_line_split_by_sample.append(single_sample)
-
     def generate_data_triplets(self, analyte_information, units, samples_binary_list):
         """ generates data triplets [analyte, unit, value] and adds via the sample name key to the samples dictionary
 
@@ -398,6 +398,33 @@ class EasyTraxParse:
                 # appending, value is a list.
                 item_index += 1
             sample_number_index += 1
+
+    def generate_backup_sample_dictionary_entries(self):
+        samples_dictionary_keys = ['default']
+        for key in self.samples_dictionary.keys():
+            samples_dictionary_keys.append(key)
+        if self.backup_line_split_by_sample:
+            if self.backup_line_split_by_sample[0]:
+                for sublist in self.backup_line_split_by_sample:
+                    sample_number = sublist[0][0:2]
+                    try:
+                        if int(sample_number):
+                            pass
+                    except ValueError:
+                        sample_number = sublist[0][0:1]
+                    sample_already_present = False
+                    for item in samples_dictionary_keys:
+                        if sample_number in item:
+                            sample_already_present = True
+                        else:
+                            pass
+                    if not sample_already_present:
+                        time = sublist.pop()
+                        date = sublist.pop()
+                        location_code = sublist.pop()
+                        sublist[0] = sublist[0][0:2]
+                        new_key = ' '.join(sublist)
+                        self.samples_dictionary[new_key] = [location_code, date, time]
 
     def use_analyte_indexes_to_get_sample_data(self):
         """ generates data triplets from ICP data and appends them to the appropriate existing key in samples dict
@@ -483,7 +510,6 @@ class EasyTraxParse:
         the sample number, and the keys for metals_triplet_dictionary are the sample numbers. """
 
         samples_dictionary_keys = []
-        self.generate_solo_sample_dictionary_entry()
         for key in self.samples_dictionary.keys():
             samples_dictionary_keys.append(key)
         for key, value in self.metal_triplets_dictionary.items():
@@ -492,31 +518,4 @@ class EasyTraxParse:
                     key = item
                     for triplet in value:
                         self.samples_dictionary[key].append(triplet)
-
-    def generate_solo_sample_dictionary_entry(self):
-        samples_dictionary_keys = ['default']
-        for key in self.samples_dictionary.keys():
-            samples_dictionary_keys.append(key)
-        if self.backup_line_split_by_sample:
-            if self.backup_line_split_by_sample[0]:
-                for sublist in self.backup_line_split_by_sample:
-                    sample_number = sublist[0][0:2]
-                    try:
-                        if int(sample_number):
-                            pass
-                    except ValueError:
-                        sample_number = sublist[0][0:1]
-                    sample_already_present = False
-                    for item in samples_dictionary_keys:
-                        if sample_number in item:
-                            sample_already_present = True
-                        else:
-                            pass
-                    if not sample_already_present:
-                        time = sublist.pop()
-                        date = sublist.pop()
-                        location_code = sublist.pop()
-                        sublist[0] = sublist[0][0:2]
-                        new_key = ' '.join(sublist)
-                        self.samples_dictionary[new_key] = [location_code, date, time]
 
