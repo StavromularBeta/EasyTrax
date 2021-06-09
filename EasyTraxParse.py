@@ -135,9 +135,7 @@ class EasyTraxParse:
 
         self.split_lines_by_spacing()
         self.get_client_name_and_jobnumber()
-        self.look_for_sample_indexes_in_split_lines()
-        self.look_for_backup_sample_indexes_in_split_lines()
-        self.look_for_analyte_indexes_in_split_lines()
+        self.look_for_anchor_indexes_in_split_lines()
         if self.backup_sample_list_indexes:
             self.generate_backup_samples_dictionary_entries()
         self.use_sample_indexes_to_get_sample_data()
@@ -178,36 +176,29 @@ class EasyTraxParse:
         else:
             return list_to_check[-2]
 
-    def look_for_sample_indexes_in_split_lines(self):
-        """ looks for the string 'SAMPLE' in the list of lines, adds those indices to self.sample_list_indices.
+    def look_for_anchor_indexes_in_split_lines(self):
+        """ looks for anchor indices in the split lines. Adds them to the relevant list. 3 types of anchors.
 
-        first filters out empty lines. If a line has something in it, checks to see if the first index is sample. If it
-        is, adds the index of the line to sample_list_indexes. """
+        first filters out empty lines. If a line has something in it, checks to see if the first index is 'SAMPLE'. If
+        it is, adds the index of the line to sample_list_indexes. These indexes are used to parse horizontal data
+        tables. Then checks if the first index is 'Samples:'. If it is, adds the index to backup_sample_list_indexes.
+        These indexes are used to parse sample metadata from the header part of the report (name, date, location, etc).
+        This information is generally taken from horizontal data tables, and then the ICP data tables piggyback.
+        If there are no horizontal data tables, or if there are samples in vertical data tables that aren't present
+        in horizontal data tables, we need a second way to get sample metadata. That's what the backup is for.
+        Finally checks if the first index is 'ELEMENTS'. If it is, adds the index to analyte_list_indexes. These
+        indexes are used to parse vertical ICP style data tables. """
 
         for item in self.mb_file_split_lines:
             if len(item) > 0:
                 if item[0] == 'SAMPLE':
                     self.sample_list_indexes.append(self.mb_file_split_lines.index(item))
-
-    def look_for_backup_sample_indexes_in_split_lines(self):
-        """ looks for the string 'Samples:' in the list of lines, adds those indices to self.backup_sample_list_indices.
-
-        first filters out empty lines. If a line has something, checks to see if the first index is Samples:. If it
-        is, adds the index of the line to sample_list_indexes."""
-        for item in self.mb_file_split_lines:
-            if len(item) > 0:
-                if item[0] == 'Samples:':
+                elif item[0] == 'Samples:':
                     self.backup_sample_list_indexes.append(self.mb_file_split_lines.index(item))
-
-    def look_for_analyte_indexes_in_split_lines(self):
-        """ looks for the string 'ELEMENTS' in the list of lines, adds those indices to self.analyte_list_indexes.
-
-        could be merged with look_for_sample_indexes_in_split_lines."""
-
-        for item in self.mb_file_split_lines:
-            if len(item) > 0:
-                if item[0] == 'ELEMENTS':
+                elif item[0] == 'ELEMENTS':
                     self.analyte_list_indexes.append(self.mb_file_split_lines.index(item))
+                else:
+                    pass
 
     def use_sample_indexes_to_get_sample_data(self):
         """ iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
@@ -503,7 +494,6 @@ class EasyTraxParse:
                         self.samples_dictionary[key].append(triplet)
 
     def generate_solo_sample_dictionary_entry(self):
-        # not going to fire at all if there isn't anything in samples dictionary.
         samples_dictionary_keys = ['default']
         for key in self.samples_dictionary.keys():
             samples_dictionary_keys.append(key)
