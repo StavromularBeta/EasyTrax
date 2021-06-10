@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>EasyTrax.EasyTraxConvert API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>EasyTrax.EasyTraxConvert</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import os.path
+import errno
+
+
+class EasyTraxConvert:
+    &#34;&#34;&#34;Converts data in an intermediate format to a ready to upload text file in WTX format.
+
+    when passed a dictionary in the format
+        * key : [value1, value2, value3, [list1], [list2], [list3]... [listx]]
+            * where key is the sample name
+            * value1, value2, value3 are sample location code, sample date, sample time
+            * list1, list2, list3... listx are triplet lists of [analyte, units, value] and
+              x is the total amount of analytes for each sample (can be different for each sample)
+
+    A WTX file is produced from this information. A job dictionary, containing simple key : value pairs for
+    job-level data (job number, client), is also passed. For each sample, there will be x amount of lines, where
+    x is the amount of analytes analyzed for a given sample. Each line therefore represents one test on one sample.
+    Samples don&#39;t have to have the same amount of lines. Some of the information in these lines will be conserved
+    across the job (things like version number, lab ID, client ID). Some of the information will be conserved across
+    each sample (like sample name and location code).
+
+    There are 30 fields per line in a WTX report, delimited by the pipe character &#39;|&#39;. Many of these fields are
+    optional. MB Labs utilizes 14 mandatory fields in these reports, and none of the optional fields. If a field is not
+    being used, it must be fully delimited (&#39;||&#39;). The order these fields appear in is how they are identified.
+    Any optional fields that come after all mandatory fields don&#39;t need to be included, and can be ignored.
+
+    Information on what these fields are, their order, and their importance can be found in WTX_Report_Format_Doc.pdf,
+    which has been included in this program for reference.
+
+    Last Updated: 03June21, P.L.
+
+    Attributes
+    ----------
+    samples_dictionary : dict
+        the dictionary containing sample information. the format is given in the above pre-amble.
+
+    job_dictionary: dict
+        the dictionary containing job-level information. Currently only the job number and the client identifier.
+
+    wtx_format_report: list
+        the list where WTX formatted report lines are appended once made.
+
+    WaterTraxRequiredFileFieldDict: dict
+        a dictionary containing watertrax information that won&#39;t change from day to day, such as:
+             our lab ID
+             client ID&#39;s
+
+    WaterTraxAnalyteCodeDict: dict
+        a dictionary containing key : value pairs in the format Mb Labs name : [analyte code, WTX description]
+        * MB Labs name - what we call the analyte on our in house reports
+        * analyte code - the analyte code provided by watertrax for the given analyte
+        * WTX description - the WTX description of the analyte name, which can be found in the table of analyte codes
+        (these aren&#39;t used in the program, but they are for confirmation that we&#39;ve picked the right code, as
+        there can be many different codes for the same analyte with different methodologies).
+
+    WaterTraxUnitsCodeDict: dict
+        a dictionary containing key : value pairs in the format unit : unit code
+
+    date_dict:
+        used to convert MB labs date formats (02 Jan 21) into WTX date formats (01022021)
+
+    Methods
+    -------
+    easy_trax_convert_controller()
+        called by EasyTraxTK, the main function that controls the class.
+
+    populate_water_trax_report_list()
+        creates the WTX report lines for the WTX report. Gets the hard-set values from WaterTraxRequiredFileFieldDict,
+        gets the client ID using get_water_trax_client_id(), and then iterates through the samples dictionary,
+        turning each triplet list of data into WTX line.
+
+    get_water_trax_client_id()
+        matches the passed &#39;job identifier&#39; key in job_dictionary to a corresponding client id in
+        WaterTraxRequiredFileFieldDict[6].
+
+    convert_triplet_list(triplet_list)
+        swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn&#39;t
+        changed or looked at at this point.
+
+    format_watertrax_date()
+        formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)
+
+    format_watertrax_time()
+        formats the MB labs time format to the WTX format (13:30p to 13:30)
+
+    print_sample_dictionary_to_console()
+        useful for debugging, allows you to print the sample dictionary to the console (prior to it being turned into a
+        WTX report)
+
+    generate_report_directories_and_files()
+        generates the report directories and files. Reports are added to a folder called WTX_reports, and contained
+        in this directory in a folder of the same name.
+
+    mkdir_p()
+        tries to make the desired directory.
+
+    safe_open_w()
+        safely opens the file in order to write to it.
+    &#34;&#34;&#34;
+
+    def __init__(self, samples_dictionary, job_dictionary):
+        self.samples_dictionary = samples_dictionary
+        self.job_dictionary = job_dictionary
+        self.wtx_format_report = []
+        #WaterTrax File Fields
+        self.WaterTraxRequiredFileFieldDict = {
+                                               # 1) Version No.
+                                               1: &#34;WTX_2.0&#34;,
+                                               # 2) Transactional Purpose (Original or Replacement report?)
+                                               2: [&#34;O&#34;, &#34;R&#34;],
+                                               # 4) WTX Lab ID
+                                               4: 3393,
+                                               # 6) WTX Client ID
+                                               6: [[&#34;BC Ferries&#34;, &#34;BC Ferry&#34;, 11273],
+                                                   [&#34;City of Cranbrook&#34;, &#34;Cranbrook, City&#34;, 17573],
+                                                   [&#34;City of Comox&#34;, &#34;&#34;, 16581],
+                                                   [&#34;City of Campbell River&#34;, &#34;&#34;, 10625],
+                                                   [&#34;North Salt Spring Waterworks District&#34;, &#34;N. Saltspring&#34;, 16672]]
+                                               }
+        self.WaterTraxAnalyteCodeDict = {
+                                         # MISCELLANEOUS
+                                         &#39;Alkalinity&#39;: [458, &#39;Alkalinity (total, as CaC03)&#39;],
+                                         &#39;Colour&#39;: [225, &#39;Color&#39;],
+                                         &#39;NH3-N&#39;: [175, &#39;Ammonia (total, as N)&#39;],
+                                         &#39;NO3-N&#39;: [361, &#39;Nitrate (as N)&#39;],
+                                         &#39;NO2-N&#39;: [199, &#39;Nitrite (as N)&#39;],
+                                         &#39;Cl-&#39;: [184, &#39;Chloride&#39;],
+                                         &#39;F-&#39;: [188, &#39;Fluoride&#39;],
+                                         &#39;E.C.&#39;: [8, &#39;Conductivity&#39;],
+                                         &#39;TKN&#39;: [689, &#39;Total Kjeldahl Nitrogen / TKN&#39;],
+                                         &#39;Ortho-PO43--&#39;: [748, &#39;o-Phosphate (as P)&#39;],
+                                         &#39;Ortho-PO43--P&#39;: [748, &#39;o-Phosphate (as P)&#39;],
+                                         &#39;TPO43--P&#39;: [3507, &#39;Phosphate (total, as P)&#39;],
+                                         &#39;D.TPO43--P&#39;: [3508, &#39;Phosphate (dissolved, as P)&#39;],
+                                         &#39;SO42-&#39;: [205, &#39;Sulphate&#39;],
+                                         &#39;S2-&#39;: [320, &#39;Sulphide (total, as H2S)&#39;],
+                                         &#39;T.O.C.&#39;: [387, &#39;Total Organic Carbon / TOC&#39;],
+                                         &#39;T&amp;L&#39;: [1220, &#39;Tannins and Lignins&#39;],
+                                         &#39;TDS&#39;: [207, &#39;Total Dissolved Solids / TDS&#39;],
+                                         &#39;TSS&#39;: [15, &#39;Total Suspended Solids / TSS&#39;],
+                                         &#39;Turbidity&#39;: [219, &#39;Turbidity&#39;],
+                                         &#39;UVT&#39;: [1009, &#39;UV Transmittance&#39;],
+                                         &#39;pH&#39;: [228, &#39;pH&#39;],
+                                         &#39;Hardness (mg/L CaCO3)&#39;: [360, &#39;Hardness (Total, as CaCO3)&#39;],
+                                         &#39;TN&#39;: [744, &#39;Nitrogen (Total)&#39;],
+                                         &#39;Bromate&#39;: [181, &#39;Bromate&#39;],
+                                         # METALS
+                                         &#39;Al&#39;: [174, &#39;Aluminum (Total)&#39;],
+                                         &#39;Al-&#39;: [174, &#39;Aluminum (Total)&#39;],
+                                         &#39;Sb&#39;: [176, &#39;Antimony (Total)&#39;],
+                                         &#39;As&#39;: [26, &#39;Arsenic (Total)&#39;],
+                                         &#39;T.As&#39;: [26, &#39;Arsenic (Total)&#39;],
+                                         &#39;Ba&#39;: [178, &#39;Barium (Total)&#39;],
+                                         &#39;Be&#39;: [179, &#39;Beryllium (Total)&#39;],
+                                         &#39;B&#39;: [180, &#39;Boron (Total)&#39;],
+                                         &#39;Ca&#39;: [150, &#39;Calcium (Total)&#39;],
+                                         &#39;Cd&#39;: [182, &#39;Cadmium (Total)&#39;],
+                                         &#39;Cr&#39;: [186, &#39;Chromium (Total)&#39;],
+                                         &#39;Co&#39;: [542, &#39;Cobalt (Total)&#39;],
+                                         &#39;Cu&#39;: [187, &#39;Copper (Total)&#39;],
+                                         &#39;Au&#39;: [1399, &#39;Gold (Total)&#39;],
+                                         &#39;Fe&#39;: [189, &#39;Iron (Total)&#39;],
+                                         &#39;La&#39;: [1400, &#39;Lanthanum (total)&#39;],
+                                         &#39;Pb&#39;: [191, &#39;Lead (Total)&#39;],
+                                         &#39;Mg&#39;: [327, &#39;Magnesium (Total)&#39;],
+                                         &#39;Mn&#39;: [192, &#39;Manganese (Total)&#39;],
+                                         &#39;Hg&#39;: [193, &#39;Mercury (Total)&#39;],
+                                         &#39;Mo&#39;: [194, &#39;Molybdenum (Total)&#39;],
+                                         &#39;Ni&#39;: [195, &#39;Nickel (Total)&#39;],
+                                         &#39;P&#39;: [640, &#39;Phosphorus (Total)&#39;],
+                                         &#39;K&#39;: [514, &#39;Potassium (Total)&#39;],
+                                         &#39;Sc&#39;: [1401, &#39;Scandium (Total)&#39;],
+                                         &#39;Se&#39;: [201, &#39;Selenium (Total)&#39;],
+                                         &#39;Si&#39;: [737, &#39;Silicon (Total, as Si)&#39;],
+                                         &#39;Ag&#39;: [202, &#39;Silver (Total)&#39;],
+                                         &#39;Na&#39;: [203, &#39;Sodium (Total)&#39;],
+                                         &#39;Sr&#39;: [697, &#39;Strontium (Total)&#39;],
+                                         &#39;Sn&#39;: [703, &#39;Tin (Total)&#39;],
+                                         &#39;Ti&#39;: [705, &#39;Titanium (Total)&#39;],
+                                         &#39;W&#39;: [1010, &#39;Tungsten (Total)&#39;],
+                                         &#39;V&#39;: [414, &#39;Vanadium (Total)&#39;],
+                                         &#39;Zn&#39;: [210, &#39;Zinc (Total)&#39;]
+                                         }
+        self.WaterTraxUnitsCodeDict = {
+                                       # UNITS
+                                       &#39;(uS/cm)&#39;: 369,
+                                       &#39;(mg/L)&#39;: 111,
+                                       &#39;(ug/L)&#39;: 390,
+                                       &#39;(ug/g)&#39;: 449,
+                                       &#39;(%)&#39;: 374,
+                                       &#39;pH&#39;: 115,
+                                       &#39;(TCU)&#39;: 116,
+                                       &#39;(NTU)&#39;: 114
+                                       }
+        self.date_dict = {&#39;Jan&#39;: &#39;01&#39;,
+                          &#39;Feb&#39;: &#39;02&#39;,
+                          &#39;Mar&#39;: &#39;03&#39;,
+                          &#39;Apr&#39;: &#39;04&#39;,
+                          &#39;May&#39;: &#39;05&#39;,
+                          &#39;Jun&#39;: &#39;06&#39;,
+                          &#39;Jul&#39;: &#39;07&#39;,
+                          &#39;Aug&#39;: &#39;08&#39;,
+                          &#39;Sep&#39;: &#39;09&#39;,
+                          &#39;Oct&#39;: &#39;10&#39;,
+                          &#39;Nov&#39;: &#39;11&#39;,
+                          &#39;Dec&#39;: &#39;12&#39;}
+
+    def easy_trax_convert_controller(self):
+        &#34;&#34;&#34;executes the various methods/functions in the script in the right order.
+
+        is called in EasyTraxTK. Doesn&#39;t return anything, output is written to files
+        which are saved onto the computer.
+        &#34;&#34;&#34;
+
+        self.wtx_format_report = self.populate_water_trax_report_list()
+        self.generate_report_directories_and_files()
+
+    def populate_water_trax_report_list(self):
+        &#34;&#34;&#34;writes the lines of watertrax code.
+
+        the 5 variables consistent in the report (version_no, transaction_purpose, mb_labs_id, client_id,
+        report_id) are going to be the same for every line. We then iterate through the samples in the samples
+        dictionary. There are 5 variables consistent in the sample (sample_name, sample_id, sample_location,
+        sample_date, sample_time). These will be the same in every line for a particular sample.
+        Finally, for each sample, we go through the triplet list [analyte, unit, value] and create a line for
+        each triplet. Finally, we check for two conditions, and don&#39;t add the list if either condition is true:
+        first, that the value is not &#39;---&#39;, which indicates that there is no value for the analyte, and that this
+        triplet pair is just a placeholder. The second condition checks to see if the analyte has already been
+        included in the report for the sample, which can happen if analytes are included in more than one place
+        on the report.
+
+        :return: report_lines : list
+            the sample dictionary for a given report converted into WTX format. &#34;&#34;&#34;
+
+        # below variables are the same in every line in the report
+        version_no = self.WaterTraxRequiredFileFieldDict[1]
+        transaction_purpose = self.WaterTraxRequiredFileFieldDict[2][0]
+        mb_labs_id = self.WaterTraxRequiredFileFieldDict[4]
+        client_id = self.get_water_trax_client_id()
+        report_id = self.job_dictionary[&#39;job number&#39;]
+        report_lines = []
+        for key, value in self.samples_dictionary.items():
+            # aka for each sample
+            analytes_reported = []
+            # below variables are the same in every line for a given sample
+            sample_name = key
+            sample_id = sample_name.split(&#34; &#34;)[0]
+            if sample_name == &#39;Lab Blank&#39;:
+                pass
+            else:
+                sample_location = value[0]
+                sample_date = self.format_watertrax_date(value[1])
+                sample_time = self.format_watertrax_time(value[2])
+                triplet_list = self.convert_triplet_list(value[3:])
+                for value_triplet in triplet_list:
+                    # for each test in the sample
+                    analyte_code = value_triplet[0]
+                    unit_code = value_triplet[1]
+                    value = value_triplet[2]
+                    wtx_format_line = str(version_no) + &#39;|&#39; + str(transaction_purpose) + &#39;|F|&#39; + str(mb_labs_id) +\
+                        &#39;||&#39; + str(client_id) + &#39;|&#39; + str(sample_location) + &#39;|&#39; + str(report_id) + &#39;T||&#39; +\
+                        self.job_dictionary[&#39;job number&#39;] + &#39;-&#39; + str(sample_id) +\
+                        &#39;||&#39; + str(sample_date) + &#39;|&#39; + str(sample_time) + &#39;|||&#39; + str(analyte_code) +\
+                        &#39;|&#39; + str(value) + &#39;|&#39; + str(unit_code)
+                    if value == &#39;---&#39;:
+                        pass
+                    elif analyte_code in analytes_reported:
+                        pass
+                    else:
+                        report_lines.append(wtx_format_line)
+                        analytes_reported.append(analyte_code)
+        return report_lines
+
+    def get_water_trax_client_id(self):
+        &#34;&#34;&#34;matches a client identifier token to a client id in WaterTraxRequiredFileFieldDict.
+
+         if no client ID is found, an error message is returned. Otherwise, returns a 5 digit code
+         representing the client the report belongs to from the value corresponding to key : 6. &#34;&#34;&#34;
+
+        client_identifier = self.job_dictionary[&#39;client identifier&#39;]
+        value_to_return = &#34;&#34;
+        for item in self.WaterTraxRequiredFileFieldDict[6]:
+            if item[1] == client_identifier:
+                value_to_return = item[2]
+        if value_to_return == &#34;&#34;:
+            return &#34;No client ID&#34;
+        else:
+            return value_to_return
+
+    def convert_triplet_list(self, triplet_list):
+        &#34;&#34;&#34;swaps out the analyte and the unit for an analyte and unit code.
+
+        Found in WaterTraxAnalyteCodeDict and WaterTraxUnitsCodeDict respectively. Does not alter the actual value.
+        Might be a good place to check the value isn&#39;t &#39;---&#39; in the future.
+
+        Args:
+            triplet_list (list): a list consisting of [analyte, unit, value]
+
+        Returns:
+            converted_list (list): a list consisting of [analyte code, unit code, value]
+
+        &#34;&#34;&#34;
+        converted_list = []
+        # Eventually an error will be thrown here when the analyte or unit is not in the dictionary,
+        # can then handle. 18May21
+        for item in triplet_list:
+            converted_list.append([self.WaterTraxAnalyteCodeDict[item[0]][0],
+                                   self.WaterTraxUnitsCodeDict[item[1]],
+                                   item[2]])
+        return converted_list
+
+    def format_watertrax_date(self, date_value):
+        &#34;&#34;&#34;formats our date into the correct WTX format (mmddyyy). &#34;&#34;&#34;
+        day = date_value[0:2]
+        month = self.date_dict[date_value[2:5]]
+        year = &#34;20&#34; + date_value[5:7]
+        wtx_formatted_date = month + day + year
+        return wtx_formatted_date
+
+    def format_watertrax_time(self, time_value):
+        &#34;&#34;&#34;formats our time into the correct WTX format (hh:mm). &#34;&#34;&#34;
+        hour = time_value[0:2]
+        minute = time_value[3:5]
+        wtx_formatted_time = hour + &#39;:&#39; + minute
+        return wtx_formatted_time
+
+    def print_sample_dictionary_to_console(self):
+        &#34;&#34;&#34;prints the sample dictionary to the console. &#34;&#34;&#34;
+        for key, value in self.samples_dictionary.items():
+            print(key)
+            print(value)
+
+    def generate_report_directories_and_files(self):
+        &#34;&#34;&#34;creates a file at a given target and names it based on the jobnumber of the report. The directory is
+        always named using the 6 digit job number. &#34;&#34;&#34;
+
+        target = r&#39;T:\ANALYST WORK FILES\Peter\EasyTrax\WTX_reports\ &#39;
+        try:
+            jobnumber = str(self.job_dictionary[&#39;job number&#39;])
+            filename = target[:-1] + jobnumber[0:7] + &#39;\\&#39; + jobnumber + &#39;.txt&#39;
+            filename = filename.replace(&#39;/&#39;, &#39;-&#39;)
+            with self.safe_open_w(filename) as f:
+                for item in self.wtx_format_report:
+                    f.write(item)
+                    f.write(&#39;\n&#39;)
+        except OSError:
+            pass
+
+    def mkdir_p(self, path):
+        &#34;&#34;&#34;tries to make the directory.&#34;&#34;&#34;
+
+        try:
+            os.makedirs(path)
+        except OSError as exc:  # Python &gt;2.5
+            if exc.errno == errno.EEXIST and os.path.isdir(path):
+                pass
+            else:
+                raise
+
+    def safe_open_w(self, path):
+        &#34;&#34;&#34; Open &#34;path&#34; for writing, creating any parent directories as needed. &#34;&#34;&#34;
+
+        self.mkdir_p(os.path.dirname(path))
+        return open(path, &#39;w&#39;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert"><code class="flex name class">
+<span>class <span class="ident">EasyTraxConvert</span></span>
+<span>(</span><span>samples_dictionary, job_dictionary)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Converts data in an intermediate format to a ready to upload text file in WTX format.</p>
+<p>when passed a dictionary in the format
+* key : [value1, value2, value3, [list1], [list2], [list3]&hellip; [listx]]
+* where key is the sample name
+* value1, value2, value3 are sample location code, sample date, sample time
+* list1, list2, list3&hellip; listx are triplet lists of [analyte, units, value] and
+x is the total amount of analytes for each sample (can be different for each sample)</p>
+<p>A WTX file is produced from this information. A job dictionary, containing simple key : value pairs for
+job-level data (job number, client), is also passed. For each sample, there will be x amount of lines, where
+x is the amount of analytes analyzed for a given sample. Each line therefore represents one test on one sample.
+Samples don't have to have the same amount of lines. Some of the information in these lines will be conserved
+across the job (things like version number, lab ID, client ID). Some of the information will be conserved across
+each sample (like sample name and location code).</p>
+<p>There are 30 fields per line in a WTX report, delimited by the pipe character '|'. Many of these fields are
+optional. MB Labs utilizes 14 mandatory fields in these reports, and none of the optional fields. If a field is not
+being used, it must be fully delimited ('||'). The order these fields appear in is how they are identified.
+Any optional fields that come after all mandatory fields don't need to be included, and can be ignored.</p>
+<p>Information on what these fields are, their order, and their importance can be found in WTX_Report_Format_Doc.pdf,
+which has been included in this program for reference.</p>
+<p>Last Updated: 03June21, P.L.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>samples_dictionary</code></strong> :&ensp;<code>dict</code></dt>
+<dd>the dictionary containing sample information. the format is given in the above pre-amble.</dd>
+<dt><strong><code>job_dictionary</code></strong> :&ensp;<code>dict</code></dt>
+<dd>the dictionary containing job-level information. Currently only the job number and the client identifier.</dd>
+<dt><strong><code>wtx_format_report</code></strong> :&ensp;<code>list</code></dt>
+<dd>the list where WTX formatted report lines are appended once made.</dd>
+<dt><strong><code>WaterTraxRequiredFileFieldDict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>a dictionary containing watertrax information that won't change from day to day, such as:
+our lab ID
+client ID's</dd>
+<dt><strong><code>WaterTraxAnalyteCodeDict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>a dictionary containing key : value pairs in the format Mb Labs name : [analyte code, WTX description]
+* MB Labs name - what we call the analyte on our in house reports
+* analyte code - the analyte code provided by watertrax for the given analyte
+* WTX description - the WTX description of the analyte name, which can be found in the table of analyte codes
+(these aren't used in the program, but they are for confirmation that we've picked the right code, as
+there can be many different codes for the same analyte with different methodologies).</dd>
+<dt><strong><code>WaterTraxUnitsCodeDict</code></strong> :&ensp;<code>dict</code></dt>
+<dd>a dictionary containing key : value pairs in the format unit : unit code</dd>
+</dl>
+<p>date_dict:
+used to convert MB labs date formats (02 Jan 21) into WTX date formats (01022021)</p>
+<h2 id="methods">Methods</h2>
+<p>easy_trax_convert_controller()
+called by EasyTraxTK, the main function that controls the class.</p>
+<p>populate_water_trax_report_list()
+creates the WTX report lines for the WTX report. Gets the hard-set values from WaterTraxRequiredFileFieldDict,
+gets the client ID using get_water_trax_client_id(), and then iterates through the samples dictionary,
+turning each triplet list of data into WTX line.</p>
+<p>get_water_trax_client_id()
+matches the passed 'job identifier' key in job_dictionary to a corresponding client id in
+WaterTraxRequiredFileFieldDict[6].</p>
+<p>convert_triplet_list(triplet_list)
+swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn't
+changed or looked at at this point.</p>
+<p>format_watertrax_date()
+formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)</p>
+<p>format_watertrax_time()
+formats the MB labs time format to the WTX format (13:30p to 13:30)</p>
+<p>print_sample_dictionary_to_console()
+useful for debugging, allows you to print the sample dictionary to the console (prior to it being turned into a
+WTX report)</p>
+<p>generate_report_directories_and_files()
+generates the report directories and files. Reports are added to a folder called WTX_reports, and contained
+in this directory in a folder of the same name.</p>
+<p>mkdir_p()
+tries to make the desired directory.</p>
+<p>safe_open_w()
+safely opens the file in order to write to it.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EasyTraxConvert:
+    &#34;&#34;&#34;Converts data in an intermediate format to a ready to upload text file in WTX format.
+
+    when passed a dictionary in the format
+        * key : [value1, value2, value3, [list1], [list2], [list3]... [listx]]
+            * where key is the sample name
+            * value1, value2, value3 are sample location code, sample date, sample time
+            * list1, list2, list3... listx are triplet lists of [analyte, units, value] and
+              x is the total amount of analytes for each sample (can be different for each sample)
+
+    A WTX file is produced from this information. A job dictionary, containing simple key : value pairs for
+    job-level data (job number, client), is also passed. For each sample, there will be x amount of lines, where
+    x is the amount of analytes analyzed for a given sample. Each line therefore represents one test on one sample.
+    Samples don&#39;t have to have the same amount of lines. Some of the information in these lines will be conserved
+    across the job (things like version number, lab ID, client ID). Some of the information will be conserved across
+    each sample (like sample name and location code).
+
+    There are 30 fields per line in a WTX report, delimited by the pipe character &#39;|&#39;. Many of these fields are
+    optional. MB Labs utilizes 14 mandatory fields in these reports, and none of the optional fields. If a field is not
+    being used, it must be fully delimited (&#39;||&#39;). The order these fields appear in is how they are identified.
+    Any optional fields that come after all mandatory fields don&#39;t need to be included, and can be ignored.
+
+    Information on what these fields are, their order, and their importance can be found in WTX_Report_Format_Doc.pdf,
+    which has been included in this program for reference.
+
+    Last Updated: 03June21, P.L.
+
+    Attributes
+    ----------
+    samples_dictionary : dict
+        the dictionary containing sample information. the format is given in the above pre-amble.
+
+    job_dictionary: dict
+        the dictionary containing job-level information. Currently only the job number and the client identifier.
+
+    wtx_format_report: list
+        the list where WTX formatted report lines are appended once made.
+
+    WaterTraxRequiredFileFieldDict: dict
+        a dictionary containing watertrax information that won&#39;t change from day to day, such as:
+             our lab ID
+             client ID&#39;s
+
+    WaterTraxAnalyteCodeDict: dict
+        a dictionary containing key : value pairs in the format Mb Labs name : [analyte code, WTX description]
+        * MB Labs name - what we call the analyte on our in house reports
+        * analyte code - the analyte code provided by watertrax for the given analyte
+        * WTX description - the WTX description of the analyte name, which can be found in the table of analyte codes
+        (these aren&#39;t used in the program, but they are for confirmation that we&#39;ve picked the right code, as
+        there can be many different codes for the same analyte with different methodologies).
+
+    WaterTraxUnitsCodeDict: dict
+        a dictionary containing key : value pairs in the format unit : unit code
+
+    date_dict:
+        used to convert MB labs date formats (02 Jan 21) into WTX date formats (01022021)
+
+    Methods
+    -------
+    easy_trax_convert_controller()
+        called by EasyTraxTK, the main function that controls the class.
+
+    populate_water_trax_report_list()
+        creates the WTX report lines for the WTX report. Gets the hard-set values from WaterTraxRequiredFileFieldDict,
+        gets the client ID using get_water_trax_client_id(), and then iterates through the samples dictionary,
+        turning each triplet list of data into WTX line.
+
+    get_water_trax_client_id()
+        matches the passed &#39;job identifier&#39; key in job_dictionary to a corresponding client id in
+        WaterTraxRequiredFileFieldDict[6].
+
+    convert_triplet_list(triplet_list)
+        swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn&#39;t
+        changed or looked at at this point.
+
+    format_watertrax_date()
+        formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)
+
+    format_watertrax_time()
+        formats the MB labs time format to the WTX format (13:30p to 13:30)
+
+    print_sample_dictionary_to_console()
+        useful for debugging, allows you to print the sample dictionary to the console (prior to it being turned into a
+        WTX report)
+
+    generate_report_directories_and_files()
+        generates the report directories and files. Reports are added to a folder called WTX_reports, and contained
+        in this directory in a folder of the same name.
+
+    mkdir_p()
+        tries to make the desired directory.
+
+    safe_open_w()
+        safely opens the file in order to write to it.
+    &#34;&#34;&#34;
+
+    def __init__(self, samples_dictionary, job_dictionary):
+        self.samples_dictionary = samples_dictionary
+        self.job_dictionary = job_dictionary
+        self.wtx_format_report = []
+        #WaterTrax File Fields
+        self.WaterTraxRequiredFileFieldDict = {
+                                               # 1) Version No.
+                                               1: &#34;WTX_2.0&#34;,
+                                               # 2) Transactional Purpose (Original or Replacement report?)
+                                               2: [&#34;O&#34;, &#34;R&#34;],
+                                               # 4) WTX Lab ID
+                                               4: 3393,
+                                               # 6) WTX Client ID
+                                               6: [[&#34;BC Ferries&#34;, &#34;BC Ferry&#34;, 11273],
+                                                   [&#34;City of Cranbrook&#34;, &#34;Cranbrook, City&#34;, 17573],
+                                                   [&#34;City of Comox&#34;, &#34;&#34;, 16581],
+                                                   [&#34;City of Campbell River&#34;, &#34;&#34;, 10625],
+                                                   [&#34;North Salt Spring Waterworks District&#34;, &#34;N. Saltspring&#34;, 16672]]
+                                               }
+        self.WaterTraxAnalyteCodeDict = {
+                                         # MISCELLANEOUS
+                                         &#39;Alkalinity&#39;: [458, &#39;Alkalinity (total, as CaC03)&#39;],
+                                         &#39;Colour&#39;: [225, &#39;Color&#39;],
+                                         &#39;NH3-N&#39;: [175, &#39;Ammonia (total, as N)&#39;],
+                                         &#39;NO3-N&#39;: [361, &#39;Nitrate (as N)&#39;],
+                                         &#39;NO2-N&#39;: [199, &#39;Nitrite (as N)&#39;],
+                                         &#39;Cl-&#39;: [184, &#39;Chloride&#39;],
+                                         &#39;F-&#39;: [188, &#39;Fluoride&#39;],
+                                         &#39;E.C.&#39;: [8, &#39;Conductivity&#39;],
+                                         &#39;TKN&#39;: [689, &#39;Total Kjeldahl Nitrogen / TKN&#39;],
+                                         &#39;Ortho-PO43--&#39;: [748, &#39;o-Phosphate (as P)&#39;],
+                                         &#39;Ortho-PO43--P&#39;: [748, &#39;o-Phosphate (as P)&#39;],
+                                         &#39;TPO43--P&#39;: [3507, &#39;Phosphate (total, as P)&#39;],
+                                         &#39;D.TPO43--P&#39;: [3508, &#39;Phosphate (dissolved, as P)&#39;],
+                                         &#39;SO42-&#39;: [205, &#39;Sulphate&#39;],
+                                         &#39;S2-&#39;: [320, &#39;Sulphide (total, as H2S)&#39;],
+                                         &#39;T.O.C.&#39;: [387, &#39;Total Organic Carbon / TOC&#39;],
+                                         &#39;T&amp;L&#39;: [1220, &#39;Tannins and Lignins&#39;],
+                                         &#39;TDS&#39;: [207, &#39;Total Dissolved Solids / TDS&#39;],
+                                         &#39;TSS&#39;: [15, &#39;Total Suspended Solids / TSS&#39;],
+                                         &#39;Turbidity&#39;: [219, &#39;Turbidity&#39;],
+                                         &#39;UVT&#39;: [1009, &#39;UV Transmittance&#39;],
+                                         &#39;pH&#39;: [228, &#39;pH&#39;],
+                                         &#39;Hardness (mg/L CaCO3)&#39;: [360, &#39;Hardness (Total, as CaCO3)&#39;],
+                                         &#39;TN&#39;: [744, &#39;Nitrogen (Total)&#39;],
+                                         &#39;Bromate&#39;: [181, &#39;Bromate&#39;],
+                                         # METALS
+                                         &#39;Al&#39;: [174, &#39;Aluminum (Total)&#39;],
+                                         &#39;Al-&#39;: [174, &#39;Aluminum (Total)&#39;],
+                                         &#39;Sb&#39;: [176, &#39;Antimony (Total)&#39;],
+                                         &#39;As&#39;: [26, &#39;Arsenic (Total)&#39;],
+                                         &#39;T.As&#39;: [26, &#39;Arsenic (Total)&#39;],
+                                         &#39;Ba&#39;: [178, &#39;Barium (Total)&#39;],
+                                         &#39;Be&#39;: [179, &#39;Beryllium (Total)&#39;],
+                                         &#39;B&#39;: [180, &#39;Boron (Total)&#39;],
+                                         &#39;Ca&#39;: [150, &#39;Calcium (Total)&#39;],
+                                         &#39;Cd&#39;: [182, &#39;Cadmium (Total)&#39;],
+                                         &#39;Cr&#39;: [186, &#39;Chromium (Total)&#39;],
+                                         &#39;Co&#39;: [542, &#39;Cobalt (Total)&#39;],
+                                         &#39;Cu&#39;: [187, &#39;Copper (Total)&#39;],
+                                         &#39;Au&#39;: [1399, &#39;Gold (Total)&#39;],
+                                         &#39;Fe&#39;: [189, &#39;Iron (Total)&#39;],
+                                         &#39;La&#39;: [1400, &#39;Lanthanum (total)&#39;],
+                                         &#39;Pb&#39;: [191, &#39;Lead (Total)&#39;],
+                                         &#39;Mg&#39;: [327, &#39;Magnesium (Total)&#39;],
+                                         &#39;Mn&#39;: [192, &#39;Manganese (Total)&#39;],
+                                         &#39;Hg&#39;: [193, &#39;Mercury (Total)&#39;],
+                                         &#39;Mo&#39;: [194, &#39;Molybdenum (Total)&#39;],
+                                         &#39;Ni&#39;: [195, &#39;Nickel (Total)&#39;],
+                                         &#39;P&#39;: [640, &#39;Phosphorus (Total)&#39;],
+                                         &#39;K&#39;: [514, &#39;Potassium (Total)&#39;],
+                                         &#39;Sc&#39;: [1401, &#39;Scandium (Total)&#39;],
+                                         &#39;Se&#39;: [201, &#39;Selenium (Total)&#39;],
+                                         &#39;Si&#39;: [737, &#39;Silicon (Total, as Si)&#39;],
+                                         &#39;Ag&#39;: [202, &#39;Silver (Total)&#39;],
+                                         &#39;Na&#39;: [203, &#39;Sodium (Total)&#39;],
+                                         &#39;Sr&#39;: [697, &#39;Strontium (Total)&#39;],
+                                         &#39;Sn&#39;: [703, &#39;Tin (Total)&#39;],
+                                         &#39;Ti&#39;: [705, &#39;Titanium (Total)&#39;],
+                                         &#39;W&#39;: [1010, &#39;Tungsten (Total)&#39;],
+                                         &#39;V&#39;: [414, &#39;Vanadium (Total)&#39;],
+                                         &#39;Zn&#39;: [210, &#39;Zinc (Total)&#39;]
+                                         }
+        self.WaterTraxUnitsCodeDict = {
+                                       # UNITS
+                                       &#39;(uS/cm)&#39;: 369,
+                                       &#39;(mg/L)&#39;: 111,
+                                       &#39;(ug/L)&#39;: 390,
+                                       &#39;(ug/g)&#39;: 449,
+                                       &#39;(%)&#39;: 374,
+                                       &#39;pH&#39;: 115,
+                                       &#39;(TCU)&#39;: 116,
+                                       &#39;(NTU)&#39;: 114
+                                       }
+        self.date_dict = {&#39;Jan&#39;: &#39;01&#39;,
+                          &#39;Feb&#39;: &#39;02&#39;,
+                          &#39;Mar&#39;: &#39;03&#39;,
+                          &#39;Apr&#39;: &#39;04&#39;,
+                          &#39;May&#39;: &#39;05&#39;,
+                          &#39;Jun&#39;: &#39;06&#39;,
+                          &#39;Jul&#39;: &#39;07&#39;,
+                          &#39;Aug&#39;: &#39;08&#39;,
+                          &#39;Sep&#39;: &#39;09&#39;,
+                          &#39;Oct&#39;: &#39;10&#39;,
+                          &#39;Nov&#39;: &#39;11&#39;,
+                          &#39;Dec&#39;: &#39;12&#39;}
+
+    def easy_trax_convert_controller(self):
+        &#34;&#34;&#34;executes the various methods/functions in the script in the right order.
+
+        is called in EasyTraxTK. Doesn&#39;t return anything, output is written to files
+        which are saved onto the computer.
+        &#34;&#34;&#34;
+
+        self.wtx_format_report = self.populate_water_trax_report_list()
+        self.generate_report_directories_and_files()
+
+    def populate_water_trax_report_list(self):
+        &#34;&#34;&#34;writes the lines of watertrax code.
+
+        the 5 variables consistent in the report (version_no, transaction_purpose, mb_labs_id, client_id,
+        report_id) are going to be the same for every line. We then iterate through the samples in the samples
+        dictionary. There are 5 variables consistent in the sample (sample_name, sample_id, sample_location,
+        sample_date, sample_time). These will be the same in every line for a particular sample.
+        Finally, for each sample, we go through the triplet list [analyte, unit, value] and create a line for
+        each triplet. Finally, we check for two conditions, and don&#39;t add the list if either condition is true:
+        first, that the value is not &#39;---&#39;, which indicates that there is no value for the analyte, and that this
+        triplet pair is just a placeholder. The second condition checks to see if the analyte has already been
+        included in the report for the sample, which can happen if analytes are included in more than one place
+        on the report.
+
+        :return: report_lines : list
+            the sample dictionary for a given report converted into WTX format. &#34;&#34;&#34;
+
+        # below variables are the same in every line in the report
+        version_no = self.WaterTraxRequiredFileFieldDict[1]
+        transaction_purpose = self.WaterTraxRequiredFileFieldDict[2][0]
+        mb_labs_id = self.WaterTraxRequiredFileFieldDict[4]
+        client_id = self.get_water_trax_client_id()
+        report_id = self.job_dictionary[&#39;job number&#39;]
+        report_lines = []
+        for key, value in self.samples_dictionary.items():
+            # aka for each sample
+            analytes_reported = []
+            # below variables are the same in every line for a given sample
+            sample_name = key
+            sample_id = sample_name.split(&#34; &#34;)[0]
+            if sample_name == &#39;Lab Blank&#39;:
+                pass
+            else:
+                sample_location = value[0]
+                sample_date = self.format_watertrax_date(value[1])
+                sample_time = self.format_watertrax_time(value[2])
+                triplet_list = self.convert_triplet_list(value[3:])
+                for value_triplet in triplet_list:
+                    # for each test in the sample
+                    analyte_code = value_triplet[0]
+                    unit_code = value_triplet[1]
+                    value = value_triplet[2]
+                    wtx_format_line = str(version_no) + &#39;|&#39; + str(transaction_purpose) + &#39;|F|&#39; + str(mb_labs_id) +\
+                        &#39;||&#39; + str(client_id) + &#39;|&#39; + str(sample_location) + &#39;|&#39; + str(report_id) + &#39;T||&#39; +\
+                        self.job_dictionary[&#39;job number&#39;] + &#39;-&#39; + str(sample_id) +\
+                        &#39;||&#39; + str(sample_date) + &#39;|&#39; + str(sample_time) + &#39;|||&#39; + str(analyte_code) +\
+                        &#39;|&#39; + str(value) + &#39;|&#39; + str(unit_code)
+                    if value == &#39;---&#39;:
+                        pass
+                    elif analyte_code in analytes_reported:
+                        pass
+                    else:
+                        report_lines.append(wtx_format_line)
+                        analytes_reported.append(analyte_code)
+        return report_lines
+
+    def get_water_trax_client_id(self):
+        &#34;&#34;&#34;matches a client identifier token to a client id in WaterTraxRequiredFileFieldDict.
+
+         if no client ID is found, an error message is returned. Otherwise, returns a 5 digit code
+         representing the client the report belongs to from the value corresponding to key : 6. &#34;&#34;&#34;
+
+        client_identifier = self.job_dictionary[&#39;client identifier&#39;]
+        value_to_return = &#34;&#34;
+        for item in self.WaterTraxRequiredFileFieldDict[6]:
+            if item[1] == client_identifier:
+                value_to_return = item[2]
+        if value_to_return == &#34;&#34;:
+            return &#34;No client ID&#34;
+        else:
+            return value_to_return
+
+    def convert_triplet_list(self, triplet_list):
+        &#34;&#34;&#34;swaps out the analyte and the unit for an analyte and unit code.
+
+        Found in WaterTraxAnalyteCodeDict and WaterTraxUnitsCodeDict respectively. Does not alter the actual value.
+        Might be a good place to check the value isn&#39;t &#39;---&#39; in the future.
+
+        Args:
+            triplet_list (list): a list consisting of [analyte, unit, value]
+
+        Returns:
+            converted_list (list): a list consisting of [analyte code, unit code, value]
+
+        &#34;&#34;&#34;
+        converted_list = []
+        # Eventually an error will be thrown here when the analyte or unit is not in the dictionary,
+        # can then handle. 18May21
+        for item in triplet_list:
+            converted_list.append([self.WaterTraxAnalyteCodeDict[item[0]][0],
+                                   self.WaterTraxUnitsCodeDict[item[1]],
+                                   item[2]])
+        return converted_list
+
+    def format_watertrax_date(self, date_value):
+        &#34;&#34;&#34;formats our date into the correct WTX format (mmddyyy). &#34;&#34;&#34;
+        day = date_value[0:2]
+        month = self.date_dict[date_value[2:5]]
+        year = &#34;20&#34; + date_value[5:7]
+        wtx_formatted_date = month + day + year
+        return wtx_formatted_date
+
+    def format_watertrax_time(self, time_value):
+        &#34;&#34;&#34;formats our time into the correct WTX format (hh:mm). &#34;&#34;&#34;
+        hour = time_value[0:2]
+        minute = time_value[3:5]
+        wtx_formatted_time = hour + &#39;:&#39; + minute
+        return wtx_formatted_time
+
+    def print_sample_dictionary_to_console(self):
+        &#34;&#34;&#34;prints the sample dictionary to the console. &#34;&#34;&#34;
+        for key, value in self.samples_dictionary.items():
+            print(key)
+            print(value)
+
+    def generate_report_directories_and_files(self):
+        &#34;&#34;&#34;creates a file at a given target and names it based on the jobnumber of the report. The directory is
+        always named using the 6 digit job number. &#34;&#34;&#34;
+
+        target = r&#39;T:\ANALYST WORK FILES\Peter\EasyTrax\WTX_reports\ &#39;
+        try:
+            jobnumber = str(self.job_dictionary[&#39;job number&#39;])
+            filename = target[:-1] + jobnumber[0:7] + &#39;\\&#39; + jobnumber + &#39;.txt&#39;
+            filename = filename.replace(&#39;/&#39;, &#39;-&#39;)
+            with self.safe_open_w(filename) as f:
+                for item in self.wtx_format_report:
+                    f.write(item)
+                    f.write(&#39;\n&#39;)
+        except OSError:
+            pass
+
+    def mkdir_p(self, path):
+        &#34;&#34;&#34;tries to make the directory.&#34;&#34;&#34;
+
+        try:
+            os.makedirs(path)
+        except OSError as exc:  # Python &gt;2.5
+            if exc.errno == errno.EEXIST and os.path.isdir(path):
+                pass
+            else:
+                raise
+
+    def safe_open_w(self, path):
+        &#34;&#34;&#34; Open &#34;path&#34; for writing, creating any parent directories as needed. &#34;&#34;&#34;
+
+        self.mkdir_p(os.path.dirname(path))
+        return open(path, &#39;w&#39;)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.convert_triplet_list"><code class="name flex">
+<span>def <span class="ident">convert_triplet_list</span></span>(<span>self, triplet_list)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>swaps out the analyte and the unit for an analyte and unit code.</p>
+<p>Found in WaterTraxAnalyteCodeDict and WaterTraxUnitsCodeDict respectively. Does not alter the actual value.
+Might be a good place to check the value isn't '&mdash;' in the future.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>triplet_list</code></strong> :&ensp;<code>list</code></dt>
+<dd>a list consisting of [analyte, unit, value]</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>converted_list (list): a list consisting of [analyte code, unit code, value]</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def convert_triplet_list(self, triplet_list):
+    &#34;&#34;&#34;swaps out the analyte and the unit for an analyte and unit code.
+
+    Found in WaterTraxAnalyteCodeDict and WaterTraxUnitsCodeDict respectively. Does not alter the actual value.
+    Might be a good place to check the value isn&#39;t &#39;---&#39; in the future.
+
+    Args:
+        triplet_list (list): a list consisting of [analyte, unit, value]
+
+    Returns:
+        converted_list (list): a list consisting of [analyte code, unit code, value]
+
+    &#34;&#34;&#34;
+    converted_list = []
+    # Eventually an error will be thrown here when the analyte or unit is not in the dictionary,
+    # can then handle. 18May21
+    for item in triplet_list:
+        converted_list.append([self.WaterTraxAnalyteCodeDict[item[0]][0],
+                               self.WaterTraxUnitsCodeDict[item[1]],
+                               item[2]])
+    return converted_list</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.easy_trax_convert_controller"><code class="name flex">
+<span>def <span class="ident">easy_trax_convert_controller</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>executes the various methods/functions in the script in the right order.</p>
+<p>is called in EasyTraxTK. Doesn't return anything, output is written to files
+which are saved onto the computer.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def easy_trax_convert_controller(self):
+    &#34;&#34;&#34;executes the various methods/functions in the script in the right order.
+
+    is called in EasyTraxTK. Doesn&#39;t return anything, output is written to files
+    which are saved onto the computer.
+    &#34;&#34;&#34;
+
+    self.wtx_format_report = self.populate_water_trax_report_list()
+    self.generate_report_directories_and_files()</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.format_watertrax_date"><code class="name flex">
+<span>def <span class="ident">format_watertrax_date</span></span>(<span>self, date_value)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>formats our date into the correct WTX format (mmddyyy).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def format_watertrax_date(self, date_value):
+    &#34;&#34;&#34;formats our date into the correct WTX format (mmddyyy). &#34;&#34;&#34;
+    day = date_value[0:2]
+    month = self.date_dict[date_value[2:5]]
+    year = &#34;20&#34; + date_value[5:7]
+    wtx_formatted_date = month + day + year
+    return wtx_formatted_date</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.format_watertrax_time"><code class="name flex">
+<span>def <span class="ident">format_watertrax_time</span></span>(<span>self, time_value)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>formats our time into the correct WTX format (hh:mm).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def format_watertrax_time(self, time_value):
+    &#34;&#34;&#34;formats our time into the correct WTX format (hh:mm). &#34;&#34;&#34;
+    hour = time_value[0:2]
+    minute = time_value[3:5]
+    wtx_formatted_time = hour + &#39;:&#39; + minute
+    return wtx_formatted_time</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.generate_report_directories_and_files"><code class="name flex">
+<span>def <span class="ident">generate_report_directories_and_files</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>creates a file at a given target and names it based on the jobnumber of the report. The directory is
+always named using the 6 digit job number.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_report_directories_and_files(self):
+    &#34;&#34;&#34;creates a file at a given target and names it based on the jobnumber of the report. The directory is
+    always named using the 6 digit job number. &#34;&#34;&#34;
+
+    target = r&#39;T:\ANALYST WORK FILES\Peter\EasyTrax\WTX_reports\ &#39;
+    try:
+        jobnumber = str(self.job_dictionary[&#39;job number&#39;])
+        filename = target[:-1] + jobnumber[0:7] + &#39;\\&#39; + jobnumber + &#39;.txt&#39;
+        filename = filename.replace(&#39;/&#39;, &#39;-&#39;)
+        with self.safe_open_w(filename) as f:
+            for item in self.wtx_format_report:
+                f.write(item)
+                f.write(&#39;\n&#39;)
+    except OSError:
+        pass</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.get_water_trax_client_id"><code class="name flex">
+<span>def <span class="ident">get_water_trax_client_id</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>matches a client identifier token to a client id in WaterTraxRequiredFileFieldDict.</p>
+<p>if no client ID is found, an error message is returned. Otherwise, returns a 5 digit code
+representing the client the report belongs to from the value corresponding to key : 6.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_water_trax_client_id(self):
+    &#34;&#34;&#34;matches a client identifier token to a client id in WaterTraxRequiredFileFieldDict.
+
+     if no client ID is found, an error message is returned. Otherwise, returns a 5 digit code
+     representing the client the report belongs to from the value corresponding to key : 6. &#34;&#34;&#34;
+
+    client_identifier = self.job_dictionary[&#39;client identifier&#39;]
+    value_to_return = &#34;&#34;
+    for item in self.WaterTraxRequiredFileFieldDict[6]:
+        if item[1] == client_identifier:
+            value_to_return = item[2]
+    if value_to_return == &#34;&#34;:
+        return &#34;No client ID&#34;
+    else:
+        return value_to_return</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.mkdir_p"><code class="name flex">
+<span>def <span class="ident">mkdir_p</span></span>(<span>self, path)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>tries to make the directory.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def mkdir_p(self, path):
+    &#34;&#34;&#34;tries to make the directory.&#34;&#34;&#34;
+
+    try:
+        os.makedirs(path)
+    except OSError as exc:  # Python &gt;2.5
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.populate_water_trax_report_list"><code class="name flex">
+<span>def <span class="ident">populate_water_trax_report_list</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>writes the lines of watertrax code.</p>
+<p>the 5 variables consistent in the report (version_no, transaction_purpose, mb_labs_id, client_id,
+report_id) are going to be the same for every line. We then iterate through the samples in the samples
+dictionary. There are 5 variables consistent in the sample (sample_name, sample_id, sample_location,
+sample_date, sample_time). These will be the same in every line for a particular sample.
+Finally, for each sample, we go through the triplet list [analyte, unit, value] and create a line for
+each triplet. Finally, we check for two conditions, and don't add the list if either condition is true:
+first, that the value is not '&mdash;', which indicates that there is no value for the analyte, and that this
+triplet pair is just a placeholder. The second condition checks to see if the analyte has already been
+included in the report for the sample, which can happen if analytes are included in more than one place
+on the report.</p>
+<p>:return: report_lines : list
+the sample dictionary for a given report converted into WTX format.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def populate_water_trax_report_list(self):
+    &#34;&#34;&#34;writes the lines of watertrax code.
+
+    the 5 variables consistent in the report (version_no, transaction_purpose, mb_labs_id, client_id,
+    report_id) are going to be the same for every line. We then iterate through the samples in the samples
+    dictionary. There are 5 variables consistent in the sample (sample_name, sample_id, sample_location,
+    sample_date, sample_time). These will be the same in every line for a particular sample.
+    Finally, for each sample, we go through the triplet list [analyte, unit, value] and create a line for
+    each triplet. Finally, we check for two conditions, and don&#39;t add the list if either condition is true:
+    first, that the value is not &#39;---&#39;, which indicates that there is no value for the analyte, and that this
+    triplet pair is just a placeholder. The second condition checks to see if the analyte has already been
+    included in the report for the sample, which can happen if analytes are included in more than one place
+    on the report.
+
+    :return: report_lines : list
+        the sample dictionary for a given report converted into WTX format. &#34;&#34;&#34;
+
+    # below variables are the same in every line in the report
+    version_no = self.WaterTraxRequiredFileFieldDict[1]
+    transaction_purpose = self.WaterTraxRequiredFileFieldDict[2][0]
+    mb_labs_id = self.WaterTraxRequiredFileFieldDict[4]
+    client_id = self.get_water_trax_client_id()
+    report_id = self.job_dictionary[&#39;job number&#39;]
+    report_lines = []
+    for key, value in self.samples_dictionary.items():
+        # aka for each sample
+        analytes_reported = []
+        # below variables are the same in every line for a given sample
+        sample_name = key
+        sample_id = sample_name.split(&#34; &#34;)[0]
+        if sample_name == &#39;Lab Blank&#39;:
+            pass
+        else:
+            sample_location = value[0]
+            sample_date = self.format_watertrax_date(value[1])
+            sample_time = self.format_watertrax_time(value[2])
+            triplet_list = self.convert_triplet_list(value[3:])
+            for value_triplet in triplet_list:
+                # for each test in the sample
+                analyte_code = value_triplet[0]
+                unit_code = value_triplet[1]
+                value = value_triplet[2]
+                wtx_format_line = str(version_no) + &#39;|&#39; + str(transaction_purpose) + &#39;|F|&#39; + str(mb_labs_id) +\
+                    &#39;||&#39; + str(client_id) + &#39;|&#39; + str(sample_location) + &#39;|&#39; + str(report_id) + &#39;T||&#39; +\
+                    self.job_dictionary[&#39;job number&#39;] + &#39;-&#39; + str(sample_id) +\
+                    &#39;||&#39; + str(sample_date) + &#39;|&#39; + str(sample_time) + &#39;|||&#39; + str(analyte_code) +\
+                    &#39;|&#39; + str(value) + &#39;|&#39; + str(unit_code)
+                if value == &#39;---&#39;:
+                    pass
+                elif analyte_code in analytes_reported:
+                    pass
+                else:
+                    report_lines.append(wtx_format_line)
+                    analytes_reported.append(analyte_code)
+    return report_lines</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.print_sample_dictionary_to_console"><code class="name flex">
+<span>def <span class="ident">print_sample_dictionary_to_console</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>prints the sample dictionary to the console.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def print_sample_dictionary_to_console(self):
+    &#34;&#34;&#34;prints the sample dictionary to the console. &#34;&#34;&#34;
+    for key, value in self.samples_dictionary.items():
+        print(key)
+        print(value)</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxConvert.EasyTraxConvert.safe_open_w"><code class="name flex">
+<span>def <span class="ident">safe_open_w</span></span>(<span>self, path)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Open "path" for writing, creating any parent directories as needed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def safe_open_w(self, path):
+    &#34;&#34;&#34; Open &#34;path&#34; for writing, creating any parent directories as needed. &#34;&#34;&#34;
+
+    self.mkdir_p(os.path.dirname(path))
+    return open(path, &#39;w&#39;)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="EasyTrax" href="index.html">EasyTrax</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert">EasyTraxConvert</a></code></h4>
+<ul class="">
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.convert_triplet_list" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.convert_triplet_list">convert_triplet_list</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.easy_trax_convert_controller" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.easy_trax_convert_controller">easy_trax_convert_controller</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.format_watertrax_date" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.format_watertrax_date">format_watertrax_date</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.format_watertrax_time" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.format_watertrax_time">format_watertrax_time</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.generate_report_directories_and_files" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.generate_report_directories_and_files">generate_report_directories_and_files</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.get_water_trax_client_id" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.get_water_trax_client_id">get_water_trax_client_id</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.mkdir_p" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.mkdir_p">mkdir_p</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.populate_water_trax_report_list" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.populate_water_trax_report_list">populate_water_trax_report_list</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.print_sample_dictionary_to_console" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.print_sample_dictionary_to_console">print_sample_dictionary_to_console</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxConvert.EasyTraxConvert.safe_open_w" href="#EasyTrax.EasyTraxConvert.EasyTraxConvert.safe_open_w">safe_open_w</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>

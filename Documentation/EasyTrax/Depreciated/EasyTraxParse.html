@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>EasyTrax.Depreciated.EasyTraxParse API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>EasyTrax.Depreciated.EasyTraxParse</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EasyTraxParse:
+
+    def __init__(self, job_number, chm_file):
+        self.job_number = job_number
+        self.chm_file = chm_file
+        self.chm_file_split_lines = []
+        self.sample_list_indexes = []
+        self.job_dictionary = {}
+        self.samples_dictionary = {}
+
+    def easy_trax_parse_controller(self):
+        self.split_lines_by_spacing()
+        self.get_client_name_and_jobnumber()
+        self.look_for_sample_indexes_in_split_lines()
+        self.use_sample_indexes_to_get_sample_data()
+        return self.samples_dictionary, self.job_dictionary
+
+    def split_lines_by_spacing(self):
+        for item in self.chm_file:
+            self.chm_file_split_lines.append(item.split())
+
+    def get_client_name_and_jobnumber(self):
+        self.job_dictionary[&#39;client identifier&#39;] = &#34; &#34;.join(self.chm_file_split_lines[1][0:2])
+        self.job_dictionary[&#39;job number&#39;] = self.chm_file_split_lines[1][-1]
+
+    def look_for_sample_indexes_in_split_lines(self):
+        for item in self.chm_file_split_lines:
+            if len(item) &gt; 0:
+                if item[0] == &#39;SAMPLE&#39;:
+                    self.sample_list_indexes.append(self.chm_file_split_lines.index(item))
+
+    def use_sample_indexes_to_get_sample_data(self):
+        for item in self.sample_list_indexes:
+            analyte_information = self.get_analyte_information(item)
+            units = self.get_units_information(item)
+            samples = self.get_samples_data(item)
+            samples_binary_list = self.split_samples_into_name_and_information(samples,
+                                                                               analyte_information)
+            self.generate_samples_dictionary_entries(samples_binary_list)
+            self.generate_data_triplets(analyte_information, units, samples_binary_list)
+
+    def get_analyte_information(self, sample_index):
+        analyte_information = self.chm_file_split_lines[sample_index - 1]
+        if analyte_information[0] == &#39;0&#39;:
+            analyte_information = analyte_information[1:]
+        return analyte_information
+
+    def get_units_information(self, sample_index):
+        units = self.chm_file_split_lines[sample_index]
+        units = units[3:]
+        return units
+
+    def get_samples_data(self, sample_index):
+        samples = []
+        item_index = sample_index + 2
+        blank_counter = 0
+        while blank_counter == 0:
+            sample = self.chm_file_split_lines[item_index]
+            if len(sample) &gt; 0:
+                samples.append(sample)
+                item_index += 1
+            else:
+                blank_counter += 1
+        return samples
+
+    def split_samples_into_name_and_information(self, samples, analyte_information):
+        sample_name_date_time = []
+        sample_information = []
+        for item in samples:
+            if item[0] + &#34; &#34; + item[1] == &#39;Lab Blank&#39;:
+                sample_name = item[0] + &#34; &#34; + item[1]
+                sample_name_date_time.append([sample_name])
+                sample_information.append(item[2:])
+            else:
+                index_samples_start_at = len(item) - len(analyte_information)
+                sample_name_date_time_list = item[:index_samples_start_at]
+                sample_time = sample_name_date_time_list.pop()
+                sample_date = sample_name_date_time_list.pop()
+                # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
+                # and assume that&#39;s the sampling location.
+                check_for_digits = False
+                if len(sample_name_date_time_list[-1]) == 5:
+                    for sub_item in sample_name_date_time_list[-1]:
+                        if sub_item.isdigit():
+                            check_for_digits = True
+                if check_for_digits is True:
+                    sampling_information = sample_name_date_time_list.pop()
+                else:
+                    sampling_information = &#39;no location&#39;
+                sample_name = &#34; &#34;.join(sample_name_date_time_list)
+                sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
+                sample_information.append(item[index_samples_start_at:])
+        return [sample_name_date_time, sample_information]
+
+    def generate_samples_dictionary_entries(self, samples_binary_list):
+        for item in samples_binary_list[0]:
+            if len(item) == 1:
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [&#34;no location&#34;, &#34;no date&#34;, &#34;no time&#34;]
+            else:
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]
+
+    def generate_data_triplets(self, analyte_information, units, samples_binary_list):
+        sample_number_index = 0
+        for item in samples_binary_list[0]:
+            unit_index = 0
+            item_index = 0
+            sample_name_and_dict_key = item[0]
+            for subitem in analyte_information:
+                analyte_name = subitem
+                if analyte_name == &#39;pH&#39;:
+                    analyte_unit = &#39;pH&#39;
+                else:
+                    analyte_unit = units[unit_index]
+                    unit_index += 1
+                value = samples_binary_list[1][sample_number_index][item_index]
+                self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
+                item_index += 1
+            sample_number_index += 1</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse"><code class="flex name class">
+<span>class <span class="ident">EasyTraxParse</span></span>
+<span>(</span><span>job_number, chm_file)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EasyTraxParse:
+
+    def __init__(self, job_number, chm_file):
+        self.job_number = job_number
+        self.chm_file = chm_file
+        self.chm_file_split_lines = []
+        self.sample_list_indexes = []
+        self.job_dictionary = {}
+        self.samples_dictionary = {}
+
+    def easy_trax_parse_controller(self):
+        self.split_lines_by_spacing()
+        self.get_client_name_and_jobnumber()
+        self.look_for_sample_indexes_in_split_lines()
+        self.use_sample_indexes_to_get_sample_data()
+        return self.samples_dictionary, self.job_dictionary
+
+    def split_lines_by_spacing(self):
+        for item in self.chm_file:
+            self.chm_file_split_lines.append(item.split())
+
+    def get_client_name_and_jobnumber(self):
+        self.job_dictionary[&#39;client identifier&#39;] = &#34; &#34;.join(self.chm_file_split_lines[1][0:2])
+        self.job_dictionary[&#39;job number&#39;] = self.chm_file_split_lines[1][-1]
+
+    def look_for_sample_indexes_in_split_lines(self):
+        for item in self.chm_file_split_lines:
+            if len(item) &gt; 0:
+                if item[0] == &#39;SAMPLE&#39;:
+                    self.sample_list_indexes.append(self.chm_file_split_lines.index(item))
+
+    def use_sample_indexes_to_get_sample_data(self):
+        for item in self.sample_list_indexes:
+            analyte_information = self.get_analyte_information(item)
+            units = self.get_units_information(item)
+            samples = self.get_samples_data(item)
+            samples_binary_list = self.split_samples_into_name_and_information(samples,
+                                                                               analyte_information)
+            self.generate_samples_dictionary_entries(samples_binary_list)
+            self.generate_data_triplets(analyte_information, units, samples_binary_list)
+
+    def get_analyte_information(self, sample_index):
+        analyte_information = self.chm_file_split_lines[sample_index - 1]
+        if analyte_information[0] == &#39;0&#39;:
+            analyte_information = analyte_information[1:]
+        return analyte_information
+
+    def get_units_information(self, sample_index):
+        units = self.chm_file_split_lines[sample_index]
+        units = units[3:]
+        return units
+
+    def get_samples_data(self, sample_index):
+        samples = []
+        item_index = sample_index + 2
+        blank_counter = 0
+        while blank_counter == 0:
+            sample = self.chm_file_split_lines[item_index]
+            if len(sample) &gt; 0:
+                samples.append(sample)
+                item_index += 1
+            else:
+                blank_counter += 1
+        return samples
+
+    def split_samples_into_name_and_information(self, samples, analyte_information):
+        sample_name_date_time = []
+        sample_information = []
+        for item in samples:
+            if item[0] + &#34; &#34; + item[1] == &#39;Lab Blank&#39;:
+                sample_name = item[0] + &#34; &#34; + item[1]
+                sample_name_date_time.append([sample_name])
+                sample_information.append(item[2:])
+            else:
+                index_samples_start_at = len(item) - len(analyte_information)
+                sample_name_date_time_list = item[:index_samples_start_at]
+                sample_time = sample_name_date_time_list.pop()
+                sample_date = sample_name_date_time_list.pop()
+                # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
+                # and assume that&#39;s the sampling location.
+                check_for_digits = False
+                if len(sample_name_date_time_list[-1]) == 5:
+                    for sub_item in sample_name_date_time_list[-1]:
+                        if sub_item.isdigit():
+                            check_for_digits = True
+                if check_for_digits is True:
+                    sampling_information = sample_name_date_time_list.pop()
+                else:
+                    sampling_information = &#39;no location&#39;
+                sample_name = &#34; &#34;.join(sample_name_date_time_list)
+                sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
+                sample_information.append(item[index_samples_start_at:])
+        return [sample_name_date_time, sample_information]
+
+    def generate_samples_dictionary_entries(self, samples_binary_list):
+        for item in samples_binary_list[0]:
+            if len(item) == 1:
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [&#34;no location&#34;, &#34;no date&#34;, &#34;no time&#34;]
+            else:
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]
+
+    def generate_data_triplets(self, analyte_information, units, samples_binary_list):
+        sample_number_index = 0
+        for item in samples_binary_list[0]:
+            unit_index = 0
+            item_index = 0
+            sample_name_and_dict_key = item[0]
+            for subitem in analyte_information:
+                analyte_name = subitem
+                if analyte_name == &#39;pH&#39;:
+                    analyte_unit = &#39;pH&#39;
+                else:
+                    analyte_unit = units[unit_index]
+                    unit_index += 1
+                value = samples_binary_list[1][sample_number_index][item_index]
+                self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
+                item_index += 1
+            sample_number_index += 1</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.easy_trax_parse_controller"><code class="name flex">
+<span>def <span class="ident">easy_trax_parse_controller</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def easy_trax_parse_controller(self):
+    self.split_lines_by_spacing()
+    self.get_client_name_and_jobnumber()
+    self.look_for_sample_indexes_in_split_lines()
+    self.use_sample_indexes_to_get_sample_data()
+    return self.samples_dictionary, self.job_dictionary</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.generate_data_triplets"><code class="name flex">
+<span>def <span class="ident">generate_data_triplets</span></span>(<span>self, analyte_information, units, samples_binary_list)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_data_triplets(self, analyte_information, units, samples_binary_list):
+    sample_number_index = 0
+    for item in samples_binary_list[0]:
+        unit_index = 0
+        item_index = 0
+        sample_name_and_dict_key = item[0]
+        for subitem in analyte_information:
+            analyte_name = subitem
+            if analyte_name == &#39;pH&#39;:
+                analyte_unit = &#39;pH&#39;
+            else:
+                analyte_unit = units[unit_index]
+                unit_index += 1
+            value = samples_binary_list[1][sample_number_index][item_index]
+            self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
+            item_index += 1
+        sample_number_index += 1</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.generate_samples_dictionary_entries"><code class="name flex">
+<span>def <span class="ident">generate_samples_dictionary_entries</span></span>(<span>self, samples_binary_list)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_samples_dictionary_entries(self, samples_binary_list):
+    for item in samples_binary_list[0]:
+        if len(item) == 1:
+            if item[0] in self.samples_dictionary:
+                pass
+            else:
+                self.samples_dictionary[item[0]] = [&#34;no location&#34;, &#34;no date&#34;, &#34;no time&#34;]
+        else:
+            if item[0] in self.samples_dictionary:
+                pass
+            else:
+                self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_analyte_information"><code class="name flex">
+<span>def <span class="ident">get_analyte_information</span></span>(<span>self, sample_index)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_analyte_information(self, sample_index):
+    analyte_information = self.chm_file_split_lines[sample_index - 1]
+    if analyte_information[0] == &#39;0&#39;:
+        analyte_information = analyte_information[1:]
+    return analyte_information</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_client_name_and_jobnumber"><code class="name flex">
+<span>def <span class="ident">get_client_name_and_jobnumber</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_client_name_and_jobnumber(self):
+    self.job_dictionary[&#39;client identifier&#39;] = &#34; &#34;.join(self.chm_file_split_lines[1][0:2])
+    self.job_dictionary[&#39;job number&#39;] = self.chm_file_split_lines[1][-1]</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_samples_data"><code class="name flex">
+<span>def <span class="ident">get_samples_data</span></span>(<span>self, sample_index)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_samples_data(self, sample_index):
+    samples = []
+    item_index = sample_index + 2
+    blank_counter = 0
+    while blank_counter == 0:
+        sample = self.chm_file_split_lines[item_index]
+        if len(sample) &gt; 0:
+            samples.append(sample)
+            item_index += 1
+        else:
+            blank_counter += 1
+    return samples</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_units_information"><code class="name flex">
+<span>def <span class="ident">get_units_information</span></span>(<span>self, sample_index)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_units_information(self, sample_index):
+    units = self.chm_file_split_lines[sample_index]
+    units = units[3:]
+    return units</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.look_for_sample_indexes_in_split_lines"><code class="name flex">
+<span>def <span class="ident">look_for_sample_indexes_in_split_lines</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def look_for_sample_indexes_in_split_lines(self):
+    for item in self.chm_file_split_lines:
+        if len(item) &gt; 0:
+            if item[0] == &#39;SAMPLE&#39;:
+                self.sample_list_indexes.append(self.chm_file_split_lines.index(item))</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.split_lines_by_spacing"><code class="name flex">
+<span>def <span class="ident">split_lines_by_spacing</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_lines_by_spacing(self):
+    for item in self.chm_file:
+        self.chm_file_split_lines.append(item.split())</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.split_samples_into_name_and_information"><code class="name flex">
+<span>def <span class="ident">split_samples_into_name_and_information</span></span>(<span>self, samples, analyte_information)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_samples_into_name_and_information(self, samples, analyte_information):
+    sample_name_date_time = []
+    sample_information = []
+    for item in samples:
+        if item[0] + &#34; &#34; + item[1] == &#39;Lab Blank&#39;:
+            sample_name = item[0] + &#34; &#34; + item[1]
+            sample_name_date_time.append([sample_name])
+            sample_information.append(item[2:])
+        else:
+            index_samples_start_at = len(item) - len(analyte_information)
+            sample_name_date_time_list = item[:index_samples_start_at]
+            sample_time = sample_name_date_time_list.pop()
+            sample_date = sample_name_date_time_list.pop()
+            # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
+            # and assume that&#39;s the sampling location.
+            check_for_digits = False
+            if len(sample_name_date_time_list[-1]) == 5:
+                for sub_item in sample_name_date_time_list[-1]:
+                    if sub_item.isdigit():
+                        check_for_digits = True
+            if check_for_digits is True:
+                sampling_information = sample_name_date_time_list.pop()
+            else:
+                sampling_information = &#39;no location&#39;
+            sample_name = &#34; &#34;.join(sample_name_date_time_list)
+            sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
+            sample_information.append(item[index_samples_start_at:])
+    return [sample_name_date_time, sample_information]</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.use_sample_indexes_to_get_sample_data"><code class="name flex">
+<span>def <span class="ident">use_sample_indexes_to_get_sample_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def use_sample_indexes_to_get_sample_data(self):
+    for item in self.sample_list_indexes:
+        analyte_information = self.get_analyte_information(item)
+        units = self.get_units_information(item)
+        samples = self.get_samples_data(item)
+        samples_binary_list = self.split_samples_into_name_and_information(samples,
+                                                                           analyte_information)
+        self.generate_samples_dictionary_entries(samples_binary_list)
+        self.generate_data_triplets(analyte_information, units, samples_binary_list)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="EasyTrax.Depreciated" href="index.html">EasyTrax.Depreciated</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse">EasyTraxParse</a></code></h4>
+<ul class="">
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.easy_trax_parse_controller" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.easy_trax_parse_controller">easy_trax_parse_controller</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.generate_data_triplets" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.generate_data_triplets">generate_data_triplets</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.generate_samples_dictionary_entries" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.generate_samples_dictionary_entries">generate_samples_dictionary_entries</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_analyte_information" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_analyte_information">get_analyte_information</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_client_name_and_jobnumber" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_client_name_and_jobnumber">get_client_name_and_jobnumber</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_samples_data" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_samples_data">get_samples_data</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_units_information" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.get_units_information">get_units_information</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.look_for_sample_indexes_in_split_lines" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.look_for_sample_indexes_in_split_lines">look_for_sample_indexes_in_split_lines</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.split_lines_by_spacing" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.split_lines_by_spacing">split_lines_by_spacing</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.split_samples_into_name_and_information" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.split_samples_into_name_and_information">split_samples_into_name_and_information</a></code></li>
+<li><code><a title="EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.use_sample_indexes_to_get_sample_data" href="#EasyTrax.Depreciated.EasyTraxParse.EasyTraxParse.use_sample_indexes_to_get_sample_data">use_sample_indexes_to_get_sample_data</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
