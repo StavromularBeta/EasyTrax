@@ -51,7 +51,7 @@ you can upload the second part manually and save it as file W161000B).
 
 As this program is developed, more data formats will be supported.
 
-[**Documentation**](\Documentation\index.html)
+**Documentation**
 
 as of June 8th, 2021:
 
