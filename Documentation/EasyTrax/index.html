@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.9.2" />
 <title>EasyTrax API documentation</title>
-<meta name="description" content="" />
+<meta name="description" content="**EasyTrax** …" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -19,17 +19,161 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Namespace <code>EasyTrax</code></h1>
+<h1 class="title">Package <code>EasyTrax</code></h1>
 </header>
 <section id="section-intro">
+<p><strong>EasyTrax</strong></p>
+<p>EasyTrax is a python module that converts human-readable analytical reports
+into a delimited ASCII flat file. This file format (.WTX) is used to upload
+analytical data to the website WaterTrax. Several clients of the lab require
+their reports to be handled by WaterTrax. WaterTrax data can be entered by
+hand via a web client. This can be extremely tedious - for example, 12 sampling
+locations with 50 analytes each is 700 individual pieces of data that need to
+be hand-entered. EasyTrax files take seconds to create, and a minute to upload.</p>
+<p><strong>How to Use</strong></p>
+<ul>
+<li>
+<p>a 'client good copy' of the report is added to /Files_To_Report. This can be
+opened using notepad.</p>
+</li>
+<li>
+<p>the 'client good copy' is trimmed of any data that is <strong>not yet handled</strong> by
+EasyTrax (for infomation on what type of data is handled currently by
+EasyTrax, see the <strong>Data Formats</strong> section)</p>
+</li>
+<li>
+<p>run <strong>EasyTraxTK.py</strong></p>
+</li>
+<li>
+<p>type the file name (jobnumber) into the box provided, and hit the button labeled
+"Create WTX File". The .WTX file format will be created
+and saved in WTX_reports.</p>
+</li>
+<li>
+<p>log in to lab.watertrax.com and sign in using the lab credentials</p>
+</li>
+<li>
+<p>under "Service Functions", select "Lab Reports". Then select "Upload Report".
+browse to the file you just created, and hit "Upload".</p>
+</li>
+<li>
+<p>File will be submitted at this point. Open up the file to review, if desired.</p>
+</li>
+</ul>
+<p><strong>Data Formats</strong></p>
+<p>as of June 9th, 2021</p>
+<p>Currently supported data formats:</p>
+<ul>
+<li>horizontally formatted chemistry data</li>
+<li>vertically formatted icp data</li>
+</ul>
+<p>Not supported yet (May not be a complete list):</p>
+<ul>
+<li>microbiology data</li>
+<li>microcystins data</li>
+</ul>
+<p>It is possible to trim out the unsupported data, upload the supported data
+via .WTX file, and then upload the rest of the data manually with some
+designation (for example, if you uploaded the first part using W161000,
+you can upload the second part manually and save it as file W161000B).</p>
+<p>As this program is developed, more data formats will be supported.</p>
+<p><strong>Documentation</strong></p>
+<p>as of June 8th, 2021:</p>
+<p>fully documented files:</p>
+<ul>
+<li>EasyTraxConvert.py</li>
+<li>EasyTraxTK.py</li>
+<li>EasyTraxParse.py</li>
+</ul>
+<p>partially documented files:</p>
+<p>documentation can be found written into the python files themselves.
+Files have help() accessible docstrings as well as comments throughout.</p>
+<p><strong>Contact Information</strong></p>
+<p>This readme and program was written by Peter Levett (MB Laboratories ltd.). This readme
+was last updated June 9th, 2021. Any questions or concerns about this program
+can be sent to peterlevett@gmail.com.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;**EasyTrax**
+
+EasyTrax is a python module that converts human-readable analytical reports
+into a delimited ASCII flat file. This file format (.WTX) is used to upload
+analytical data to the website WaterTrax. Several clients of the lab require
+their reports to be handled by WaterTrax. WaterTrax data can be entered by
+hand via a web client. This can be extremely tedious - for example, 12 sampling
+locations with 50 analytes each is 700 individual pieces of data that need to
+be hand-entered. EasyTrax files take seconds to create, and a minute to upload.
+
+**How to Use**
+
+- a &#39;client good copy&#39; of the report is added to /Files_To_Report. This can be
+opened using notepad.
+
+- the &#39;client good copy&#39; is trimmed of any data that is **not yet handled** by
+  EasyTrax (for infomation on what type of data is handled currently by
+  EasyTrax, see the **Data Formats** section)
+
+- run **EasyTraxTK.py**
+
+- type the file name (jobnumber) into the box provided, and hit the button labeled
+  &#34;Create WTX File&#34;. The .WTX file format will be created
+  and saved in WTX_reports.
+
+- log in to lab.watertrax.com and sign in using the lab credentials
+
+- under &#34;Service Functions&#34;, select &#34;Lab Reports&#34;. Then select &#34;Upload Report&#34;.
+  browse to the file you just created, and hit &#34;Upload&#34;.
+
+- File will be submitted at this point. Open up the file to review, if desired.
+
+**Data Formats**
+
+as of June 9th, 2021
+
+Currently supported data formats:
+
+- horizontally formatted chemistry data
+- vertically formatted icp data
+
+Not supported yet (May not be a complete list):
+
+- microbiology data
+- microcystins data
+
+It is possible to trim out the unsupported data, upload the supported data
+via .WTX file, and then upload the rest of the data manually with some
+designation (for example, if you uploaded the first part using W161000,
+you can upload the second part manually and save it as file W161000B).
+
+As this program is developed, more data formats will be supported.
+
+**Documentation**
+
+as of June 8th, 2021:
+
+fully documented files:
+
+- EasyTraxConvert.py
+- EasyTraxTK.py
+- EasyTraxParse.py
+
+partially documented files:
+
+documentation can be found written into the python files themselves.
+Files have help() accessible docstrings as well as comments throughout.
+
+**Contact Information**
+
+This readme and program was written by Peter Levett (MB Laboratories ltd.). This readme
+was last updated June 9th, 2021. Any questions or concerns about this program
+can be sent to peterlevett@gmail.com.&#34;&#34;&#34;</code></pre>
+</details>
 </section>
 <section>
 <h2 class="section-title" id="header-submodules">Sub-modules</h2>
 <dl>
-<dt><code class="name"><a title="EasyTrax.Depreciated" href="Depreciated/index.html">EasyTrax.Depreciated</a></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
 <dt><code class="name"><a title="EasyTrax.EasyTraxConvert" href="EasyTraxConvert.html">EasyTrax.EasyTraxConvert</a></code></dt>
 <dd>
 <div class="desc"></div>
@@ -59,7 +203,6 @@
 <ul id="index">
 <li><h3><a href="#header-submodules">Sub-modules</a></h3>
 <ul>
-<li><code><a title="EasyTrax.Depreciated" href="Depreciated/index.html">EasyTrax.Depreciated</a></code></li>
 <li><code><a title="EasyTrax.EasyTraxConvert" href="EasyTraxConvert.html">EasyTrax.EasyTraxConvert</a></code></li>
 <li><code><a title="EasyTrax.EasyTraxParse" href="EasyTraxParse.html">EasyTrax.EasyTraxParse</a></code></li>
 <li><code><a title="EasyTrax.EasyTraxTK" href="EasyTraxTK.html">EasyTrax.EasyTraxTK</a></code></li>

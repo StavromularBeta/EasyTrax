@@ -6,18 +6,37 @@ class EasyTraxConvert:
     """Converts data in an intermediate format to a ready to upload text file in WTX format.
 
     when passed a dictionary in the format
-        * key : [value1, value2, value3, [list1], [list2], [list3]... [listx]]
-            * where key is the sample name
-            * value1, value2, value3 are sample location code, sample date, sample time
-            * list1, list2, list3... listx are triplet lists of [analyte, units, value] and
-              x is the total amount of analytes for each sample (can be different for each sample)
 
-    A WTX file is produced from this information. A job dictionary, containing simple key : value pairs for
-    job-level data (job number, client), is also passed. For each sample, there will be x amount of lines, where
-    x is the amount of analytes analyzed for a given sample. Each line therefore represents one test on one sample.
-    Samples don't have to have the same amount of lines. Some of the information in these lines will be conserved
-    across the job (things like version number, lab ID, client ID). Some of the information will be conserved across
-    each sample (like sample name and location code).
+    * key : [value1, value2, value3, [list1], [list2], [list3]... [listx]]
+
+        * where key is the sample name
+
+        * value1, value2, value3 are sample location code, sample date, sample time
+
+        * list1, list2, list3... listx are triplet lists of [analyte, units, value] and
+          x is the total amount of analytes for each sample (can be different for each sample)
+
+    A WTX file is produced from this information.
+
+    A job dictionary, containing simple key : value pairs for job-level data (job number, client), is also passed.
+
+    For each sample, there will be x amount of lines, where x is the amount of analytes analyzed for a given sample.
+
+    Each line therefore represents one test on one sample. Samples don't have to have the same amount of lines.
+
+    Some of the information in these lines will be conserved across the job, such as:
+
+    * version number
+
+    * lab ID
+
+    * client ID
+
+    Some of the information will be conserved across each sample, such as:
+
+    * sample name
+
+    * location code
 
     There are 30 fields per line in a WTX report, delimited by the pipe character '|'. Many of these fields are
     optional. MB Labs utilizes 14 mandatory fields in these reports, and none of the optional fields. If a field is not
@@ -27,7 +46,7 @@ class EasyTraxConvert:
     Information on what these fields are, their order, and their importance can be found in WTX_Report_Format_Doc.pdf,
     which has been included in this program for reference.
 
-    Last Updated: 03June21, P.L.
+    Last Updated: 10June21, P.L.
 
     Attributes
     ----------
@@ -56,46 +75,47 @@ class EasyTraxConvert:
     WaterTraxUnitsCodeDict: dict
         a dictionary containing key : value pairs in the format unit : unit code
 
-    date_dict:
+    date_dict: dict
         used to convert MB labs date formats (02 Jan 21) into WTX date formats (01022021)
 
     Methods
     -------
-    easy_trax_convert_controller()
+    * `easy_trax_convert_controller()` -
         called by EasyTraxTK, the main function that controls the class.
 
-    populate_water_trax_report_list()
+    * `populate_water_trax_report_list()`
         creates the WTX report lines for the WTX report. Gets the hard-set values from WaterTraxRequiredFileFieldDict,
         gets the client ID using get_water_trax_client_id(), and then iterates through the samples dictionary,
         turning each triplet list of data into WTX line.
 
-    get_water_trax_client_id()
-        matches the passed 'job identifier' key in job_dictionary to a corresponding client id in
-        WaterTraxRequiredFileFieldDict[6].
+        * `get_water_trax_client_id()`
+            matches the passed 'job identifier' key in job_dictionary to a corresponding client id in
+            WaterTraxRequiredFileFieldDict[6].
 
-    convert_triplet_list(triplet_list)
-        swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn't
-        changed or looked at at this point.
+        * `convert_triplet_list(triplet_list)`
+            swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn't
+            changed or looked at at this point.
 
-    format_watertrax_date()
-        formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)
+        * `format_watertrax_date()`
+            formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)
 
-    format_watertrax_time()
-        formats the MB labs time format to the WTX format (13:30p to 13:30)
+        * `format_watertrax_time()`
+            formats the MB labs time format to the WTX format (13:30p to 13:30)
 
-    print_sample_dictionary_to_console()
-        useful for debugging, allows you to print the sample dictionary to the console (prior to it being turned into a
-        WTX report)
+        * `print_sample_dictionary_to_console()`
+            useful for debugging, allows you to print the sample dictionary to the console (prior to it being turned into a
+            WTX report)
 
-    generate_report_directories_and_files()
+    * `generate_report_directories_and_files()`
         generates the report directories and files. Reports are added to a folder called WTX_reports, and contained
         in this directory in a folder of the same name.
 
-    mkdir_p()
-        tries to make the desired directory.
+        * `mkdir_p()`
+            tries to make the desired directory.
 
-    safe_open_w()
-        safely opens the file in order to write to it.
+        * `safe_open_w()`
+            safely opens the file in order to write to it.
+
     """
 
     def __init__(self, samples_dictionary, job_dictionary):
@@ -229,7 +249,9 @@ class EasyTraxConvert:
         included in the report for the sample, which can happen if analytes are included in more than one place
         on the report.
 
-        :return: report_lines : list
+        Returns
+        -------
+        report_lines : list
             the sample dictionary for a given report converted into WTX format. """
 
         # below variables are the same in every line in the report
@@ -275,7 +297,13 @@ class EasyTraxConvert:
         """matches a client identifier token to a client id in WaterTraxRequiredFileFieldDict.
 
          if no client ID is found, an error message is returned. Otherwise, returns a 5 digit code
-         representing the client the report belongs to from the value corresponding to key : 6. """
+         representing the client the report belongs to from the value corresponding to key : 6.
+
+        Returns
+        -------
+        string
+            either a 5 digit client identifier (`value_to_return`), or the string 'No client ID'
+        """
 
         client_identifier = self.job_dictionary['client identifier']
         value_to_return = ""
@@ -293,11 +321,16 @@ class EasyTraxConvert:
         Found in WaterTraxAnalyteCodeDict and WaterTraxUnitsCodeDict respectively. Does not alter the actual value.
         Might be a good place to check the value isn't '---' in the future.
 
-        Args:
-            triplet_list (list): a list consisting of [analyte, unit, value]
+        Parameters
+        ----------
+        triplet_list : list
+            a list consisting of [analyte, unit, value]
 
-        Returns:
-            converted_list (list): a list consisting of [analyte code, unit code, value]
+
+        Returns
+        -------
+        converted_list : list
+            a list consisting of [analyte code, unit code, value]
 
         """
         converted_list = []
@@ -310,7 +343,18 @@ class EasyTraxConvert:
         return converted_list
 
     def format_watertrax_date(self, date_value):
-        """formats our date into the correct WTX format (mmddyyy). """
+        """formats our date into the correct WTX format (mmddyyy).
+
+        Parameters
+        ----------
+        date_value : string
+            a string the format '01Jan21'.
+
+        Returns
+        -------
+        wtx_formatted_date : string
+            a string in the format 'mmddyyyy'
+        """
         day = date_value[0:2]
         month = self.date_dict[date_value[2:5]]
         year = "20" + date_value[5:7]
@@ -318,7 +362,19 @@ class EasyTraxConvert:
         return wtx_formatted_date
 
     def format_watertrax_time(self, time_value):
-        """formats our time into the correct WTX format (hh:mm). """
+        """formats our time into the correct WTX format (hh:mm).
+
+        Parameters
+        ----------
+        time_value : string
+            a string in the format '14:20p' (an example)
+
+        Returns
+        -------
+        wtx_formatted_time : string
+            a string in the format 'hh:mm'
+        """
+
         hour = time_value[0:2]
         minute = time_value[3:5]
         wtx_formatted_time = hour + ':' + minute
