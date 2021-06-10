@@ -6,11 +6,11 @@ class EasyTraxConvert:
     """Converts data in an intermediate format to a ready to upload text file in WTX format.
 
     when passed a dictionary in the format
-        key : [value1, value2, value3, [list1], [list2], [list3]... [listx]]
-            where key is the sample name
-            value1, value2, value3 are sample location code, sample date, sample time
-            list1, list2, list3... listx are triplet lists of [analyte, units, value] and
-                x is the total amount of analytes for each sample (can be different for each sample)
+        * key : [value1, value2, value3, [list1], [list2], [list3]... [listx]]
+            * where key is the sample name
+            * value1, value2, value3 are sample location code, sample date, sample time
+            * list1, list2, list3... listx are triplet lists of [analyte, units, value] and
+              x is the total amount of analytes for each sample (can be different for each sample)
 
     A WTX file is produced from this information. A job dictionary, containing simple key : value pairs for
     job-level data (job number, client), is also passed. For each sample, there will be x amount of lines, where
@@ -47,11 +47,11 @@ class EasyTraxConvert:
 
     WaterTraxAnalyteCodeDict: dict
         a dictionary containing key : value pairs in the format Mb Labs name : [analyte code, WTX description]
-            MB Labs name - what we call the analyte on our in house reports
-            analyte code - the analyte code provided by watertrax for the given analyte
-            WTX description - the WTX description of the analyte name, which can be found in the table of analyte codes
-                (these aren't used in the program, but they are for confirmation that we've picked the right code, as
-                there can be many different codes for the same analyte with different methodologies).
+        * MB Labs name - what we call the analyte on our in house reports
+        * analyte code - the analyte code provided by watertrax for the given analyte
+        * WTX description - the WTX description of the analyte name, which can be found in the table of analyte codes
+        (these aren't used in the program, but they are for confirmation that we've picked the right code, as
+        there can be many different codes for the same analyte with different methodologies).
 
     WaterTraxUnitsCodeDict: dict
         a dictionary containing key : value pairs in the format unit : unit code
@@ -69,19 +69,19 @@ class EasyTraxConvert:
         gets the client ID using get_water_trax_client_id(), and then iterates through the samples dictionary,
         turning each triplet list of data into WTX line.
 
-        get_water_trax_client_id()
-            matches the passed 'job identifier' key in job_dictionary to a corresponding client id in
-            WaterTraxRequiredFileFieldDict[6].
+    get_water_trax_client_id()
+        matches the passed 'job identifier' key in job_dictionary to a corresponding client id in
+        WaterTraxRequiredFileFieldDict[6].
 
-        convert_triplet_list(triplet_list)
-            swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn't
-            changed or looked at at this point.
+    convert_triplet_list(triplet_list)
+        swaps out the mb labs analyte name for an analyte code, the mb labs unit name for a unit code. value isn't
+        changed or looked at at this point.
 
-        format_watertrax_date()
-            formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)
+    format_watertrax_date()
+        formats the MB labs date format to the WTX format (02-Jan-21 to 01022021)
 
-        format_watertrax_time()
-            formats the MB labs time format to the WTX format (13:30p to 13:30)
+    format_watertrax_time()
+        formats the MB labs time format to the WTX format (13:30p to 13:30)
 
     print_sample_dictionary_to_console()
         useful for debugging, allows you to print the sample dictionary to the console (prior to it being turned into a
@@ -91,11 +91,11 @@ class EasyTraxConvert:
         generates the report directories and files. Reports are added to a folder called WTX_reports, and contained
         in this directory in a folder of the same name.
 
-        mkdir_p()
-            tries to make the desired directory.
+    mkdir_p()
+        tries to make the desired directory.
 
-        safe_open_w()
-            safely opens the file in order to write to it.
+    safe_open_w()
+        safely opens the file in order to write to it.
     """
 
     def __init__(self, samples_dictionary, job_dictionary):
@@ -292,6 +292,13 @@ class EasyTraxConvert:
 
         Found in WaterTraxAnalyteCodeDict and WaterTraxUnitsCodeDict respectively. Does not alter the actual value.
         Might be a good place to check the value isn't '---' in the future.
+
+        Args:
+            triplet_list (list): a list consisting of [analyte, unit, value]
+
+        Returns:
+            converted_list (list): a list consisting of [analyte code, unit code, value]
+
         """
         converted_list = []
         # Eventually an error will be thrown here when the analyte or unit is not in the dictionary,
