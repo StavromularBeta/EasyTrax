@@ -203,13 +203,13 @@ class EasyTraxParse:
 
         Parameters
         ----------
-            list_to_check : list
-                the list to check - the first line of the file, split by space, in list form.
+        list_to_check : list
+            the list to check - the first line of the file, split by space, in list form.
 
         Returns
         -------
-            list_to_check[n] : string
-                where n = -1 or -2. The item at index n will be the jobnumber in string form. """
+        list_to_check[n] : string
+            where n = -1 or -2. The item at index n will be the jobnumber in string form. """
 
         if len(list_to_check[-1]) == 7:
             return list_to_check[-1]
@@ -399,7 +399,7 @@ class EasyTraxParse:
 
         Returns
         -------
-        [sample_name_date_time, sample_information] : [list, list]
+        sample_name_date_time, sample_information : [list, list]
             2 membered list, first member being a list of sample info, the second being a list of values.
         """
 
