@@ -1,0 +1,2329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.2" />
+<title>EasyTrax.EasyTraxParse API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>EasyTrax.EasyTraxParse</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EasyTraxParse:
+    &#34;&#34;&#34;Parses text files generated by the DOS program FirstChoice, prepares data for conversion to WTX format.
+
+    Final reports can be generated by the current MB Labs LIMS system in text format.
+
+    These files contain data displayed vertically (analytes going down the page, samples across), and horizontally
+    (analytes going across the page, samples going down). Both data types can be handled together or independently.
+
+    sample metadata is not present in vertically displayed files, so backup sample metadata is gathered from the
+    report headers.
+
+    This file parses reports, extracts sample metadata and data from report headers and data tables, and combines
+    them all together in one universal data format that is handled by EasyTraxConvert.
+
+    Last Updated: 09June2021, P.L.
+
+    Attributes
+    ----------
+    job_number : str
+        the job number of the report being converted.
+
+    mb_file : list(str)
+        the contents of the text file being converted, line by line, in a list.
+
+    mb_file_split_lines : list(list(str))
+        each line split based on spaces (ex. [&#39;hello          world I           am&#39;,] -&gt; [[&#39;hello&#39;,&#39;world&#39;,&#39;I&#39;,&#39;am&#39;],]
+
+    sample_list_indexes : list(int)
+        the indexes of each sub list in fc_file_split_lines that have the string &#39;SAMPLE&#39; at the beginning of the list.
+        these are the start points of the horizontal data tables.
+
+    analyte_list_indexes : list(int)
+        the indexes of each sub list in fc_file_split_lines that have the string &#39;ELEMENTS&#39; at the beginning of the
+        list. These are the start points of the vertical data tables.
+
+    backup_sample_list_indexes : list(int)
+        the indexes of each sub list in fc_file_split_lines that have the string &#39;Samples:&#39; at the beginning of the
+        list. These are the start points of the header sample metadata.
+
+    backup_line_split_by_sample : list(list)
+        the individual samples in the header sample metadata, in a list of lists.
+
+    job_dictionary : dict{}
+        contains information pertaining to the overall job, like the job number.
+
+    samples_dictionary : dict{}
+        contains information pertaining to the samples. Format in this dict is:
+        key: sample name (str)
+        value: sample locator code, date, time, list of lists (each sub list is a triplet, [analyte, unit, value])
+
+    metal_triplets_dictionary : dict{}
+        contains information pertaining to the vertically formatted (analytes down, samples across) samples.
+        Temporarily stored in this dictionary, then added to the samples_dictionary. Format:
+        key: sample ID (str)
+        value: list of data triplets [[analyte, unit, value],[analyte, unit, value],...]
+
+    Methods
+    -------
+    * `easy_trax_parse_controller()` -
+        executes the various methods/functions in the script in the right order.
+
+    * `split_lines_by_spacing()` -
+        converts each line in self.fc_file into a list, split by spaces.
+
+    * `get_client_name_and_jobnumber()` -
+        gets the client name and the job number from the first line of the text file. Jobnumber is also passed to class
+        as a parameter (forgot, wrote this unnecessary bit of code, too lazy to delete).
+
+        * `get_job_number_from_first_line(list_to_check)` -
+            finds the job number in the first line.
+
+    * `look_for_anchor_indexes_in_split_lines()` -
+        looks for the string &#39;SAMPLE&#39; in the list of lines, adds those indices to self.sample_list_indices.
+        looks for the string &#39;Samples:&#39; in the list of lines, adds those indices to self.backup_sample_list_indices.
+        looks for the string &#39;ELEMENTS&#39; in the list of lines, adds those indices to self.analyte_list_indexes.
+
+    * `pre_generate_backup_samples_dictionary_entries()` -
+        if there are any indexes in self.backup_sample_list_indexes, then this method will take them and parse
+        the sample header metadata into trimmed lists, consisting of [sample id, name1, ... namex, code, date, time]
+
+    * `use_sample_indexes_to_get_sample_data()` -
+        iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
+
+        * `get_analye_information(item)` -
+            access the line above the sample index passed, which has the analyte information. Occasionally there
+            is a 0 at the start of this line (for whatever reason). If this 0 is found, it&#39;s removed.
+
+        * `get_units_information(item)` -
+            accesses the line corresponding to the sample index passed. This line has the unit information. Removes
+            the first three items in the line, which are the strings &#39;SAMPLE&#39;, &#39;DATE&#39;, and &#39;TIME&#39;.
+
+        * `get_samples_data(item)` -
+            starts at the line at index + 2. This is the first sample line. Grabs each sample line until the sample
+            name is &#34;Lab Blank&#34; (note, this wouldn&#39;t work if &#34;Lab Blank&#34; wasn&#39;t the last sample in the data table,
+            and may need to be changed in the future for large jobs that might not necessarily have &#34;Lab Blank&#34; as the
+            last sample for a given data table).
+
+        * `split_samples_into_name_and_information(samples, analyte_information)` -
+            takes list of samples created by get_samples_data, and, using the analyte_information, splits the sample
+            lines into the two lists - one has the name, date, and time for the sample, and the other list has analyte
+            values.
+
+        * `generate_samples_dictionary_entries(samples_binary_list)` -
+            goes through the various sample names in the samples_binary_list and uses them to make keys in the
+            samples_dictionary.
+
+        * `generate_data_triplets(analyte_information, units, samples_binary_list)` -
+            matches analye names, units, and values for each analyte, for each sample, and adds data triplets to
+            the samples_dictionary under the correct sample name.
+
+    * `generate_backup_samples_dictionary_entries()` -
+        takes the lists generated by pre_generate_backup_samples_dictionary_entries and converts them into appropriate
+        key: value pairs in samples_dictionary, if the sample is not already in there.
+
+    * `use_analyte_indexes_to_get_sample_data()`
+        iterates through the indexes in analyte_list_indexes, and uses them to fill metal_triplets_dictionary with data.
+
+    * `combine_metal_triplet_dictionary_with_samples_dictionary()`
+        matches the sample ID keys in metal_triplets_dictionary to sample ID + name keys in samples_dictionary. Once
+        matched, adds data in metal_triplets_dictionary to samples_dictionary.
+        &#34;&#34;&#34;
+
+    def __init__(self, job_number, fc_file):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        job_number: str
+            the job number for the job being converted
+        fc_file: list
+            a list of the lines in the FirstChoice text file being parsed.
+        &#34;&#34;&#34;
+
+        self.job_number = job_number
+        self.mb_file = fc_file
+        self.mb_file_split_lines = []
+        self.sample_list_indexes = []
+        self.backup_sample_list_indexes = []
+        self.backup_line_split_by_sample = []
+        self.analyte_list_indexes = []
+        self.job_dictionary = {}
+        self.samples_dictionary = {}
+        self.metal_triplets_dictionary = {}
+
+    def easy_trax_parse_controller(self):
+        &#34;&#34;&#34;executes the various methods/functions in the script in the right order.
+
+        Is called in EasyTraxTK. Returns the samples_dictionary and job_dictionary to EasyTraxTK
+        for passing to the converter.
+
+        Returns
+        -------
+        samples_dictionary : dict
+            dictionary where all sample level information is held.
+
+        job_dictionary : dict
+            dictionary where all job level information is held.
+        &#34;&#34;&#34;
+
+        # split up the whole file line by line
+        self.split_lines_by_spacing()
+        # extract the client name and job number
+        self.get_client_name_and_jobnumber()
+        # collect anchor indexes
+        self.look_for_anchor_indexes_in_split_lines()
+        # pre-generate backup sample metadata if there is sample header info
+        if self.backup_sample_list_indexes:
+            self.pre_generate_backup_samples_dictionary_entries()
+        # process the horizontal data tables
+        self.use_sample_indexes_to_get_sample_data()
+        # create entries of any samples not covered in the horizontal data tables
+        self.generate_backup_samples_dictionary_entries()
+        # finally, process the ICP data files, having dealt with the sample metadata
+        self.use_analyte_indexes_to_get_sample_data()
+        # combine the metal triplets with the rest of the data triplets
+        self.combine_metal_triplet_dictionary_with_samples_dictionary()
+        # return the properly formatted intermediate data, ready for conversion
+        return self.samples_dictionary, self.job_dictionary
+
+    def split_lines_by_spacing(self):
+        &#34;&#34;&#34; converts each line in self.mb_file into a list, split by spaces.
+        &#34;&#34;&#34;
+
+        for item in self.mb_file:
+            self.mb_file_split_lines.append(item.split())
+
+    def get_client_name_and_jobnumber(self):
+        &#34;&#34;&#34;gets the client name and the job number from the first line of the text file.
+
+        Jobnumber is also passed to class as a parameter
+        (forgot, wrote this unnecessary bit of code, too lazy to delete). &#34;&#34;&#34;
+
+        # if you leave a blank line before the start of the header, will need to access self.fc_file_split_lines[1][0:2]
+        # otherwise, you want to access the first line.
+        self.job_dictionary[&#39;client identifier&#39;] = &#34; &#34;.join(self.mb_file_split_lines[0][0:2])
+        self.job_dictionary[&#39;job number&#39;] = self.get_job_number_from_first_line(self.mb_file_split_lines[0])
+
+    def get_job_number_from_first_line(self, list_to_check):
+        &#34;&#34;&#34;finds the job number in the first line.
+
+        checks to see if there is a &#39;pg X&#39; after the job number. Checks by seeing if the length of the last element is
+        7. If it is, it&#39;s assumed to be the job number. If it isn&#39;t, it&#39;s assumed to be the &#39;pg X&#39; designator, and it
+        is also assumed that the list element before it is the job number.
+
+        Parameters
+        ----------
+        list_to_check : list
+            the list to check - the first line of the file, split by space, in list form.
+
+        Returns
+        -------
+        list_to_check[n] : string
+            where n = -1 or -2. The item at index n will be the jobnumber in string form. &#34;&#34;&#34;
+
+        if len(list_to_check[-1]) == 7:
+            return list_to_check[-1]
+        else:
+            return list_to_check[-2]
+
+    def look_for_anchor_indexes_in_split_lines(self):
+        &#34;&#34;&#34; looks for anchor indices in the split lines. Adds them to the relevant list. 3 types of anchors.
+
+        first filters out empty lines.
+
+        If a line has something in it, checks to see if the first index is &#39;SAMPLE&#39;.
+
+        If it is, adds the index of the line to sample_list_indexes. These indexes are used to parse
+        horizontal data tables.
+
+        Then checks if the first index is &#39;Samples:&#39;. If it is, adds the index to backup_sample_list_indexes.
+
+        These indexes are used to parse sample metadata from the header part of the report (name, date, location, etc).
+        This information is generally taken from horizontal data tables, and then the ICP data tables piggyback.
+        If there are no horizontal data tables, or if there are samples in vertical data tables that aren&#39;t present
+        in horizontal data tables, we need a second way to get sample metadata. That&#39;s what the backup is for.
+
+        Finally checks if the first index is &#39;ELEMENTS&#39;.
+
+        If it is, adds the index to analyte_list_indexes. These indexes are used to parse vertical ICP style
+        data tables. &#34;&#34;&#34;
+
+        for item in self.mb_file_split_lines:
+            if len(item) &gt; 0:
+                if item[0] == &#39;SAMPLE&#39;:
+                    self.sample_list_indexes.append(self.mb_file_split_lines.index(item))
+                elif item[0] == &#39;Samples:&#39;:
+                    self.backup_sample_list_indexes.append(self.mb_file_split_lines.index(item))
+                elif item[0] == &#39;ELEMENTS&#39;:
+                    self.analyte_list_indexes.append(self.mb_file_split_lines.index(item))
+                else:
+                    pass
+
+    def pre_generate_backup_samples_dictionary_entries(self):
+        &#34;&#34;&#34;generates backup samples dictionary metadata entries, so that ICP formatted data can be properly assigned.
+
+        there may be many indexes, we only need one as all the sample lists should be the same. Will have to deal with
+        this if this is not the case in the future (09June21).
+
+        empty_list is used to determine when we&#39;ve come to a gap in the page, which means we are no longer reading in
+        our sample information.
+
+        Once a gap is hit, it&#39;s assumed that we&#39;ve reached the end of the header. We then collapse all the lists of
+        lines into one long list. We iterate through this list.
+
+        The first time we hit a parenthesis &#39;)&#39;, we know were at the start of a sample. Once we hit another parenthesis,
+        we know we are at the start of the next sample.
+
+        This logic is used to split the information up into segments where the last three items will be location code,
+        date, and time, the first item will be the sample number, and the remaining indexes when combined in order
+        are the sample name. &#34;&#34;&#34;
+
+        # once we hit a gap in the file, empty_list will be set to true, and we will know we are at the end of the
+        # sample information.
+        empty_list = False
+        # the line that &#39;Samples: &#39; is on.
+        backup_sample_list_index = self.backup_sample_list_indexes[0]
+        backup_sample_lines = []
+        while not empty_list:
+            backup_samples_line = self.mb_file_split_lines[backup_sample_list_index]
+            if len(backup_samples_line) == 0:
+                empty_list = True
+            else:
+                backup_sample_lines.append(backup_samples_line)
+                backup_sample_list_index += 1
+        # collapsing the lines (which may have more than one sample, or may have one sample) into one list.
+        backup_sample_lines = [item for sublist in backup_sample_lines for item in sublist]
+        # if keep adding is False, we have hit the next sample, so stops adding
+        # starts as false so we don&#39;t add all the extra info before the first sample
+        # first parenthesis encountered then turns keep_adding to True
+        # then we add up the first sample information
+        # second parenthesis if keep_adding is true will trigger an appending and a clearing of single_sample
+        # keep_adding will now always be true
+        keep_adding = False
+        single_sample = []
+        for item in backup_sample_lines:
+            if &#39;)&#39; in item:
+                # either the first sample or not
+                if keep_adding:
+                    # past the first sample
+                    self.backup_line_split_by_sample.append(single_sample)
+                    single_sample = [item]
+                else:
+                    # the first sample
+                    single_sample.append(item)
+                    keep_adding = True
+            else:
+                # sample information
+                if keep_adding:
+                    # will only be false prior to hitting the first sample
+                    single_sample.append(item)
+        self.backup_line_split_by_sample.append(single_sample)
+
+    def use_sample_indexes_to_get_sample_data(self):
+        &#34;&#34;&#34; iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
+
+        sort of a controller function, mostly calls other functions in the correct order. Each sample index represents
+        a data table that needs to be &#39;harvested&#39;. for data table, the analyte names, units, and values are isolated,
+        and then re-assembled in an intermediate format that we use to make the WTX files. &#34;&#34;&#34;
+
+        for item in self.sample_list_indexes:
+            # each item is an index.
+            analyte_information = self.get_analyte_information(item)
+            units = self.get_units_information(item)
+            samples = self.get_samples_data(item)
+            samples_binary_list = self.split_samples_into_name_and_information(samples,
+                                                                               analyte_information)
+            self.generate_samples_dictionary_entries(samples_binary_list)
+            self.generate_data_triplets(analyte_information, units, samples_binary_list)
+
+    def get_analyte_information(self, sample_index):
+        &#34;&#34;&#34;gets analyte information from line above sample index.
+
+        sometimes there is a 0 at the start of this line, not sure why. If so, this method removes this character.
+
+        Returns
+        -------
+        analyte_information : list
+            list containing analyte information.&#34;&#34;&#34;
+
+        analyte_information = self.mb_file_split_lines[sample_index - 1]
+        if analyte_information[0] == &#39;0&#39;:
+            analyte_information = analyte_information[1:]
+        return analyte_information
+
+    def get_units_information(self, sample_index):
+        &#34;&#34;&#34;gets units information from line of the sample index.
+
+        removes the first three elements of the list, which are the strings &#39;sample&#39;, &#39;date&#39;, and &#39;time&#39;.
+
+        Returns
+        -------
+        units : list
+            list containing units information.&#34;&#34;&#34;
+
+        units = self.mb_file_split_lines[sample_index]
+        units = units[3:]
+        return units
+
+    def get_samples_data(self, sample_index):
+        &#34;&#34;&#34;returns the lines of data in the horizontal sample tables.
+
+        first line is two indexes ahead of the sample index. While there is information on subsequent lines, lines
+        are added to the samples variable (a list). if a line is blank, it signifies the end of the data table, at
+        which point the while loop is exited and the sample lines are returned.
+
+        Parameters
+        ----------
+        sample_index : int
+            index in the list of lists representing the mb labs file corresponding to a horizontal data table
+
+        Returns
+        -------
+        samples : list
+            list of list containing lines of the horizontal data table in question
+        &#34;&#34;&#34;
+
+        samples = []
+        item_index = sample_index + 2
+        blank_counter = 0
+        while blank_counter == 0:
+            sample = self.mb_file_split_lines[item_index]
+            if len(sample) &gt; 0:
+                samples.append(sample)
+                item_index += 1
+            else:
+                blank_counter += 1
+        return samples
+
+    def split_samples_into_name_and_information(self, samples, analyte_information):
+        &#34;&#34;&#34;splits raw sample lines into two lists - one containing sample name info, and one containing analyte info.
+
+        iterates through samples. First checks to see if sample is a blank, and if so, handles accordingly (no date
+        or time).
+
+        If the sample is not a blank, we find the index the sample values start at/ the name information
+        ends at. This is equal to the length of the samples list - the length of the analyte_information list (because
+        there will be one analyte identifier per value). Uses this to slice off the sample name, location code,
+        date, time, and isolate them. If no sampling location is detected, then &#39;no location&#39; is inserted instead
+        (without a sampling location, we can&#39;t upload to WaterTrax, so this would be a fatal error).
+
+        Returns
+        -------
+        sample_name_date_time, sample_information : [list, list]
+            2 membered list, first member being a list of sample info, the second being a list of values.
+        &#34;&#34;&#34;
+
+        sample_name_date_time = []
+        sample_information = []
+        for item in samples:
+            if item[0] + &#34; &#34; + item[1] == &#39;Lab Blank&#39;:
+                sample_name = item[0] + &#34; &#34; + item[1]
+                sample_name_date_time.append([sample_name])
+                sample_information.append(item[2:])
+            else:
+                index_samples_start_at = len(item) - len(analyte_information)
+                sample_name_date_time_list = item[:index_samples_start_at]
+                # sample_name_date_time_list = [name, sampling location (hopefully), date, time]
+                sample_time = sample_name_date_time_list.pop()
+                # sample_name_date_time_list = [name, sampling location (hopefully), date]
+                sample_date = sample_name_date_time_list.pop()
+                # sample_name_date_time_list = [name, sampling location (hopefully)]
+                check_for_digits = False
+                # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
+                # and assume that&#39;s the sampling location.
+                if len(sample_name_date_time_list[-1]) == 5:
+                    for sub_item in sample_name_date_time_list[-1]:
+                        if sub_item.isdigit():
+                            check_for_digits = True
+                if check_for_digits is True:
+                    # i.e. if the last item in the sample_name_date_time_list has a length of 5 with at least one int
+                    sampling_information = sample_name_date_time_list.pop()
+                else:
+                    # otherwise, we don&#39;t have a sampling location.
+                    # all sampling locations have a length of 5 and contain numbers. It&#39;s possible a sample name could
+                    # meet that criteria (imagine a sample called room1). In which case, it would be erroneously
+                    # considered a sample location.
+                    sampling_information = &#39;no location&#39;
+                sample_name = &#34; &#34;.join(sample_name_date_time_list)
+                sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
+                sample_information.append(item[index_samples_start_at:])
+        return [sample_name_date_time, sample_information]
+
+    def generate_samples_dictionary_entries(self, samples_binary_list):
+        &#34;&#34;&#34;creates the keys (sample name) in sample dictionary, populates with sample metadata (location, date, time)
+
+        iterates through the items in the first list in each binary list in samples_binary_list. If the key is already
+        in the dictionary, we pass (there will n copies of each name in samples_binary_list, with n being the amount
+        of horizontal data tables existing in the parsed document).
+
+        if the length of the item is 1, it&#39;s a blank, because a sample has a name, location, date, and time. Otherwise,
+        the item is assumed to be a sample, and handled accordingly. &#34;&#34;&#34;
+
+        for item in samples_binary_list[0]:
+            if len(item) == 1:
+                # is assumed to be a lab blank
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [&#34;no location&#34;, &#34;no date&#34;, &#34;no time&#34;]
+            else:
+                # is assumed to be a sample
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]
+
+    def generate_data_triplets(self, analyte_information, units, samples_binary_list):
+        &#34;&#34;&#34; generates data triplets [analyte, unit, value] and adds via the sample name key to the samples dictionary
+
+        iterates through the samples_binary_list[0]. Keeps track of the index using sample_number_index so it can access
+        the right list in samples_binary_list[1]. Needs to be a separate unit index and item index because some analytes
+        (so far all I&#39;ve found is pH, but I believe there are others) don&#39;t have units. Assembles data triplets, and
+        appends them to the list values in samples dictionary. &#34;&#34;&#34;
+
+        sample_number_index = 0
+        # so we can access the right spot in samples_binary_list[1].
+        for item in samples_binary_list[0]:
+            unit_index = 0
+            # keeps track of where we are in the unit index
+            item_index = 0
+            # will be the same as the unit index, except where there are no units for a given analyte. In which case,
+            # there will be a mismatch (x units will not equal n values), and we need two counters to account for that.
+            sample_name_and_dict_key = item[0]
+            # this will be the same as the keys now in samples dictionary
+            for subitem in analyte_information:
+                analyte_name = subitem
+                if analyte_name == &#39;pH&#39;:
+                    analyte_unit = &#39;pH&#39;
+                    # rather than grabbing units from the units list, we make a custom analyte_unit.
+                else:
+                    analyte_unit = units[unit_index]
+                    # all other analytes other than pH (so far, 28May21) will have a unit
+                    unit_index += 1
+                value = samples_binary_list[1][sample_number_index][item_index]
+                self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
+                # appending, value is a list.
+                item_index += 1
+            sample_number_index += 1
+
+    def generate_backup_samples_dictionary_entries(self):
+        &#34;&#34;&#34;generates the backup sample dictionary metadata if no horizontal tables are in the report.
+
+        first looks at whether we have any samples dictionary keys already.
+
+        There are two options that require backup metadata - either there are no horizontal tables,
+        or there are samples that exist in vertical data tables that don&#39;t exist in subsequent horizontal
+        data tables in the file.
+
+        Checks to see if there are any backup sample indices to work on - sometimes, when there is only
+        horizontal data in the report, the admin staff don&#39;t add in the samples line.
+
+        Each sublist corresponds to a sample. The first two characters of the first item in the sublist
+        will be the sample number if the sample is between 10-99. Otherwise, the sample will fail an int
+        check because the second character will be a parenthesis, at which point we take just the first character.
+
+        We then check if we already have information on the particular sample. If we don&#39;t, we make a new
+        samples dictionary entry, and now the ICP data has somewhere to go. &#34;&#34;&#34;
+
+        # has default because if there are no keys at all, we won&#39;t be able to iterate through anything
+        # at &#34;for item in samples_dictionary_keys&#34;:, and because we&#39;re just using this list for matching
+        # purposes, &#39;default&#39; won&#39;t get used for anything.
+        samples_dictionary_keys = [&#39;default&#39;]
+        for key in self.samples_dictionary.keys():
+            samples_dictionary_keys.append(key)
+        if self.backup_line_split_by_sample:
+            # there will be a list of lists, so the first if statement will always fire
+            # if we went straight to the second statement, we&#39;d get an index not found error if there was nothing
+            # doing the above if statement first avoids that
+            if self.backup_line_split_by_sample[0]:
+                for sublist in self.backup_line_split_by_sample:
+                    # below deals with the sample number being either one or two digits
+                    sample_number = sublist[0][0:2]
+                    try:
+                        if int(sample_number):
+                            pass
+                    except ValueError:
+                        sample_number = sublist[0][0:1]
+                    sample_already_present = False
+                    # if we already have the sample, no need to re-create the entry
+                    for item in samples_dictionary_keys:
+                        if sample_number in item:
+                            sample_already_present = True
+                        else:
+                            pass
+                    # will still be false if we haven&#39;t found the sample
+                    if not sample_already_present:
+                        # making the entry
+                        time = sublist.pop()
+                        date = sublist.pop()
+                        location_code = sublist.pop()
+                        sublist[0] = sample_number
+                        new_key = &#39; &#39;.join(sublist)
+                        self.samples_dictionary[new_key] = [location_code, date, time]
+
+    def use_analyte_indexes_to_get_sample_data(self):
+        &#34;&#34;&#34; generates data triplets from ICP data and appends them to the appropriate existing key in samples dict
+
+         iterates through the analyte_list indexes, which are the starting indexes of the ICP tables contained in the
+         file being parsed.
+
+         Trims off parts of the data table we don&#39;t need (mainly regulatory limit information, which
+         WaterTrax doesn&#39;t require).
+
+         Analyte rows are read up to a pre-determined amount (total_amount_of_analytes).
+
+         For each sample in the table, a key is made in metal_triplets_dictionary. We then go through the analyte rows
+         we read off, and add data triplets from these rows to the relevant keys in metal_triplets_dictionary.
+
+         If the value is below the LOQ (or LOD, not entirely sure how the lab does it), then we will write &#34;&lt;(x)&#34;,
+         where x is the LOD. We switch these for &#39;ND&#39;, which is what WaterTrax requires (aka non-detect).
+
+         Once metal_triplets_dictionary is populated, it is combined with sample_dictionary using
+         self.combine_metal_triplet_dictionary_with_samples_dictionary. &#34;&#34;&#34;
+
+        for item in self.analyte_list_indexes:
+            total_amount_of_analytes = 33
+            # actually are 34 analytes, I think - will need to check this. Pretty sure we are currently cutting off
+            # pH 02June21.
+            current_analyte_index = 0
+            index_of_start_of_analyte_rows = item+2
+            analyte_rows = []
+            triplet_pairs_dictionary = {}
+            # last 3 items in the samples list are (&#39;Maximum&#39;,&#39;Limits&#39;,&#39;Permissable&#39;), below line removes
+            sample_line = self.mb_file_split_lines[item - 1][:len(self.mb_file_split_lines[item - 1]) - 3]
+            # last 3 items in the samples list are (&#39;In&#39;,&#39;Drinking&#39;,&#39;Water&#39;), below line removes
+            header_line = self.mb_file_split_lines[item][:len(self.mb_file_split_lines[item]) - 3]
+            # gets all the relevant analyte rows and adds them to analyte_rows
+            while current_analyte_index &lt;= total_amount_of_analytes:
+                analyte_row = self.mb_file_split_lines[(index_of_start_of_analyte_rows + current_analyte_index)]
+                # below removes the drinking water limit information from the analyte rows
+                if analyte_row[-1] == &#39;listed&#39;:
+                    analyte_row = analyte_row[:len(analyte_row)-3]
+                elif analyte_row[-1] == &#39;AO&#39;:
+                    analyte_row = analyte_row[:len(analyte_row)-4]
+                elif analyte_row[-1] == &#39;hard&#39;:
+                    analyte_row = analyte_row[:len(analyte_row)-4]
+                else:
+                    analyte_row = analyte_row[:len(analyte_row)-2]
+                analyte_rows.append(analyte_row)
+                current_analyte_index += 1
+            for sample_number in sample_line:
+                self.metal_triplets_dictionary[sample_number] = []
+                # each sample number in the ICP table gets added as a key to metal_triplets_dictionary, and the value
+                # is an empty list (similar to how samples_dictionary works). We then start adding data triplet lists
+                # to this list.
+            for subitem in analyte_rows:
+                try:
+                    int(subitem[0][0])
+                    # indicates a regular metal analyte line &#39;1) Aluminum Al&#39;
+                    # in which case, we want &#39;Al&#39; to be our analyte identifier
+                    analyte_identifier = subitem[2]
+                    value_counter = 3
+                    for sample_number in sample_line:
+                        value = subitem[value_counter]
+                        if value[0] == &#34;&lt;&#34;:
+                            # switches out &lt;(x), where x == LOD, to ND
+                            value = &#39;ND&#39;
+                        self.metal_triplets_dictionary[sample_number].append([analyte_identifier,
+                                                                              &#39;(&#39; + subitem[-1] + &#39;)&#39;,
+                                                                              value])
+                        value_counter += 1
+                except ValueError:
+                    analyte_identifier = subitem[0] + &#39; &#39; + subitem[1] + &#39; &#39; + subitem[2]
+                    # indicates a non-metal line with more info than just a two letter metal, like &#39;Hardness (as CaCO3)&#39;
+                    # in which case, we want the whole line to be our analyte identifier.
+                    value_counter = 3
+                    for sample_number in sample_line:
+                        value = subitem[value_counter]
+                        if value[0] == &#34;&lt;&#34;:
+                            # switches out &lt;(x), where x == LOD, to ND
+                            value = &#39;ND&#39;
+                        self.metal_triplets_dictionary[sample_number].append([analyte_identifier,
+                                                                              &#39;(&#39; + subitem[-1] + &#39;)&#39;,
+                                                                              value])
+                        value_counter += 1
+
+    def combine_metal_triplet_dictionary_with_samples_dictionary(self):
+        &#34;&#34;&#34;assimilates metals_triplet_dictionary with samples_dictionary.
+
+        creates a list of samples_dictionary keys. Iterates through metal_triplets_dictionary items, and if the key
+        is in one the samples_dictionary_keys, then the value from metal_triplets_dictionary is appended to the
+        appropriate samples_dictionary list. This works because the keys (sample names) in samples_dictionary contain
+        the sample number, and the keys for metals_triplet_dictionary are the sample numbers. &#34;&#34;&#34;
+
+        samples_dictionary_keys = []
+        for key in self.samples_dictionary.keys():
+            samples_dictionary_keys.append(key)
+        for key, value in self.metal_triplets_dictionary.items():
+            for item in samples_dictionary_keys:
+                if key in item:
+                    key = item
+                    for triplet in value:
+                        self.samples_dictionary[key].append(triplet)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse"><code class="flex name class">
+<span>class <span class="ident">EasyTraxParse</span></span>
+<span>(</span><span>job_number, fc_file)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Parses text files generated by the DOS program FirstChoice, prepares data for conversion to WTX format.</p>
+<p>Final reports can be generated by the current MB Labs LIMS system in text format.</p>
+<p>These files contain data displayed vertically (analytes going down the page, samples across), and horizontally
+(analytes going across the page, samples going down). Both data types can be handled together or independently.</p>
+<p>sample metadata is not present in vertically displayed files, so backup sample metadata is gathered from the
+report headers.</p>
+<p>This file parses reports, extracts sample metadata and data from report headers and data tables, and combines
+them all together in one universal data format that is handled by EasyTraxConvert.</p>
+<p>Last Updated: 09June2021, P.L.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>job_number</code></strong> :&ensp;<code>str</code></dt>
+<dd>the job number of the report being converted.</dd>
+<dt><strong><code>mb_file</code></strong> :&ensp;<code>list(str)</code></dt>
+<dd>the contents of the text file being converted, line by line, in a list.</dd>
+<dt><strong><code>mb_file_split_lines</code></strong> :&ensp;<code>list(list(str))</code></dt>
+<dd>each line split based on spaces (ex. ['hello
+world I
+am',] -&gt; [['hello','world','I','am'],]</dd>
+<dt><strong><code>sample_list_indexes</code></strong> :&ensp;<code>list(int)</code></dt>
+<dd>the indexes of each sub list in fc_file_split_lines that have the string 'SAMPLE' at the beginning of the list.
+these are the start points of the horizontal data tables.</dd>
+<dt><strong><code>analyte_list_indexes</code></strong> :&ensp;<code>list(int)</code></dt>
+<dd>the indexes of each sub list in fc_file_split_lines that have the string 'ELEMENTS' at the beginning of the
+list. These are the start points of the vertical data tables.</dd>
+<dt><strong><code>backup_sample_list_indexes</code></strong> :&ensp;<code>list(int)</code></dt>
+<dd>the indexes of each sub list in fc_file_split_lines that have the string 'Samples:' at the beginning of the
+list. These are the start points of the header sample metadata.</dd>
+<dt><strong><code>backup_line_split_by_sample</code></strong> :&ensp;<code>list(list)</code></dt>
+<dd>the individual samples in the header sample metadata, in a list of lists.</dd>
+<dt><strong><code>job_dictionary</code></strong> :&ensp;<code>dict{}</code></dt>
+<dd>contains information pertaining to the overall job, like the job number.</dd>
+<dt><strong><code>samples_dictionary</code></strong> :&ensp;<code>dict{}</code></dt>
+<dd>contains information pertaining to the samples. Format in this dict is:
+key: sample name (str)
+value: sample locator code, date, time, list of lists (each sub list is a triplet, [analyte, unit, value])</dd>
+<dt><strong><code>metal_triplets_dictionary</code></strong> :&ensp;<code>dict{}</code></dt>
+<dd>contains information pertaining to the vertically formatted (analytes down, samples across) samples.
+Temporarily stored in this dictionary, then added to the samples_dictionary. Format:
+key: sample ID (str)
+value: list of data triplets [[analyte, unit, value],[analyte, unit, value],&hellip;]</dd>
+</dl>
+<h2 id="methods">Methods</h2>
+<ul>
+<li>
+<p><code>easy_trax_parse_controller()</code> -
+executes the various methods/functions in the script in the right order.</p>
+</li>
+<li>
+<p><code>split_lines_by_spacing()</code> -
+converts each line in self.fc_file into a list, split by spaces.</p>
+</li>
+<li>
+<p><code>get_client_name_and_jobnumber()</code> -
+gets the client name and the job number from the first line of the text file. Jobnumber is also passed to class
+as a parameter (forgot, wrote this unnecessary bit of code, too lazy to delete).</p>
+<ul>
+<li><code>get_job_number_from_first_line(list_to_check)</code> -
+finds the job number in the first line.</li>
+</ul>
+</li>
+<li>
+<p><code>look_for_anchor_indexes_in_split_lines()</code> -
+looks for the string 'SAMPLE' in the list of lines, adds those indices to self.sample_list_indices.
+looks for the string 'Samples:' in the list of lines, adds those indices to self.backup_sample_list_indices.
+looks for the string 'ELEMENTS' in the list of lines, adds those indices to self.analyte_list_indexes.</p>
+</li>
+<li>
+<p><code>pre_generate_backup_samples_dictionary_entries()</code> -
+if there are any indexes in self.backup_sample_list_indexes, then this method will take them and parse
+the sample header metadata into trimmed lists, consisting of [sample id, name1, &hellip; namex, code, date, time]</p>
+</li>
+<li>
+<p><code>use_sample_indexes_to_get_sample_data()</code> -
+iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.</p>
+<ul>
+<li>
+<p><code>get_analye_information(item)</code> -
+access the line above the sample index passed, which has the analyte information. Occasionally there
+is a 0 at the start of this line (for whatever reason). If this 0 is found, it's removed.</p>
+</li>
+<li>
+<p><code>get_units_information(item)</code> -
+accesses the line corresponding to the sample index passed. This line has the unit information. Removes
+the first three items in the line, which are the strings 'SAMPLE', 'DATE', and 'TIME'.</p>
+</li>
+<li>
+<p><code>get_samples_data(item)</code> -
+starts at the line at index + 2. This is the first sample line. Grabs each sample line until the sample
+name is "Lab Blank" (note, this wouldn't work if "Lab Blank" wasn't the last sample in the data table,
+and may need to be changed in the future for large jobs that might not necessarily have "Lab Blank" as the
+last sample for a given data table).</p>
+</li>
+<li>
+<p><code>split_samples_into_name_and_information(samples, analyte_information)</code> -
+takes list of samples created by get_samples_data, and, using the analyte_information, splits the sample
+lines into the two lists - one has the name, date, and time for the sample, and the other list has analyte
+values.</p>
+</li>
+<li>
+<p><code>generate_samples_dictionary_entries(samples_binary_list)</code> -
+goes through the various sample names in the samples_binary_list and uses them to make keys in the
+samples_dictionary.</p>
+</li>
+<li>
+<p><code>generate_data_triplets(analyte_information, units, samples_binary_list)</code> -
+matches analye names, units, and values for each analyte, for each sample, and adds data triplets to
+the samples_dictionary under the correct sample name.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>generate_backup_samples_dictionary_entries()</code> -
+takes the lists generated by pre_generate_backup_samples_dictionary_entries and converts them into appropriate
+key: value pairs in samples_dictionary, if the sample is not already in there.</p>
+</li>
+<li>
+<p><code>use_analyte_indexes_to_get_sample_data()</code>
+iterates through the indexes in analyte_list_indexes, and uses them to fill metal_triplets_dictionary with data.</p>
+</li>
+<li>
+<p><code>combine_metal_triplet_dictionary_with_samples_dictionary()</code>
+matches the sample ID keys in metal_triplets_dictionary to sample ID + name keys in samples_dictionary. Once
+matched, adds data in metal_triplets_dictionary to samples_dictionary.</p>
+</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>job_number</code></strong> :&ensp;<code>str</code></dt>
+<dd>the job number for the job being converted</dd>
+<dt><strong><code>fc_file</code></strong> :&ensp;<code>list</code></dt>
+<dd>a list of the lines in the FirstChoice text file being parsed.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class EasyTraxParse:
+    &#34;&#34;&#34;Parses text files generated by the DOS program FirstChoice, prepares data for conversion to WTX format.
+
+    Final reports can be generated by the current MB Labs LIMS system in text format.
+
+    These files contain data displayed vertically (analytes going down the page, samples across), and horizontally
+    (analytes going across the page, samples going down). Both data types can be handled together or independently.
+
+    sample metadata is not present in vertically displayed files, so backup sample metadata is gathered from the
+    report headers.
+
+    This file parses reports, extracts sample metadata and data from report headers and data tables, and combines
+    them all together in one universal data format that is handled by EasyTraxConvert.
+
+    Last Updated: 09June2021, P.L.
+
+    Attributes
+    ----------
+    job_number : str
+        the job number of the report being converted.
+
+    mb_file : list(str)
+        the contents of the text file being converted, line by line, in a list.
+
+    mb_file_split_lines : list(list(str))
+        each line split based on spaces (ex. [&#39;hello          world I           am&#39;,] -&gt; [[&#39;hello&#39;,&#39;world&#39;,&#39;I&#39;,&#39;am&#39;],]
+
+    sample_list_indexes : list(int)
+        the indexes of each sub list in fc_file_split_lines that have the string &#39;SAMPLE&#39; at the beginning of the list.
+        these are the start points of the horizontal data tables.
+
+    analyte_list_indexes : list(int)
+        the indexes of each sub list in fc_file_split_lines that have the string &#39;ELEMENTS&#39; at the beginning of the
+        list. These are the start points of the vertical data tables.
+
+    backup_sample_list_indexes : list(int)
+        the indexes of each sub list in fc_file_split_lines that have the string &#39;Samples:&#39; at the beginning of the
+        list. These are the start points of the header sample metadata.
+
+    backup_line_split_by_sample : list(list)
+        the individual samples in the header sample metadata, in a list of lists.
+
+    job_dictionary : dict{}
+        contains information pertaining to the overall job, like the job number.
+
+    samples_dictionary : dict{}
+        contains information pertaining to the samples. Format in this dict is:
+        key: sample name (str)
+        value: sample locator code, date, time, list of lists (each sub list is a triplet, [analyte, unit, value])
+
+    metal_triplets_dictionary : dict{}
+        contains information pertaining to the vertically formatted (analytes down, samples across) samples.
+        Temporarily stored in this dictionary, then added to the samples_dictionary. Format:
+        key: sample ID (str)
+        value: list of data triplets [[analyte, unit, value],[analyte, unit, value],...]
+
+    Methods
+    -------
+    * `easy_trax_parse_controller()` -
+        executes the various methods/functions in the script in the right order.
+
+    * `split_lines_by_spacing()` -
+        converts each line in self.fc_file into a list, split by spaces.
+
+    * `get_client_name_and_jobnumber()` -
+        gets the client name and the job number from the first line of the text file. Jobnumber is also passed to class
+        as a parameter (forgot, wrote this unnecessary bit of code, too lazy to delete).
+
+        * `get_job_number_from_first_line(list_to_check)` -
+            finds the job number in the first line.
+
+    * `look_for_anchor_indexes_in_split_lines()` -
+        looks for the string &#39;SAMPLE&#39; in the list of lines, adds those indices to self.sample_list_indices.
+        looks for the string &#39;Samples:&#39; in the list of lines, adds those indices to self.backup_sample_list_indices.
+        looks for the string &#39;ELEMENTS&#39; in the list of lines, adds those indices to self.analyte_list_indexes.
+
+    * `pre_generate_backup_samples_dictionary_entries()` -
+        if there are any indexes in self.backup_sample_list_indexes, then this method will take them and parse
+        the sample header metadata into trimmed lists, consisting of [sample id, name1, ... namex, code, date, time]
+
+    * `use_sample_indexes_to_get_sample_data()` -
+        iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
+
+        * `get_analye_information(item)` -
+            access the line above the sample index passed, which has the analyte information. Occasionally there
+            is a 0 at the start of this line (for whatever reason). If this 0 is found, it&#39;s removed.
+
+        * `get_units_information(item)` -
+            accesses the line corresponding to the sample index passed. This line has the unit information. Removes
+            the first three items in the line, which are the strings &#39;SAMPLE&#39;, &#39;DATE&#39;, and &#39;TIME&#39;.
+
+        * `get_samples_data(item)` -
+            starts at the line at index + 2. This is the first sample line. Grabs each sample line until the sample
+            name is &#34;Lab Blank&#34; (note, this wouldn&#39;t work if &#34;Lab Blank&#34; wasn&#39;t the last sample in the data table,
+            and may need to be changed in the future for large jobs that might not necessarily have &#34;Lab Blank&#34; as the
+            last sample for a given data table).
+
+        * `split_samples_into_name_and_information(samples, analyte_information)` -
+            takes list of samples created by get_samples_data, and, using the analyte_information, splits the sample
+            lines into the two lists - one has the name, date, and time for the sample, and the other list has analyte
+            values.
+
+        * `generate_samples_dictionary_entries(samples_binary_list)` -
+            goes through the various sample names in the samples_binary_list and uses them to make keys in the
+            samples_dictionary.
+
+        * `generate_data_triplets(analyte_information, units, samples_binary_list)` -
+            matches analye names, units, and values for each analyte, for each sample, and adds data triplets to
+            the samples_dictionary under the correct sample name.
+
+    * `generate_backup_samples_dictionary_entries()` -
+        takes the lists generated by pre_generate_backup_samples_dictionary_entries and converts them into appropriate
+        key: value pairs in samples_dictionary, if the sample is not already in there.
+
+    * `use_analyte_indexes_to_get_sample_data()`
+        iterates through the indexes in analyte_list_indexes, and uses them to fill metal_triplets_dictionary with data.
+
+    * `combine_metal_triplet_dictionary_with_samples_dictionary()`
+        matches the sample ID keys in metal_triplets_dictionary to sample ID + name keys in samples_dictionary. Once
+        matched, adds data in metal_triplets_dictionary to samples_dictionary.
+        &#34;&#34;&#34;
+
+    def __init__(self, job_number, fc_file):
+        &#34;&#34;&#34;
+        Parameters
+        ----------
+        job_number: str
+            the job number for the job being converted
+        fc_file: list
+            a list of the lines in the FirstChoice text file being parsed.
+        &#34;&#34;&#34;
+
+        self.job_number = job_number
+        self.mb_file = fc_file
+        self.mb_file_split_lines = []
+        self.sample_list_indexes = []
+        self.backup_sample_list_indexes = []
+        self.backup_line_split_by_sample = []
+        self.analyte_list_indexes = []
+        self.job_dictionary = {}
+        self.samples_dictionary = {}
+        self.metal_triplets_dictionary = {}
+
+    def easy_trax_parse_controller(self):
+        &#34;&#34;&#34;executes the various methods/functions in the script in the right order.
+
+        Is called in EasyTraxTK. Returns the samples_dictionary and job_dictionary to EasyTraxTK
+        for passing to the converter.
+
+        Returns
+        -------
+        samples_dictionary : dict
+            dictionary where all sample level information is held.
+
+        job_dictionary : dict
+            dictionary where all job level information is held.
+        &#34;&#34;&#34;
+
+        # split up the whole file line by line
+        self.split_lines_by_spacing()
+        # extract the client name and job number
+        self.get_client_name_and_jobnumber()
+        # collect anchor indexes
+        self.look_for_anchor_indexes_in_split_lines()
+        # pre-generate backup sample metadata if there is sample header info
+        if self.backup_sample_list_indexes:
+            self.pre_generate_backup_samples_dictionary_entries()
+        # process the horizontal data tables
+        self.use_sample_indexes_to_get_sample_data()
+        # create entries of any samples not covered in the horizontal data tables
+        self.generate_backup_samples_dictionary_entries()
+        # finally, process the ICP data files, having dealt with the sample metadata
+        self.use_analyte_indexes_to_get_sample_data()
+        # combine the metal triplets with the rest of the data triplets
+        self.combine_metal_triplet_dictionary_with_samples_dictionary()
+        # return the properly formatted intermediate data, ready for conversion
+        return self.samples_dictionary, self.job_dictionary
+
+    def split_lines_by_spacing(self):
+        &#34;&#34;&#34; converts each line in self.mb_file into a list, split by spaces.
+        &#34;&#34;&#34;
+
+        for item in self.mb_file:
+            self.mb_file_split_lines.append(item.split())
+
+    def get_client_name_and_jobnumber(self):
+        &#34;&#34;&#34;gets the client name and the job number from the first line of the text file.
+
+        Jobnumber is also passed to class as a parameter
+        (forgot, wrote this unnecessary bit of code, too lazy to delete). &#34;&#34;&#34;
+
+        # if you leave a blank line before the start of the header, will need to access self.fc_file_split_lines[1][0:2]
+        # otherwise, you want to access the first line.
+        self.job_dictionary[&#39;client identifier&#39;] = &#34; &#34;.join(self.mb_file_split_lines[0][0:2])
+        self.job_dictionary[&#39;job number&#39;] = self.get_job_number_from_first_line(self.mb_file_split_lines[0])
+
+    def get_job_number_from_first_line(self, list_to_check):
+        &#34;&#34;&#34;finds the job number in the first line.
+
+        checks to see if there is a &#39;pg X&#39; after the job number. Checks by seeing if the length of the last element is
+        7. If it is, it&#39;s assumed to be the job number. If it isn&#39;t, it&#39;s assumed to be the &#39;pg X&#39; designator, and it
+        is also assumed that the list element before it is the job number.
+
+        Parameters
+        ----------
+        list_to_check : list
+            the list to check - the first line of the file, split by space, in list form.
+
+        Returns
+        -------
+        list_to_check[n] : string
+            where n = -1 or -2. The item at index n will be the jobnumber in string form. &#34;&#34;&#34;
+
+        if len(list_to_check[-1]) == 7:
+            return list_to_check[-1]
+        else:
+            return list_to_check[-2]
+
+    def look_for_anchor_indexes_in_split_lines(self):
+        &#34;&#34;&#34; looks for anchor indices in the split lines. Adds them to the relevant list. 3 types of anchors.
+
+        first filters out empty lines.
+
+        If a line has something in it, checks to see if the first index is &#39;SAMPLE&#39;.
+
+        If it is, adds the index of the line to sample_list_indexes. These indexes are used to parse
+        horizontal data tables.
+
+        Then checks if the first index is &#39;Samples:&#39;. If it is, adds the index to backup_sample_list_indexes.
+
+        These indexes are used to parse sample metadata from the header part of the report (name, date, location, etc).
+        This information is generally taken from horizontal data tables, and then the ICP data tables piggyback.
+        If there are no horizontal data tables, or if there are samples in vertical data tables that aren&#39;t present
+        in horizontal data tables, we need a second way to get sample metadata. That&#39;s what the backup is for.
+
+        Finally checks if the first index is &#39;ELEMENTS&#39;.
+
+        If it is, adds the index to analyte_list_indexes. These indexes are used to parse vertical ICP style
+        data tables. &#34;&#34;&#34;
+
+        for item in self.mb_file_split_lines:
+            if len(item) &gt; 0:
+                if item[0] == &#39;SAMPLE&#39;:
+                    self.sample_list_indexes.append(self.mb_file_split_lines.index(item))
+                elif item[0] == &#39;Samples:&#39;:
+                    self.backup_sample_list_indexes.append(self.mb_file_split_lines.index(item))
+                elif item[0] == &#39;ELEMENTS&#39;:
+                    self.analyte_list_indexes.append(self.mb_file_split_lines.index(item))
+                else:
+                    pass
+
+    def pre_generate_backup_samples_dictionary_entries(self):
+        &#34;&#34;&#34;generates backup samples dictionary metadata entries, so that ICP formatted data can be properly assigned.
+
+        there may be many indexes, we only need one as all the sample lists should be the same. Will have to deal with
+        this if this is not the case in the future (09June21).
+
+        empty_list is used to determine when we&#39;ve come to a gap in the page, which means we are no longer reading in
+        our sample information.
+
+        Once a gap is hit, it&#39;s assumed that we&#39;ve reached the end of the header. We then collapse all the lists of
+        lines into one long list. We iterate through this list.
+
+        The first time we hit a parenthesis &#39;)&#39;, we know were at the start of a sample. Once we hit another parenthesis,
+        we know we are at the start of the next sample.
+
+        This logic is used to split the information up into segments where the last three items will be location code,
+        date, and time, the first item will be the sample number, and the remaining indexes when combined in order
+        are the sample name. &#34;&#34;&#34;
+
+        # once we hit a gap in the file, empty_list will be set to true, and we will know we are at the end of the
+        # sample information.
+        empty_list = False
+        # the line that &#39;Samples: &#39; is on.
+        backup_sample_list_index = self.backup_sample_list_indexes[0]
+        backup_sample_lines = []
+        while not empty_list:
+            backup_samples_line = self.mb_file_split_lines[backup_sample_list_index]
+            if len(backup_samples_line) == 0:
+                empty_list = True
+            else:
+                backup_sample_lines.append(backup_samples_line)
+                backup_sample_list_index += 1
+        # collapsing the lines (which may have more than one sample, or may have one sample) into one list.
+        backup_sample_lines = [item for sublist in backup_sample_lines for item in sublist]
+        # if keep adding is False, we have hit the next sample, so stops adding
+        # starts as false so we don&#39;t add all the extra info before the first sample
+        # first parenthesis encountered then turns keep_adding to True
+        # then we add up the first sample information
+        # second parenthesis if keep_adding is true will trigger an appending and a clearing of single_sample
+        # keep_adding will now always be true
+        keep_adding = False
+        single_sample = []
+        for item in backup_sample_lines:
+            if &#39;)&#39; in item:
+                # either the first sample or not
+                if keep_adding:
+                    # past the first sample
+                    self.backup_line_split_by_sample.append(single_sample)
+                    single_sample = [item]
+                else:
+                    # the first sample
+                    single_sample.append(item)
+                    keep_adding = True
+            else:
+                # sample information
+                if keep_adding:
+                    # will only be false prior to hitting the first sample
+                    single_sample.append(item)
+        self.backup_line_split_by_sample.append(single_sample)
+
+    def use_sample_indexes_to_get_sample_data(self):
+        &#34;&#34;&#34; iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
+
+        sort of a controller function, mostly calls other functions in the correct order. Each sample index represents
+        a data table that needs to be &#39;harvested&#39;. for data table, the analyte names, units, and values are isolated,
+        and then re-assembled in an intermediate format that we use to make the WTX files. &#34;&#34;&#34;
+
+        for item in self.sample_list_indexes:
+            # each item is an index.
+            analyte_information = self.get_analyte_information(item)
+            units = self.get_units_information(item)
+            samples = self.get_samples_data(item)
+            samples_binary_list = self.split_samples_into_name_and_information(samples,
+                                                                               analyte_information)
+            self.generate_samples_dictionary_entries(samples_binary_list)
+            self.generate_data_triplets(analyte_information, units, samples_binary_list)
+
+    def get_analyte_information(self, sample_index):
+        &#34;&#34;&#34;gets analyte information from line above sample index.
+
+        sometimes there is a 0 at the start of this line, not sure why. If so, this method removes this character.
+
+        Returns
+        -------
+        analyte_information : list
+            list containing analyte information.&#34;&#34;&#34;
+
+        analyte_information = self.mb_file_split_lines[sample_index - 1]
+        if analyte_information[0] == &#39;0&#39;:
+            analyte_information = analyte_information[1:]
+        return analyte_information
+
+    def get_units_information(self, sample_index):
+        &#34;&#34;&#34;gets units information from line of the sample index.
+
+        removes the first three elements of the list, which are the strings &#39;sample&#39;, &#39;date&#39;, and &#39;time&#39;.
+
+        Returns
+        -------
+        units : list
+            list containing units information.&#34;&#34;&#34;
+
+        units = self.mb_file_split_lines[sample_index]
+        units = units[3:]
+        return units
+
+    def get_samples_data(self, sample_index):
+        &#34;&#34;&#34;returns the lines of data in the horizontal sample tables.
+
+        first line is two indexes ahead of the sample index. While there is information on subsequent lines, lines
+        are added to the samples variable (a list). if a line is blank, it signifies the end of the data table, at
+        which point the while loop is exited and the sample lines are returned.
+
+        Parameters
+        ----------
+        sample_index : int
+            index in the list of lists representing the mb labs file corresponding to a horizontal data table
+
+        Returns
+        -------
+        samples : list
+            list of list containing lines of the horizontal data table in question
+        &#34;&#34;&#34;
+
+        samples = []
+        item_index = sample_index + 2
+        blank_counter = 0
+        while blank_counter == 0:
+            sample = self.mb_file_split_lines[item_index]
+            if len(sample) &gt; 0:
+                samples.append(sample)
+                item_index += 1
+            else:
+                blank_counter += 1
+        return samples
+
+    def split_samples_into_name_and_information(self, samples, analyte_information):
+        &#34;&#34;&#34;splits raw sample lines into two lists - one containing sample name info, and one containing analyte info.
+
+        iterates through samples. First checks to see if sample is a blank, and if so, handles accordingly (no date
+        or time).
+
+        If the sample is not a blank, we find the index the sample values start at/ the name information
+        ends at. This is equal to the length of the samples list - the length of the analyte_information list (because
+        there will be one analyte identifier per value). Uses this to slice off the sample name, location code,
+        date, time, and isolate them. If no sampling location is detected, then &#39;no location&#39; is inserted instead
+        (without a sampling location, we can&#39;t upload to WaterTrax, so this would be a fatal error).
+
+        Returns
+        -------
+        sample_name_date_time, sample_information : [list, list]
+            2 membered list, first member being a list of sample info, the second being a list of values.
+        &#34;&#34;&#34;
+
+        sample_name_date_time = []
+        sample_information = []
+        for item in samples:
+            if item[0] + &#34; &#34; + item[1] == &#39;Lab Blank&#39;:
+                sample_name = item[0] + &#34; &#34; + item[1]
+                sample_name_date_time.append([sample_name])
+                sample_information.append(item[2:])
+            else:
+                index_samples_start_at = len(item) - len(analyte_information)
+                sample_name_date_time_list = item[:index_samples_start_at]
+                # sample_name_date_time_list = [name, sampling location (hopefully), date, time]
+                sample_time = sample_name_date_time_list.pop()
+                # sample_name_date_time_list = [name, sampling location (hopefully), date]
+                sample_date = sample_name_date_time_list.pop()
+                # sample_name_date_time_list = [name, sampling location (hopefully)]
+                check_for_digits = False
+                # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
+                # and assume that&#39;s the sampling location.
+                if len(sample_name_date_time_list[-1]) == 5:
+                    for sub_item in sample_name_date_time_list[-1]:
+                        if sub_item.isdigit():
+                            check_for_digits = True
+                if check_for_digits is True:
+                    # i.e. if the last item in the sample_name_date_time_list has a length of 5 with at least one int
+                    sampling_information = sample_name_date_time_list.pop()
+                else:
+                    # otherwise, we don&#39;t have a sampling location.
+                    # all sampling locations have a length of 5 and contain numbers. It&#39;s possible a sample name could
+                    # meet that criteria (imagine a sample called room1). In which case, it would be erroneously
+                    # considered a sample location.
+                    sampling_information = &#39;no location&#39;
+                sample_name = &#34; &#34;.join(sample_name_date_time_list)
+                sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
+                sample_information.append(item[index_samples_start_at:])
+        return [sample_name_date_time, sample_information]
+
+    def generate_samples_dictionary_entries(self, samples_binary_list):
+        &#34;&#34;&#34;creates the keys (sample name) in sample dictionary, populates with sample metadata (location, date, time)
+
+        iterates through the items in the first list in each binary list in samples_binary_list. If the key is already
+        in the dictionary, we pass (there will n copies of each name in samples_binary_list, with n being the amount
+        of horizontal data tables existing in the parsed document).
+
+        if the length of the item is 1, it&#39;s a blank, because a sample has a name, location, date, and time. Otherwise,
+        the item is assumed to be a sample, and handled accordingly. &#34;&#34;&#34;
+
+        for item in samples_binary_list[0]:
+            if len(item) == 1:
+                # is assumed to be a lab blank
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [&#34;no location&#34;, &#34;no date&#34;, &#34;no time&#34;]
+            else:
+                # is assumed to be a sample
+                if item[0] in self.samples_dictionary:
+                    pass
+                else:
+                    self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]
+
+    def generate_data_triplets(self, analyte_information, units, samples_binary_list):
+        &#34;&#34;&#34; generates data triplets [analyte, unit, value] and adds via the sample name key to the samples dictionary
+
+        iterates through the samples_binary_list[0]. Keeps track of the index using sample_number_index so it can access
+        the right list in samples_binary_list[1]. Needs to be a separate unit index and item index because some analytes
+        (so far all I&#39;ve found is pH, but I believe there are others) don&#39;t have units. Assembles data triplets, and
+        appends them to the list values in samples dictionary. &#34;&#34;&#34;
+
+        sample_number_index = 0
+        # so we can access the right spot in samples_binary_list[1].
+        for item in samples_binary_list[0]:
+            unit_index = 0
+            # keeps track of where we are in the unit index
+            item_index = 0
+            # will be the same as the unit index, except where there are no units for a given analyte. In which case,
+            # there will be a mismatch (x units will not equal n values), and we need two counters to account for that.
+            sample_name_and_dict_key = item[0]
+            # this will be the same as the keys now in samples dictionary
+            for subitem in analyte_information:
+                analyte_name = subitem
+                if analyte_name == &#39;pH&#39;:
+                    analyte_unit = &#39;pH&#39;
+                    # rather than grabbing units from the units list, we make a custom analyte_unit.
+                else:
+                    analyte_unit = units[unit_index]
+                    # all other analytes other than pH (so far, 28May21) will have a unit
+                    unit_index += 1
+                value = samples_binary_list[1][sample_number_index][item_index]
+                self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
+                # appending, value is a list.
+                item_index += 1
+            sample_number_index += 1
+
+    def generate_backup_samples_dictionary_entries(self):
+        &#34;&#34;&#34;generates the backup sample dictionary metadata if no horizontal tables are in the report.
+
+        first looks at whether we have any samples dictionary keys already.
+
+        There are two options that require backup metadata - either there are no horizontal tables,
+        or there are samples that exist in vertical data tables that don&#39;t exist in subsequent horizontal
+        data tables in the file.
+
+        Checks to see if there are any backup sample indices to work on - sometimes, when there is only
+        horizontal data in the report, the admin staff don&#39;t add in the samples line.
+
+        Each sublist corresponds to a sample. The first two characters of the first item in the sublist
+        will be the sample number if the sample is between 10-99. Otherwise, the sample will fail an int
+        check because the second character will be a parenthesis, at which point we take just the first character.
+
+        We then check if we already have information on the particular sample. If we don&#39;t, we make a new
+        samples dictionary entry, and now the ICP data has somewhere to go. &#34;&#34;&#34;
+
+        # has default because if there are no keys at all, we won&#39;t be able to iterate through anything
+        # at &#34;for item in samples_dictionary_keys&#34;:, and because we&#39;re just using this list for matching
+        # purposes, &#39;default&#39; won&#39;t get used for anything.
+        samples_dictionary_keys = [&#39;default&#39;]
+        for key in self.samples_dictionary.keys():
+            samples_dictionary_keys.append(key)
+        if self.backup_line_split_by_sample:
+            # there will be a list of lists, so the first if statement will always fire
+            # if we went straight to the second statement, we&#39;d get an index not found error if there was nothing
+            # doing the above if statement first avoids that
+            if self.backup_line_split_by_sample[0]:
+                for sublist in self.backup_line_split_by_sample:
+                    # below deals with the sample number being either one or two digits
+                    sample_number = sublist[0][0:2]
+                    try:
+                        if int(sample_number):
+                            pass
+                    except ValueError:
+                        sample_number = sublist[0][0:1]
+                    sample_already_present = False
+                    # if we already have the sample, no need to re-create the entry
+                    for item in samples_dictionary_keys:
+                        if sample_number in item:
+                            sample_already_present = True
+                        else:
+                            pass
+                    # will still be false if we haven&#39;t found the sample
+                    if not sample_already_present:
+                        # making the entry
+                        time = sublist.pop()
+                        date = sublist.pop()
+                        location_code = sublist.pop()
+                        sublist[0] = sample_number
+                        new_key = &#39; &#39;.join(sublist)
+                        self.samples_dictionary[new_key] = [location_code, date, time]
+
+    def use_analyte_indexes_to_get_sample_data(self):
+        &#34;&#34;&#34; generates data triplets from ICP data and appends them to the appropriate existing key in samples dict
+
+         iterates through the analyte_list indexes, which are the starting indexes of the ICP tables contained in the
+         file being parsed.
+
+         Trims off parts of the data table we don&#39;t need (mainly regulatory limit information, which
+         WaterTrax doesn&#39;t require).
+
+         Analyte rows are read up to a pre-determined amount (total_amount_of_analytes).
+
+         For each sample in the table, a key is made in metal_triplets_dictionary. We then go through the analyte rows
+         we read off, and add data triplets from these rows to the relevant keys in metal_triplets_dictionary.
+
+         If the value is below the LOQ (or LOD, not entirely sure how the lab does it), then we will write &#34;&lt;(x)&#34;,
+         where x is the LOD. We switch these for &#39;ND&#39;, which is what WaterTrax requires (aka non-detect).
+
+         Once metal_triplets_dictionary is populated, it is combined with sample_dictionary using
+         self.combine_metal_triplet_dictionary_with_samples_dictionary. &#34;&#34;&#34;
+
+        for item in self.analyte_list_indexes:
+            total_amount_of_analytes = 33
+            # actually are 34 analytes, I think - will need to check this. Pretty sure we are currently cutting off
+            # pH 02June21.
+            current_analyte_index = 0
+            index_of_start_of_analyte_rows = item+2
+            analyte_rows = []
+            triplet_pairs_dictionary = {}
+            # last 3 items in the samples list are (&#39;Maximum&#39;,&#39;Limits&#39;,&#39;Permissable&#39;), below line removes
+            sample_line = self.mb_file_split_lines[item - 1][:len(self.mb_file_split_lines[item - 1]) - 3]
+            # last 3 items in the samples list are (&#39;In&#39;,&#39;Drinking&#39;,&#39;Water&#39;), below line removes
+            header_line = self.mb_file_split_lines[item][:len(self.mb_file_split_lines[item]) - 3]
+            # gets all the relevant analyte rows and adds them to analyte_rows
+            while current_analyte_index &lt;= total_amount_of_analytes:
+                analyte_row = self.mb_file_split_lines[(index_of_start_of_analyte_rows + current_analyte_index)]
+                # below removes the drinking water limit information from the analyte rows
+                if analyte_row[-1] == &#39;listed&#39;:
+                    analyte_row = analyte_row[:len(analyte_row)-3]
+                elif analyte_row[-1] == &#39;AO&#39;:
+                    analyte_row = analyte_row[:len(analyte_row)-4]
+                elif analyte_row[-1] == &#39;hard&#39;:
+                    analyte_row = analyte_row[:len(analyte_row)-4]
+                else:
+                    analyte_row = analyte_row[:len(analyte_row)-2]
+                analyte_rows.append(analyte_row)
+                current_analyte_index += 1
+            for sample_number in sample_line:
+                self.metal_triplets_dictionary[sample_number] = []
+                # each sample number in the ICP table gets added as a key to metal_triplets_dictionary, and the value
+                # is an empty list (similar to how samples_dictionary works). We then start adding data triplet lists
+                # to this list.
+            for subitem in analyte_rows:
+                try:
+                    int(subitem[0][0])
+                    # indicates a regular metal analyte line &#39;1) Aluminum Al&#39;
+                    # in which case, we want &#39;Al&#39; to be our analyte identifier
+                    analyte_identifier = subitem[2]
+                    value_counter = 3
+                    for sample_number in sample_line:
+                        value = subitem[value_counter]
+                        if value[0] == &#34;&lt;&#34;:
+                            # switches out &lt;(x), where x == LOD, to ND
+                            value = &#39;ND&#39;
+                        self.metal_triplets_dictionary[sample_number].append([analyte_identifier,
+                                                                              &#39;(&#39; + subitem[-1] + &#39;)&#39;,
+                                                                              value])
+                        value_counter += 1
+                except ValueError:
+                    analyte_identifier = subitem[0] + &#39; &#39; + subitem[1] + &#39; &#39; + subitem[2]
+                    # indicates a non-metal line with more info than just a two letter metal, like &#39;Hardness (as CaCO3)&#39;
+                    # in which case, we want the whole line to be our analyte identifier.
+                    value_counter = 3
+                    for sample_number in sample_line:
+                        value = subitem[value_counter]
+                        if value[0] == &#34;&lt;&#34;:
+                            # switches out &lt;(x), where x == LOD, to ND
+                            value = &#39;ND&#39;
+                        self.metal_triplets_dictionary[sample_number].append([analyte_identifier,
+                                                                              &#39;(&#39; + subitem[-1] + &#39;)&#39;,
+                                                                              value])
+                        value_counter += 1
+
+    def combine_metal_triplet_dictionary_with_samples_dictionary(self):
+        &#34;&#34;&#34;assimilates metals_triplet_dictionary with samples_dictionary.
+
+        creates a list of samples_dictionary keys. Iterates through metal_triplets_dictionary items, and if the key
+        is in one the samples_dictionary_keys, then the value from metal_triplets_dictionary is appended to the
+        appropriate samples_dictionary list. This works because the keys (sample names) in samples_dictionary contain
+        the sample number, and the keys for metals_triplet_dictionary are the sample numbers. &#34;&#34;&#34;
+
+        samples_dictionary_keys = []
+        for key in self.samples_dictionary.keys():
+            samples_dictionary_keys.append(key)
+        for key, value in self.metal_triplets_dictionary.items():
+            for item in samples_dictionary_keys:
+                if key in item:
+                    key = item
+                    for triplet in value:
+                        self.samples_dictionary[key].append(triplet)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.combine_metal_triplet_dictionary_with_samples_dictionary"><code class="name flex">
+<span>def <span class="ident">combine_metal_triplet_dictionary_with_samples_dictionary</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>assimilates metals_triplet_dictionary with samples_dictionary.</p>
+<p>creates a list of samples_dictionary keys. Iterates through metal_triplets_dictionary items, and if the key
+is in one the samples_dictionary_keys, then the value from metal_triplets_dictionary is appended to the
+appropriate samples_dictionary list. This works because the keys (sample names) in samples_dictionary contain
+the sample number, and the keys for metals_triplet_dictionary are the sample numbers.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def combine_metal_triplet_dictionary_with_samples_dictionary(self):
+    &#34;&#34;&#34;assimilates metals_triplet_dictionary with samples_dictionary.
+
+    creates a list of samples_dictionary keys. Iterates through metal_triplets_dictionary items, and if the key
+    is in one the samples_dictionary_keys, then the value from metal_triplets_dictionary is appended to the
+    appropriate samples_dictionary list. This works because the keys (sample names) in samples_dictionary contain
+    the sample number, and the keys for metals_triplet_dictionary are the sample numbers. &#34;&#34;&#34;
+
+    samples_dictionary_keys = []
+    for key in self.samples_dictionary.keys():
+        samples_dictionary_keys.append(key)
+    for key, value in self.metal_triplets_dictionary.items():
+        for item in samples_dictionary_keys:
+            if key in item:
+                key = item
+                for triplet in value:
+                    self.samples_dictionary[key].append(triplet)</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.easy_trax_parse_controller"><code class="name flex">
+<span>def <span class="ident">easy_trax_parse_controller</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>executes the various methods/functions in the script in the right order.</p>
+<p>Is called in EasyTraxTK. Returns the samples_dictionary and job_dictionary to EasyTraxTK
+for passing to the converter.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>samples_dictionary</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary where all sample level information is held.</dd>
+<dt><strong><code>job_dictionary</code></strong> :&ensp;<code>dict</code></dt>
+<dd>dictionary where all job level information is held.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def easy_trax_parse_controller(self):
+    &#34;&#34;&#34;executes the various methods/functions in the script in the right order.
+
+    Is called in EasyTraxTK. Returns the samples_dictionary and job_dictionary to EasyTraxTK
+    for passing to the converter.
+
+    Returns
+    -------
+    samples_dictionary : dict
+        dictionary where all sample level information is held.
+
+    job_dictionary : dict
+        dictionary where all job level information is held.
+    &#34;&#34;&#34;
+
+    # split up the whole file line by line
+    self.split_lines_by_spacing()
+    # extract the client name and job number
+    self.get_client_name_and_jobnumber()
+    # collect anchor indexes
+    self.look_for_anchor_indexes_in_split_lines()
+    # pre-generate backup sample metadata if there is sample header info
+    if self.backup_sample_list_indexes:
+        self.pre_generate_backup_samples_dictionary_entries()
+    # process the horizontal data tables
+    self.use_sample_indexes_to_get_sample_data()
+    # create entries of any samples not covered in the horizontal data tables
+    self.generate_backup_samples_dictionary_entries()
+    # finally, process the ICP data files, having dealt with the sample metadata
+    self.use_analyte_indexes_to_get_sample_data()
+    # combine the metal triplets with the rest of the data triplets
+    self.combine_metal_triplet_dictionary_with_samples_dictionary()
+    # return the properly formatted intermediate data, ready for conversion
+    return self.samples_dictionary, self.job_dictionary</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.generate_backup_samples_dictionary_entries"><code class="name flex">
+<span>def <span class="ident">generate_backup_samples_dictionary_entries</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>generates the backup sample dictionary metadata if no horizontal tables are in the report.</p>
+<p>first looks at whether we have any samples dictionary keys already.</p>
+<p>There are two options that require backup metadata - either there are no horizontal tables,
+or there are samples that exist in vertical data tables that don't exist in subsequent horizontal
+data tables in the file.</p>
+<p>Checks to see if there are any backup sample indices to work on - sometimes, when there is only
+horizontal data in the report, the admin staff don't add in the samples line.</p>
+<p>Each sublist corresponds to a sample. The first two characters of the first item in the sublist
+will be the sample number if the sample is between 10-99. Otherwise, the sample will fail an int
+check because the second character will be a parenthesis, at which point we take just the first character.</p>
+<p>We then check if we already have information on the particular sample. If we don't, we make a new
+samples dictionary entry, and now the ICP data has somewhere to go.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_backup_samples_dictionary_entries(self):
+    &#34;&#34;&#34;generates the backup sample dictionary metadata if no horizontal tables are in the report.
+
+    first looks at whether we have any samples dictionary keys already.
+
+    There are two options that require backup metadata - either there are no horizontal tables,
+    or there are samples that exist in vertical data tables that don&#39;t exist in subsequent horizontal
+    data tables in the file.
+
+    Checks to see if there are any backup sample indices to work on - sometimes, when there is only
+    horizontal data in the report, the admin staff don&#39;t add in the samples line.
+
+    Each sublist corresponds to a sample. The first two characters of the first item in the sublist
+    will be the sample number if the sample is between 10-99. Otherwise, the sample will fail an int
+    check because the second character will be a parenthesis, at which point we take just the first character.
+
+    We then check if we already have information on the particular sample. If we don&#39;t, we make a new
+    samples dictionary entry, and now the ICP data has somewhere to go. &#34;&#34;&#34;
+
+    # has default because if there are no keys at all, we won&#39;t be able to iterate through anything
+    # at &#34;for item in samples_dictionary_keys&#34;:, and because we&#39;re just using this list for matching
+    # purposes, &#39;default&#39; won&#39;t get used for anything.
+    samples_dictionary_keys = [&#39;default&#39;]
+    for key in self.samples_dictionary.keys():
+        samples_dictionary_keys.append(key)
+    if self.backup_line_split_by_sample:
+        # there will be a list of lists, so the first if statement will always fire
+        # if we went straight to the second statement, we&#39;d get an index not found error if there was nothing
+        # doing the above if statement first avoids that
+        if self.backup_line_split_by_sample[0]:
+            for sublist in self.backup_line_split_by_sample:
+                # below deals with the sample number being either one or two digits
+                sample_number = sublist[0][0:2]
+                try:
+                    if int(sample_number):
+                        pass
+                except ValueError:
+                    sample_number = sublist[0][0:1]
+                sample_already_present = False
+                # if we already have the sample, no need to re-create the entry
+                for item in samples_dictionary_keys:
+                    if sample_number in item:
+                        sample_already_present = True
+                    else:
+                        pass
+                # will still be false if we haven&#39;t found the sample
+                if not sample_already_present:
+                    # making the entry
+                    time = sublist.pop()
+                    date = sublist.pop()
+                    location_code = sublist.pop()
+                    sublist[0] = sample_number
+                    new_key = &#39; &#39;.join(sublist)
+                    self.samples_dictionary[new_key] = [location_code, date, time]</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.generate_data_triplets"><code class="name flex">
+<span>def <span class="ident">generate_data_triplets</span></span>(<span>self, analyte_information, units, samples_binary_list)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>generates data triplets [analyte, unit, value] and adds via the sample name key to the samples dictionary</p>
+<p>iterates through the samples_binary_list[0]. Keeps track of the index using sample_number_index so it can access
+the right list in samples_binary_list[1]. Needs to be a separate unit index and item index because some analytes
+(so far all I've found is pH, but I believe there are others) don't have units. Assembles data triplets, and
+appends them to the list values in samples dictionary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_data_triplets(self, analyte_information, units, samples_binary_list):
+    &#34;&#34;&#34; generates data triplets [analyte, unit, value] and adds via the sample name key to the samples dictionary
+
+    iterates through the samples_binary_list[0]. Keeps track of the index using sample_number_index so it can access
+    the right list in samples_binary_list[1]. Needs to be a separate unit index and item index because some analytes
+    (so far all I&#39;ve found is pH, but I believe there are others) don&#39;t have units. Assembles data triplets, and
+    appends them to the list values in samples dictionary. &#34;&#34;&#34;
+
+    sample_number_index = 0
+    # so we can access the right spot in samples_binary_list[1].
+    for item in samples_binary_list[0]:
+        unit_index = 0
+        # keeps track of where we are in the unit index
+        item_index = 0
+        # will be the same as the unit index, except where there are no units for a given analyte. In which case,
+        # there will be a mismatch (x units will not equal n values), and we need two counters to account for that.
+        sample_name_and_dict_key = item[0]
+        # this will be the same as the keys now in samples dictionary
+        for subitem in analyte_information:
+            analyte_name = subitem
+            if analyte_name == &#39;pH&#39;:
+                analyte_unit = &#39;pH&#39;
+                # rather than grabbing units from the units list, we make a custom analyte_unit.
+            else:
+                analyte_unit = units[unit_index]
+                # all other analytes other than pH (so far, 28May21) will have a unit
+                unit_index += 1
+            value = samples_binary_list[1][sample_number_index][item_index]
+            self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
+            # appending, value is a list.
+            item_index += 1
+        sample_number_index += 1</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.generate_samples_dictionary_entries"><code class="name flex">
+<span>def <span class="ident">generate_samples_dictionary_entries</span></span>(<span>self, samples_binary_list)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>creates the keys (sample name) in sample dictionary, populates with sample metadata (location, date, time)</p>
+<p>iterates through the items in the first list in each binary list in samples_binary_list. If the key is already
+in the dictionary, we pass (there will n copies of each name in samples_binary_list, with n being the amount
+of horizontal data tables existing in the parsed document).</p>
+<p>if the length of the item is 1, it's a blank, because a sample has a name, location, date, and time. Otherwise,
+the item is assumed to be a sample, and handled accordingly.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_samples_dictionary_entries(self, samples_binary_list):
+    &#34;&#34;&#34;creates the keys (sample name) in sample dictionary, populates with sample metadata (location, date, time)
+
+    iterates through the items in the first list in each binary list in samples_binary_list. If the key is already
+    in the dictionary, we pass (there will n copies of each name in samples_binary_list, with n being the amount
+    of horizontal data tables existing in the parsed document).
+
+    if the length of the item is 1, it&#39;s a blank, because a sample has a name, location, date, and time. Otherwise,
+    the item is assumed to be a sample, and handled accordingly. &#34;&#34;&#34;
+
+    for item in samples_binary_list[0]:
+        if len(item) == 1:
+            # is assumed to be a lab blank
+            if item[0] in self.samples_dictionary:
+                pass
+            else:
+                self.samples_dictionary[item[0]] = [&#34;no location&#34;, &#34;no date&#34;, &#34;no time&#34;]
+        else:
+            # is assumed to be a sample
+            if item[0] in self.samples_dictionary:
+                pass
+            else:
+                self.samples_dictionary[item[0]] = [item[1], item[2], item[3]]</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.get_analyte_information"><code class="name flex">
+<span>def <span class="ident">get_analyte_information</span></span>(<span>self, sample_index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>gets analyte information from line above sample index.</p>
+<p>sometimes there is a 0 at the start of this line, not sure why. If so, this method removes this character.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>analyte_information</code></strong> :&ensp;<code>list</code></dt>
+<dd>list containing analyte information.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_analyte_information(self, sample_index):
+    &#34;&#34;&#34;gets analyte information from line above sample index.
+
+    sometimes there is a 0 at the start of this line, not sure why. If so, this method removes this character.
+
+    Returns
+    -------
+    analyte_information : list
+        list containing analyte information.&#34;&#34;&#34;
+
+    analyte_information = self.mb_file_split_lines[sample_index - 1]
+    if analyte_information[0] == &#39;0&#39;:
+        analyte_information = analyte_information[1:]
+    return analyte_information</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.get_client_name_and_jobnumber"><code class="name flex">
+<span>def <span class="ident">get_client_name_and_jobnumber</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>gets the client name and the job number from the first line of the text file.</p>
+<p>Jobnumber is also passed to class as a parameter
+(forgot, wrote this unnecessary bit of code, too lazy to delete).</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_client_name_and_jobnumber(self):
+    &#34;&#34;&#34;gets the client name and the job number from the first line of the text file.
+
+    Jobnumber is also passed to class as a parameter
+    (forgot, wrote this unnecessary bit of code, too lazy to delete). &#34;&#34;&#34;
+
+    # if you leave a blank line before the start of the header, will need to access self.fc_file_split_lines[1][0:2]
+    # otherwise, you want to access the first line.
+    self.job_dictionary[&#39;client identifier&#39;] = &#34; &#34;.join(self.mb_file_split_lines[0][0:2])
+    self.job_dictionary[&#39;job number&#39;] = self.get_job_number_from_first_line(self.mb_file_split_lines[0])</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.get_job_number_from_first_line"><code class="name flex">
+<span>def <span class="ident">get_job_number_from_first_line</span></span>(<span>self, list_to_check)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>finds the job number in the first line.</p>
+<p>checks to see if there is a 'pg X' after the job number. Checks by seeing if the length of the last element is
+7. If it is, it's assumed to be the job number. If it isn't, it's assumed to be the 'pg X' designator, and it
+is also assumed that the list element before it is the job number.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>list_to_check</code></strong> :&ensp;<code>list</code></dt>
+<dd>the list to check - the first line of the file, split by space, in list form.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list_to_check[n] : string</code></dt>
+<dd>where n = -1 or -2. The item at index n will be the jobnumber in string form.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_job_number_from_first_line(self, list_to_check):
+    &#34;&#34;&#34;finds the job number in the first line.
+
+    checks to see if there is a &#39;pg X&#39; after the job number. Checks by seeing if the length of the last element is
+    7. If it is, it&#39;s assumed to be the job number. If it isn&#39;t, it&#39;s assumed to be the &#39;pg X&#39; designator, and it
+    is also assumed that the list element before it is the job number.
+
+    Parameters
+    ----------
+    list_to_check : list
+        the list to check - the first line of the file, split by space, in list form.
+
+    Returns
+    -------
+    list_to_check[n] : string
+        where n = -1 or -2. The item at index n will be the jobnumber in string form. &#34;&#34;&#34;
+
+    if len(list_to_check[-1]) == 7:
+        return list_to_check[-1]
+    else:
+        return list_to_check[-2]</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.get_samples_data"><code class="name flex">
+<span>def <span class="ident">get_samples_data</span></span>(<span>self, sample_index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns the lines of data in the horizontal sample tables.</p>
+<p>first line is two indexes ahead of the sample index. While there is information on subsequent lines, lines
+are added to the samples variable (a list). if a line is blank, it signifies the end of the data table, at
+which point the while loop is exited and the sample lines are returned.</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>sample_index</code></strong> :&ensp;<code>int</code></dt>
+<dd>index in the list of lists representing the mb labs file corresponding to a horizontal data table</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>samples</code></strong> :&ensp;<code>list</code></dt>
+<dd>list of list containing lines of the horizontal data table in question</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_samples_data(self, sample_index):
+    &#34;&#34;&#34;returns the lines of data in the horizontal sample tables.
+
+    first line is two indexes ahead of the sample index. While there is information on subsequent lines, lines
+    are added to the samples variable (a list). if a line is blank, it signifies the end of the data table, at
+    which point the while loop is exited and the sample lines are returned.
+
+    Parameters
+    ----------
+    sample_index : int
+        index in the list of lists representing the mb labs file corresponding to a horizontal data table
+
+    Returns
+    -------
+    samples : list
+        list of list containing lines of the horizontal data table in question
+    &#34;&#34;&#34;
+
+    samples = []
+    item_index = sample_index + 2
+    blank_counter = 0
+    while blank_counter == 0:
+        sample = self.mb_file_split_lines[item_index]
+        if len(sample) &gt; 0:
+            samples.append(sample)
+            item_index += 1
+        else:
+            blank_counter += 1
+    return samples</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.get_units_information"><code class="name flex">
+<span>def <span class="ident">get_units_information</span></span>(<span>self, sample_index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>gets units information from line of the sample index.</p>
+<p>removes the first three elements of the list, which are the strings 'sample', 'date', and 'time'.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>units</code></strong> :&ensp;<code>list</code></dt>
+<dd>list containing units information.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_units_information(self, sample_index):
+    &#34;&#34;&#34;gets units information from line of the sample index.
+
+    removes the first three elements of the list, which are the strings &#39;sample&#39;, &#39;date&#39;, and &#39;time&#39;.
+
+    Returns
+    -------
+    units : list
+        list containing units information.&#34;&#34;&#34;
+
+    units = self.mb_file_split_lines[sample_index]
+    units = units[3:]
+    return units</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.look_for_anchor_indexes_in_split_lines"><code class="name flex">
+<span>def <span class="ident">look_for_anchor_indexes_in_split_lines</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>looks for anchor indices in the split lines. Adds them to the relevant list. 3 types of anchors.</p>
+<p>first filters out empty lines.</p>
+<p>If a line has something in it, checks to see if the first index is 'SAMPLE'.</p>
+<p>If it is, adds the index of the line to sample_list_indexes. These indexes are used to parse
+horizontal data tables.</p>
+<p>Then checks if the first index is 'Samples:'. If it is, adds the index to backup_sample_list_indexes.</p>
+<p>These indexes are used to parse sample metadata from the header part of the report (name, date, location, etc).
+This information is generally taken from horizontal data tables, and then the ICP data tables piggyback.
+If there are no horizontal data tables, or if there are samples in vertical data tables that aren't present
+in horizontal data tables, we need a second way to get sample metadata. That's what the backup is for.</p>
+<p>Finally checks if the first index is 'ELEMENTS'.</p>
+<p>If it is, adds the index to analyte_list_indexes. These indexes are used to parse vertical ICP style
+data tables.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def look_for_anchor_indexes_in_split_lines(self):
+    &#34;&#34;&#34; looks for anchor indices in the split lines. Adds them to the relevant list. 3 types of anchors.
+
+    first filters out empty lines.
+
+    If a line has something in it, checks to see if the first index is &#39;SAMPLE&#39;.
+
+    If it is, adds the index of the line to sample_list_indexes. These indexes are used to parse
+    horizontal data tables.
+
+    Then checks if the first index is &#39;Samples:&#39;. If it is, adds the index to backup_sample_list_indexes.
+
+    These indexes are used to parse sample metadata from the header part of the report (name, date, location, etc).
+    This information is generally taken from horizontal data tables, and then the ICP data tables piggyback.
+    If there are no horizontal data tables, or if there are samples in vertical data tables that aren&#39;t present
+    in horizontal data tables, we need a second way to get sample metadata. That&#39;s what the backup is for.
+
+    Finally checks if the first index is &#39;ELEMENTS&#39;.
+
+    If it is, adds the index to analyte_list_indexes. These indexes are used to parse vertical ICP style
+    data tables. &#34;&#34;&#34;
+
+    for item in self.mb_file_split_lines:
+        if len(item) &gt; 0:
+            if item[0] == &#39;SAMPLE&#39;:
+                self.sample_list_indexes.append(self.mb_file_split_lines.index(item))
+            elif item[0] == &#39;Samples:&#39;:
+                self.backup_sample_list_indexes.append(self.mb_file_split_lines.index(item))
+            elif item[0] == &#39;ELEMENTS&#39;:
+                self.analyte_list_indexes.append(self.mb_file_split_lines.index(item))
+            else:
+                pass</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.pre_generate_backup_samples_dictionary_entries"><code class="name flex">
+<span>def <span class="ident">pre_generate_backup_samples_dictionary_entries</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>generates backup samples dictionary metadata entries, so that ICP formatted data can be properly assigned.</p>
+<p>there may be many indexes, we only need one as all the sample lists should be the same. Will have to deal with
+this if this is not the case in the future (09June21).</p>
+<p>empty_list is used to determine when we've come to a gap in the page, which means we are no longer reading in
+our sample information.</p>
+<p>Once a gap is hit, it's assumed that we've reached the end of the header. We then collapse all the lists of
+lines into one long list. We iterate through this list.</p>
+<p>The first time we hit a parenthesis ')', we know were at the start of a sample. Once we hit another parenthesis,
+we know we are at the start of the next sample.</p>
+<p>This logic is used to split the information up into segments where the last three items will be location code,
+date, and time, the first item will be the sample number, and the remaining indexes when combined in order
+are the sample name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def pre_generate_backup_samples_dictionary_entries(self):
+    &#34;&#34;&#34;generates backup samples dictionary metadata entries, so that ICP formatted data can be properly assigned.
+
+    there may be many indexes, we only need one as all the sample lists should be the same. Will have to deal with
+    this if this is not the case in the future (09June21).
+
+    empty_list is used to determine when we&#39;ve come to a gap in the page, which means we are no longer reading in
+    our sample information.
+
+    Once a gap is hit, it&#39;s assumed that we&#39;ve reached the end of the header. We then collapse all the lists of
+    lines into one long list. We iterate through this list.
+
+    The first time we hit a parenthesis &#39;)&#39;, we know were at the start of a sample. Once we hit another parenthesis,
+    we know we are at the start of the next sample.
+
+    This logic is used to split the information up into segments where the last three items will be location code,
+    date, and time, the first item will be the sample number, and the remaining indexes when combined in order
+    are the sample name. &#34;&#34;&#34;
+
+    # once we hit a gap in the file, empty_list will be set to true, and we will know we are at the end of the
+    # sample information.
+    empty_list = False
+    # the line that &#39;Samples: &#39; is on.
+    backup_sample_list_index = self.backup_sample_list_indexes[0]
+    backup_sample_lines = []
+    while not empty_list:
+        backup_samples_line = self.mb_file_split_lines[backup_sample_list_index]
+        if len(backup_samples_line) == 0:
+            empty_list = True
+        else:
+            backup_sample_lines.append(backup_samples_line)
+            backup_sample_list_index += 1
+    # collapsing the lines (which may have more than one sample, or may have one sample) into one list.
+    backup_sample_lines = [item for sublist in backup_sample_lines for item in sublist]
+    # if keep adding is False, we have hit the next sample, so stops adding
+    # starts as false so we don&#39;t add all the extra info before the first sample
+    # first parenthesis encountered then turns keep_adding to True
+    # then we add up the first sample information
+    # second parenthesis if keep_adding is true will trigger an appending and a clearing of single_sample
+    # keep_adding will now always be true
+    keep_adding = False
+    single_sample = []
+    for item in backup_sample_lines:
+        if &#39;)&#39; in item:
+            # either the first sample or not
+            if keep_adding:
+                # past the first sample
+                self.backup_line_split_by_sample.append(single_sample)
+                single_sample = [item]
+            else:
+                # the first sample
+                single_sample.append(item)
+                keep_adding = True
+        else:
+            # sample information
+            if keep_adding:
+                # will only be false prior to hitting the first sample
+                single_sample.append(item)
+    self.backup_line_split_by_sample.append(single_sample)</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.split_lines_by_spacing"><code class="name flex">
+<span>def <span class="ident">split_lines_by_spacing</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>converts each line in self.mb_file into a list, split by spaces.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_lines_by_spacing(self):
+    &#34;&#34;&#34; converts each line in self.mb_file into a list, split by spaces.
+    &#34;&#34;&#34;
+
+    for item in self.mb_file:
+        self.mb_file_split_lines.append(item.split())</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.split_samples_into_name_and_information"><code class="name flex">
+<span>def <span class="ident">split_samples_into_name_and_information</span></span>(<span>self, samples, analyte_information)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>splits raw sample lines into two lists - one containing sample name info, and one containing analyte info.</p>
+<p>iterates through samples. First checks to see if sample is a blank, and if so, handles accordingly (no date
+or time).</p>
+<p>If the sample is not a blank, we find the index the sample values start at/ the name information
+ends at. This is equal to the length of the samples list - the length of the analyte_information list (because
+there will be one analyte identifier per value). Uses this to slice off the sample name, location code,
+date, time, and isolate them. If no sampling location is detected, then 'no location' is inserted instead
+(without a sampling location, we can't upload to WaterTrax, so this would be a fatal error).</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>sample_name_date_time</code></strong>, <strong><code>sample_information</code></strong> :&ensp;<code>[list, list]</code></dt>
+<dd>2 membered list, first member being a list of sample info, the second being a list of values.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def split_samples_into_name_and_information(self, samples, analyte_information):
+    &#34;&#34;&#34;splits raw sample lines into two lists - one containing sample name info, and one containing analyte info.
+
+    iterates through samples. First checks to see if sample is a blank, and if so, handles accordingly (no date
+    or time).
+
+    If the sample is not a blank, we find the index the sample values start at/ the name information
+    ends at. This is equal to the length of the samples list - the length of the analyte_information list (because
+    there will be one analyte identifier per value). Uses this to slice off the sample name, location code,
+    date, time, and isolate them. If no sampling location is detected, then &#39;no location&#39; is inserted instead
+    (without a sampling location, we can&#39;t upload to WaterTrax, so this would be a fatal error).
+
+    Returns
+    -------
+    sample_name_date_time, sample_information : [list, list]
+        2 membered list, first member being a list of sample info, the second being a list of values.
+    &#34;&#34;&#34;
+
+    sample_name_date_time = []
+    sample_information = []
+    for item in samples:
+        if item[0] + &#34; &#34; + item[1] == &#39;Lab Blank&#39;:
+            sample_name = item[0] + &#34; &#34; + item[1]
+            sample_name_date_time.append([sample_name])
+            sample_information.append(item[2:])
+        else:
+            index_samples_start_at = len(item) - len(analyte_information)
+            sample_name_date_time_list = item[:index_samples_start_at]
+            # sample_name_date_time_list = [name, sampling location (hopefully), date, time]
+            sample_time = sample_name_date_time_list.pop()
+            # sample_name_date_time_list = [name, sampling location (hopefully), date]
+            sample_date = sample_name_date_time_list.pop()
+            # sample_name_date_time_list = [name, sampling location (hopefully)]
+            check_for_digits = False
+            # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
+            # and assume that&#39;s the sampling location.
+            if len(sample_name_date_time_list[-1]) == 5:
+                for sub_item in sample_name_date_time_list[-1]:
+                    if sub_item.isdigit():
+                        check_for_digits = True
+            if check_for_digits is True:
+                # i.e. if the last item in the sample_name_date_time_list has a length of 5 with at least one int
+                sampling_information = sample_name_date_time_list.pop()
+            else:
+                # otherwise, we don&#39;t have a sampling location.
+                # all sampling locations have a length of 5 and contain numbers. It&#39;s possible a sample name could
+                # meet that criteria (imagine a sample called room1). In which case, it would be erroneously
+                # considered a sample location.
+                sampling_information = &#39;no location&#39;
+            sample_name = &#34; &#34;.join(sample_name_date_time_list)
+            sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
+            sample_information.append(item[index_samples_start_at:])
+    return [sample_name_date_time, sample_information]</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.use_analyte_indexes_to_get_sample_data"><code class="name flex">
+<span>def <span class="ident">use_analyte_indexes_to_get_sample_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>generates data triplets from ICP data and appends them to the appropriate existing key in samples dict</p>
+<p>iterates through the analyte_list indexes, which are the starting indexes of the ICP tables contained in the
+file being parsed.</p>
+<p>Trims off parts of the data table we don't need (mainly regulatory limit information, which
+WaterTrax doesn't require).</p>
+<p>Analyte rows are read up to a pre-determined amount (total_amount_of_analytes).</p>
+<p>For each sample in the table, a key is made in metal_triplets_dictionary. We then go through the analyte rows
+we read off, and add data triplets from these rows to the relevant keys in metal_triplets_dictionary.</p>
+<p>If the value is below the LOQ (or LOD, not entirely sure how the lab does it), then we will write "&lt;(x)",
+where x is the LOD. We switch these for 'ND', which is what WaterTrax requires (aka non-detect).</p>
+<p>Once metal_triplets_dictionary is populated, it is combined with sample_dictionary using
+self.combine_metal_triplet_dictionary_with_samples_dictionary.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def use_analyte_indexes_to_get_sample_data(self):
+    &#34;&#34;&#34; generates data triplets from ICP data and appends them to the appropriate existing key in samples dict
+
+     iterates through the analyte_list indexes, which are the starting indexes of the ICP tables contained in the
+     file being parsed.
+
+     Trims off parts of the data table we don&#39;t need (mainly regulatory limit information, which
+     WaterTrax doesn&#39;t require).
+
+     Analyte rows are read up to a pre-determined amount (total_amount_of_analytes).
+
+     For each sample in the table, a key is made in metal_triplets_dictionary. We then go through the analyte rows
+     we read off, and add data triplets from these rows to the relevant keys in metal_triplets_dictionary.
+
+     If the value is below the LOQ (or LOD, not entirely sure how the lab does it), then we will write &#34;&lt;(x)&#34;,
+     where x is the LOD. We switch these for &#39;ND&#39;, which is what WaterTrax requires (aka non-detect).
+
+     Once metal_triplets_dictionary is populated, it is combined with sample_dictionary using
+     self.combine_metal_triplet_dictionary_with_samples_dictionary. &#34;&#34;&#34;
+
+    for item in self.analyte_list_indexes:
+        total_amount_of_analytes = 33
+        # actually are 34 analytes, I think - will need to check this. Pretty sure we are currently cutting off
+        # pH 02June21.
+        current_analyte_index = 0
+        index_of_start_of_analyte_rows = item+2
+        analyte_rows = []
+        triplet_pairs_dictionary = {}
+        # last 3 items in the samples list are (&#39;Maximum&#39;,&#39;Limits&#39;,&#39;Permissable&#39;), below line removes
+        sample_line = self.mb_file_split_lines[item - 1][:len(self.mb_file_split_lines[item - 1]) - 3]
+        # last 3 items in the samples list are (&#39;In&#39;,&#39;Drinking&#39;,&#39;Water&#39;), below line removes
+        header_line = self.mb_file_split_lines[item][:len(self.mb_file_split_lines[item]) - 3]
+        # gets all the relevant analyte rows and adds them to analyte_rows
+        while current_analyte_index &lt;= total_amount_of_analytes:
+            analyte_row = self.mb_file_split_lines[(index_of_start_of_analyte_rows + current_analyte_index)]
+            # below removes the drinking water limit information from the analyte rows
+            if analyte_row[-1] == &#39;listed&#39;:
+                analyte_row = analyte_row[:len(analyte_row)-3]
+            elif analyte_row[-1] == &#39;AO&#39;:
+                analyte_row = analyte_row[:len(analyte_row)-4]
+            elif analyte_row[-1] == &#39;hard&#39;:
+                analyte_row = analyte_row[:len(analyte_row)-4]
+            else:
+                analyte_row = analyte_row[:len(analyte_row)-2]
+            analyte_rows.append(analyte_row)
+            current_analyte_index += 1
+        for sample_number in sample_line:
+            self.metal_triplets_dictionary[sample_number] = []
+            # each sample number in the ICP table gets added as a key to metal_triplets_dictionary, and the value
+            # is an empty list (similar to how samples_dictionary works). We then start adding data triplet lists
+            # to this list.
+        for subitem in analyte_rows:
+            try:
+                int(subitem[0][0])
+                # indicates a regular metal analyte line &#39;1) Aluminum Al&#39;
+                # in which case, we want &#39;Al&#39; to be our analyte identifier
+                analyte_identifier = subitem[2]
+                value_counter = 3
+                for sample_number in sample_line:
+                    value = subitem[value_counter]
+                    if value[0] == &#34;&lt;&#34;:
+                        # switches out &lt;(x), where x == LOD, to ND
+                        value = &#39;ND&#39;
+                    self.metal_triplets_dictionary[sample_number].append([analyte_identifier,
+                                                                          &#39;(&#39; + subitem[-1] + &#39;)&#39;,
+                                                                          value])
+                    value_counter += 1
+            except ValueError:
+                analyte_identifier = subitem[0] + &#39; &#39; + subitem[1] + &#39; &#39; + subitem[2]
+                # indicates a non-metal line with more info than just a two letter metal, like &#39;Hardness (as CaCO3)&#39;
+                # in which case, we want the whole line to be our analyte identifier.
+                value_counter = 3
+                for sample_number in sample_line:
+                    value = subitem[value_counter]
+                    if value[0] == &#34;&lt;&#34;:
+                        # switches out &lt;(x), where x == LOD, to ND
+                        value = &#39;ND&#39;
+                    self.metal_triplets_dictionary[sample_number].append([analyte_identifier,
+                                                                          &#39;(&#39; + subitem[-1] + &#39;)&#39;,
+                                                                          value])
+                    value_counter += 1</code></pre>
+</details>
+</dd>
+<dt id="EasyTrax.EasyTraxParse.EasyTraxParse.use_sample_indexes_to_get_sample_data"><code class="name flex">
+<span>def <span class="ident">use_sample_indexes_to_get_sample_data</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.</p>
+<p>sort of a controller function, mostly calls other functions in the correct order. Each sample index represents
+a data table that needs to be 'harvested'. for data table, the analyte names, units, and values are isolated,
+and then re-assembled in an intermediate format that we use to make the WTX files.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def use_sample_indexes_to_get_sample_data(self):
+    &#34;&#34;&#34; iterates through the indexes in sample_list_indexes, and uses them to fill samples_dictionary with data.
+
+    sort of a controller function, mostly calls other functions in the correct order. Each sample index represents
+    a data table that needs to be &#39;harvested&#39;. for data table, the analyte names, units, and values are isolated,
+    and then re-assembled in an intermediate format that we use to make the WTX files. &#34;&#34;&#34;
+
+    for item in self.sample_list_indexes:
+        # each item is an index.
+        analyte_information = self.get_analyte_information(item)
+        units = self.get_units_information(item)
+        samples = self.get_samples_data(item)
+        samples_binary_list = self.split_samples_into_name_and_information(samples,
+                                                                           analyte_information)
+        self.generate_samples_dictionary_entries(samples_binary_list)
+        self.generate_data_triplets(analyte_information, units, samples_binary_list)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="EasyTrax" href="index.html">EasyTrax</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse" href="#EasyTrax.EasyTraxParse.EasyTraxParse">EasyTraxParse</a></code></h4>
+<ul class="">
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.combine_metal_triplet_dictionary_with_samples_dictionary" href="#EasyTrax.EasyTraxParse.EasyTraxParse.combine_metal_triplet_dictionary_with_samples_dictionary">combine_metal_triplet_dictionary_with_samples_dictionary</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.easy_trax_parse_controller" href="#EasyTrax.EasyTraxParse.EasyTraxParse.easy_trax_parse_controller">easy_trax_parse_controller</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.generate_backup_samples_dictionary_entries" href="#EasyTrax.EasyTraxParse.EasyTraxParse.generate_backup_samples_dictionary_entries">generate_backup_samples_dictionary_entries</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.generate_data_triplets" href="#EasyTrax.EasyTraxParse.EasyTraxParse.generate_data_triplets">generate_data_triplets</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.generate_samples_dictionary_entries" href="#EasyTrax.EasyTraxParse.EasyTraxParse.generate_samples_dictionary_entries">generate_samples_dictionary_entries</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.get_analyte_information" href="#EasyTrax.EasyTraxParse.EasyTraxParse.get_analyte_information">get_analyte_information</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.get_client_name_and_jobnumber" href="#EasyTrax.EasyTraxParse.EasyTraxParse.get_client_name_and_jobnumber">get_client_name_and_jobnumber</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.get_job_number_from_first_line" href="#EasyTrax.EasyTraxParse.EasyTraxParse.get_job_number_from_first_line">get_job_number_from_first_line</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.get_samples_data" href="#EasyTrax.EasyTraxParse.EasyTraxParse.get_samples_data">get_samples_data</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.get_units_information" href="#EasyTrax.EasyTraxParse.EasyTraxParse.get_units_information">get_units_information</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.look_for_anchor_indexes_in_split_lines" href="#EasyTrax.EasyTraxParse.EasyTraxParse.look_for_anchor_indexes_in_split_lines">look_for_anchor_indexes_in_split_lines</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.pre_generate_backup_samples_dictionary_entries" href="#EasyTrax.EasyTraxParse.EasyTraxParse.pre_generate_backup_samples_dictionary_entries">pre_generate_backup_samples_dictionary_entries</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.split_lines_by_spacing" href="#EasyTrax.EasyTraxParse.EasyTraxParse.split_lines_by_spacing">split_lines_by_spacing</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.split_samples_into_name_and_information" href="#EasyTrax.EasyTraxParse.EasyTraxParse.split_samples_into_name_and_information">split_samples_into_name_and_information</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.use_analyte_indexes_to_get_sample_data" href="#EasyTrax.EasyTraxParse.EasyTraxParse.use_analyte_indexes_to_get_sample_data">use_analyte_indexes_to_get_sample_data</a></code></li>
+<li><code><a title="EasyTrax.EasyTraxParse.EasyTraxParse.use_sample_indexes_to_get_sample_data" href="#EasyTrax.EasyTraxParse.EasyTraxParse.use_sample_indexes_to_get_sample_data">use_sample_indexes_to_get_sample_data</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+</footer>
+</body>
+</html>
