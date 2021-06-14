@@ -126,8 +126,8 @@ class EasyTraxParse:
         ----------
         job_number: str
             the job number for the job being converted
-        fc_file: list
-            a list of the lines in the FirstChoice text file being parsed.
+        fc_file: str
+            the FirstChoice text file being parsed, in string format.
         """
 
         self.job_number = job_number

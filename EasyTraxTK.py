@@ -7,13 +7,17 @@ class MainApplication(Tk.Frame):
     """Runs the TK window that allows the user to interact with EasyTrax.
 
     currently a very simple frame, consisting of one Tk.Entry box (where the user inputs the job number)
-    and one button that runs easy_trax_controller. The controller function gets the jobnumber, gets the
-    corresponding file from /Files_To_Report/, and reads it line by line into mb_file_contents. It passes
-    mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
-    and job dictionary. It passes these dictionaries to EasyTraxConvert, which handles the conversion and
-    file writing processes.
+    and one button that runs easy_trax_controller.
 
-    Last Updated: 07 June 2021, P.L.
+    The controller function gets the jobnumber, gets the corresponding file from /Files_To_Report/,
+    and reads it line by line into mb_file_contents.
+
+    It passes mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
+    and job dictionary.
+
+    It passes these dictionaries to EasyTraxConvert, which handles the conversion and file writing processes.
+
+    Last Updated: 10 June 2021, P.L.
 
     Attributes
     ----------
@@ -37,14 +41,14 @@ class MainApplication(Tk.Frame):
 
     Methods
     -------
-    easy_trax_controller()
+    * `easy_trax_controller()` -
         executes the various methods/functions in the script in the right order. Essentially controls the whole
         program.
 
-    clear_text()
+    * `clear_text()` -
         clears the text from job_number_entry, so another job can be entered.
 
-    get_file_from_job_number()
+    * `get_file_from_job_number()` -
         tries to open the requested file. If it can find the file, reads it line by line into mb_file_contents (list).
     """
 
@@ -52,9 +56,9 @@ class MainApplication(Tk.Frame):
         """
         Parameters
         ----------
-        :param parent:
+        parent : Tk.Frame
             a TkInter frame.
-        :param kwargs:
+        kwargs
             no additional parameters are passed.
         """
 
