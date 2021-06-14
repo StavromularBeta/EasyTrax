@@ -35,13 +35,17 @@ class MainApplication(Tk.Frame):
     &#34;&#34;&#34;Runs the TK window that allows the user to interact with EasyTrax.
 
     currently a very simple frame, consisting of one Tk.Entry box (where the user inputs the job number)
-    and one button that runs easy_trax_controller. The controller function gets the jobnumber, gets the
-    corresponding file from /Files_To_Report/, and reads it line by line into mb_file_contents. It passes
-    mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
-    and job dictionary. It passes these dictionaries to EasyTraxConvert, which handles the conversion and
-    file writing processes.
+    and one button that runs easy_trax_controller.
 
-    Last Updated: 07 June 2021, P.L.
+    The controller function gets the jobnumber, gets the corresponding file from /Files_To_Report/,
+    and reads it line by line into mb_file_contents.
+
+    It passes mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
+    and job dictionary.
+
+    It passes these dictionaries to EasyTraxConvert, which handles the conversion and file writing processes.
+
+    Last Updated: 10 June 2021, P.L.
 
     Attributes
     ----------
@@ -65,14 +69,14 @@ class MainApplication(Tk.Frame):
 
     Methods
     -------
-    easy_trax_controller()
+    * `easy_trax_controller()` -
         executes the various methods/functions in the script in the right order. Essentially controls the whole
         program.
 
-    clear_text()
+    * `clear_text()` -
         clears the text from job_number_entry, so another job can be entered.
 
-    get_file_from_job_number()
+    * `get_file_from_job_number()` -
         tries to open the requested file. If it can find the file, reads it line by line into mb_file_contents (list).
     &#34;&#34;&#34;
 
@@ -80,9 +84,9 @@ class MainApplication(Tk.Frame):
         &#34;&#34;&#34;
         Parameters
         ----------
-        :param parent:
+        parent : Tk.Frame
             a TkInter frame.
-        :param kwargs:
+        kwargs
             no additional parameters are passed.
         &#34;&#34;&#34;
 
@@ -165,12 +169,13 @@ root.mainloop()</code></pre>
 <dd>
 <div class="desc"><p>Runs the TK window that allows the user to interact with EasyTrax.</p>
 <p>currently a very simple frame, consisting of one Tk.Entry box (where the user inputs the job number)
-and one button that runs easy_trax_controller. The controller function gets the jobnumber, gets the
-corresponding file from /Files_To_Report/, and reads it line by line into mb_file_contents. It passes
-mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
-and job dictionary. It passes these dictionaries to EasyTraxConvert, which handles the conversion and
-file writing processes.</p>
-<p>Last Updated: 07 June 2021, P.L.</p>
+and one button that runs easy_trax_controller.</p>
+<p>The controller function gets the jobnumber, gets the corresponding file from /Files_To_Report/,
+and reads it line by line into mb_file_contents.</p>
+<p>It passes mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
+and job dictionary.</p>
+<p>It passes these dictionaries to EasyTraxConvert, which handles the conversion and file writing processes.</p>
+<p>Last Updated: 10 June 2021, P.L.</p>
 <h2 id="attributes">Attributes</h2>
 <dl>
 <dt><strong><code>job_number</code></strong> :&ensp;<code>str</code></dt>
@@ -187,18 +192,28 @@ file writing processes.</p>
 <dd>where the user inputs the job number of the report they want to make.</dd>
 </dl>
 <h2 id="methods">Methods</h2>
-<p>easy_trax_controller()
+<ul>
+<li>
+<p><code>easy_trax_controller()</code> -
 executes the various methods/functions in the script in the right order. Essentially controls the whole
 program.</p>
-<p>clear_text()
+</li>
+<li>
+<p><code>clear_text()</code> -
 clears the text from job_number_entry, so another job can be entered.</p>
-<p>get_file_from_job_number()
+</li>
+<li>
+<p><code>get_file_from_job_number()</code> -
 tries to open the requested file. If it can find the file, reads it line by line into mb_file_contents (list).</p>
+</li>
+</ul>
 <h2 id="parameters">Parameters</h2>
-<p>:param parent:
-a TkInter frame.
-:param kwargs:
-no additional parameters are passed.</p></div>
+<dl>
+<dt><strong><code>parent</code></strong> :&ensp;<code>Tk.Frame</code></dt>
+<dd>a TkInter frame.</dd>
+<dt><strong><code>kwargs</code></strong></dt>
+<dd>no additional parameters are passed.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -207,13 +222,17 @@ no additional parameters are passed.</p></div>
     &#34;&#34;&#34;Runs the TK window that allows the user to interact with EasyTrax.
 
     currently a very simple frame, consisting of one Tk.Entry box (where the user inputs the job number)
-    and one button that runs easy_trax_controller. The controller function gets the jobnumber, gets the
-    corresponding file from /Files_To_Report/, and reads it line by line into mb_file_contents. It passes
-    mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
-    and job dictionary. It passes these dictionaries to EasyTraxConvert, which handles the conversion and
-    file writing processes.
+    and one button that runs easy_trax_controller.
 
-    Last Updated: 07 June 2021, P.L.
+    The controller function gets the jobnumber, gets the corresponding file from /Files_To_Report/,
+    and reads it line by line into mb_file_contents.
+
+    It passes mb_file_contents and job_number to EasyTraxParse. It receives back an intermediate sample dictionary
+    and job dictionary.
+
+    It passes these dictionaries to EasyTraxConvert, which handles the conversion and file writing processes.
+
+    Last Updated: 10 June 2021, P.L.
 
     Attributes
     ----------
@@ -237,14 +256,14 @@ no additional parameters are passed.</p></div>
 
     Methods
     -------
-    easy_trax_controller()
+    * `easy_trax_controller()` -
         executes the various methods/functions in the script in the right order. Essentially controls the whole
         program.
 
-    clear_text()
+    * `clear_text()` -
         clears the text from job_number_entry, so another job can be entered.
 
-    get_file_from_job_number()
+    * `get_file_from_job_number()` -
         tries to open the requested file. If it can find the file, reads it line by line into mb_file_contents (list).
     &#34;&#34;&#34;
 
@@ -252,9 +271,9 @@ no additional parameters are passed.</p></div>
         &#34;&#34;&#34;
         Parameters
         ----------
-        :param parent:
+        parent : Tk.Frame
             a TkInter frame.
-        :param kwargs:
+        kwargs
             no additional parameters are passed.
         &#34;&#34;&#34;
 
