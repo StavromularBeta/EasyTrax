@@ -59,6 +59,9 @@ class EasyTraxConvert:
     wtx_format_report: list
         the list where WTX formatted report lines are appended once made.
 
+    convert_log: string
+        log of the conversion process, various errors can change string, returned after conversion is completed.
+
     WaterTraxRequiredFileFieldDict: dict
         a dictionary containing watertrax information that won't change from day to day, such as:
              our lab ID
@@ -122,6 +125,8 @@ class EasyTraxConvert:
         self.samples_dictionary = samples_dictionary
         self.job_dictionary = job_dictionary
         self.wtx_format_report = []
+        self.convert_log = "Converted Successfully!\n\n" +\
+                           "WTX file should be in WTX_reports Directory.\n"
         #WaterTrax File Fields
         self.WaterTraxRequiredFileFieldDict = {
                                                # 1) Version No.
@@ -233,7 +238,9 @@ class EasyTraxConvert:
         """
 
         self.wtx_format_report = self.populate_water_trax_report_list()
+        self.qc_final_wtx_report_error_check()
         self.generate_report_directories_and_files()
+        return self.convert_log
 
     def populate_water_trax_report_list(self):
         """writes the lines of watertrax code.
@@ -332,14 +339,27 @@ class EasyTraxConvert:
         converted_list : list
             a list consisting of [analyte code, unit code, value]
 
+        Raises
+        ------
+        KeyError
+            if an analyte or unit code is not in the required dictionary. Error messaged will be printed to log.
+
         """
         converted_list = []
         # Eventually an error will be thrown here when the analyte or unit is not in the dictionary,
         # can then handle. 18May21
         for item in triplet_list:
-            converted_list.append([self.WaterTraxAnalyteCodeDict[item[0]][0],
-                                   self.WaterTraxUnitsCodeDict[item[1]],
-                                   item[2]])
+            try:
+                converted_list.append([self.WaterTraxAnalyteCodeDict[item[0]][0],
+                                       self.WaterTraxUnitsCodeDict[item[1]],
+                                       item[2]])
+            except KeyError:
+                self.convert_log = "Either the analyte code '" + item[0] + "' or the \n" +\
+                                   "unit code '" + item[1] + "' has not been entered into\n" +\
+                                   "the EasyTrax system. If this is a new analyte or unit,\n" +\
+                                   "it will have to be entered. If this is a typo, correct and\n" +\
+                                   "try again. Any lines containing the problematic analyte\n" +\
+                                   "or unit will not be included in the report. "
         return converted_list
 
     def format_watertrax_date(self, date_value):
@@ -418,3 +438,12 @@ class EasyTraxConvert:
 
         self.mkdir_p(os.path.dirname(path))
         return open(path, 'w')
+
+    def qc_final_wtx_report_error_check(self):
+        """ Checks to see if the final list of report lines is empty. If so, logs event. """
+
+        if not self.wtx_format_report:
+            self.convert_log = "No WTX report lines have been written.\n" +\
+                               "Check file, and try again. View the Documentation\n" +\
+                               "To see how these files are parsed, and look for any\n" +\
+                               "Inconsistencies in the data table."

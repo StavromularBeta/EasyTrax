@@ -54,6 +54,9 @@ class EasyTraxParse:
         key: sample ID (str)
         value: list of data triplets [[analyte, unit, value],[analyte, unit, value],...]
 
+    parse_log : string
+        log of the conversion process, various errors can change string, returned after conversion is completed.
+
     Methods
     -------
     * `easy_trax_parse_controller()` -
@@ -140,6 +143,7 @@ class EasyTraxParse:
         self.job_dictionary = {}
         self.samples_dictionary = {}
         self.metal_triplets_dictionary = {}
+        self.parse_log = "Parsed Successfully!\n"
 
     def easy_trax_parse_controller(self):
         """executes the various methods/functions in the script in the right order.
@@ -169,12 +173,16 @@ class EasyTraxParse:
         self.use_sample_indexes_to_get_sample_data()
         # create entries of any samples not covered in the horizontal data tables
         self.generate_backup_samples_dictionary_entries()
+        # checks for empty samples_dictionary keys, if it is still empty, nothing is going to be written to file.
+        self.qc_check_for_samples_dictionary_keys_after_backups_made()
         # finally, process the ICP data files, having dealt with the sample metadata
         self.use_analyte_indexes_to_get_sample_data()
+        # checks to see if the metal triplets dictionary has keys, if there are none, ICP data won't be written.
+        self.qc_check_for_metal_triplets_dictionary_keys_after_analyte_indexes()
         # combine the metal triplets with the rest of the data triplets
         self.combine_metal_triplet_dictionary_with_samples_dictionary()
         # return the properly formatted intermediate data, ready for conversion
-        return self.samples_dictionary, self.job_dictionary
+        return self.samples_dictionary, self.job_dictionary, self.parse_log
 
     def split_lines_by_spacing(self):
         """ converts each line in self.mb_file into a list, split by spaces.
@@ -481,20 +489,27 @@ class EasyTraxParse:
             # there will be a mismatch (x units will not equal n values), and we need two counters to account for that.
             sample_name_and_dict_key = item[0]
             # this will be the same as the keys now in samples dictionary
-            for subitem in analyte_information:
-                analyte_name = subitem
-                if analyte_name == 'pH':
-                    analyte_unit = 'pH'
-                    # rather than grabbing units from the units list, we make a custom analyte_unit.
-                else:
-                    analyte_unit = units[unit_index]
-                    # all other analytes other than pH (so far, 28May21) will have a unit
-                    unit_index += 1
-                value = samples_binary_list[1][sample_number_index][item_index]
-                self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
-                # appending, value is a list.
-                item_index += 1
-            sample_number_index += 1
+            try:
+                for subitem in analyte_information:
+                    analyte_name = subitem
+                    if analyte_name == 'pH':
+                        analyte_unit = 'pH'
+                        # rather than grabbing units from the units list, we make a custom analyte_unit.
+                    else:
+                        analyte_unit = units[unit_index]
+                        # all other analytes other than pH (so far, 28May21) will have a unit
+                        unit_index += 1
+                    value = samples_binary_list[1][sample_number_index][item_index]
+                    self.samples_dictionary[sample_name_and_dict_key].append([analyte_name, analyte_unit, value])
+                    # appending, value is a list.
+                    item_index += 1
+                sample_number_index += 1
+            except IndexError:
+                self.parse_log = "At least one horizontal data table has issues preventing\n" +\
+                                 "it from being parsed properly.\n\n" +\
+                                 "Potential Issues:\n" +\
+                                 "1) There is a space in an analyte name, like 'Domoic Acid'.\n" +\
+                                 "turn the spaces into underscores, and try again.\n"
 
     def generate_backup_samples_dictionary_entries(self):
         """generates the backup sample dictionary metadata if no horizontal tables are in the report.
@@ -650,4 +665,25 @@ class EasyTraxParse:
                     key = item
                     for triplet in value:
                         self.samples_dictionary[key].append(triplet)
+
+    def qc_check_for_samples_dictionary_keys_after_backups_made(self):
+        if len(self.samples_dictionary.keys()) == 0:
+            self.parse_log = 'no samples dictionary keys have been created.\n' +\
+                             'script was unable to pull sample information\n' +\
+                             'from either horizontal data tables, or\n' +\
+                             'header information.\n\n'
+
+    def qc_check_for_metal_triplets_dictionary_keys_after_analyte_indexes(self):
+        if len(self.metal_triplets_dictionary.keys()) == 0:
+            if len(self.analyte_list_indexes) > 0:
+                self.parse_log = 'no ICP keys have been created.\n' +\
+                                'an issue with the vertical ICP tables\n' +\
+                                'has prevented the script from reading data.\n\n' +\
+                                'Possible errors:\n\n' +\
+                                "1) 'Maximum Limits Permissable in Drinking Water'\n" +\
+                                'has been shortened or abbreviated somehow.\n\n' +\
+                                "2) Sample numbers are not on the line above the\n" +\
+                                "'ELEMENTS' tag.\n\n"
+
+
 

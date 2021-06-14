@@ -39,6 +39,9 @@ class MainApplication(Tk.Frame):
     job_number_entry : Tk.Entry
         where the user inputs the job number of the report they want to make.
 
+    EasyTraxMakerLog : Tk.Entry
+        where the user can see the error log for the file they want to parse.
+
     Methods
     -------
     * `easy_trax_controller()` -
@@ -50,6 +53,9 @@ class MainApplication(Tk.Frame):
 
     * `get_file_from_job_number()` -
         tries to open the requested file. If it can find the file, reads it line by line into mb_file_contents (list).
+
+    * `write_log_to_text_box()` -
+        clears any text in EasyTraxMakerLog, and then writes the passed text to the Text box.
     """
 
     def __init__(self, parent, **kwargs):
@@ -71,11 +77,13 @@ class MainApplication(Tk.Frame):
         self.file_dump_directory_location = 'T:\\ANALYST WORK FILES\\Peter\\EasyTrax\\Files_To_Report\\W'
         # TKinter stuff
         self.job_number_entry = Tk.Entry(self)
-        self.job_number_entry.grid(row=1, column=0)
-        Tk.Label(self, text="EasyTrax").grid(row=0)
+        self.EasyTraxMakerLog = Tk.Text(self, height=25, width=60)
+        self.EasyTraxMakerLog.config(state=Tk.DISABLED)
+        self.job_number_entry.grid(row=0, column=0, sticky=Tk.W, padx=5, pady=5)
         Tk.Button(self,
                   text="Create WTX File",
-                  command=self.easy_trax_controller).grid(row=2, column=0)
+                  command=self.easy_trax_controller).grid(row=1, column=0, sticky=Tk.W, padx=5)
+        self.EasyTraxMakerLog.grid(row=3, column=0, columnspan=2, padx=5, pady=5)
 
     def easy_trax_controller(self):
         """executes the various methods/functions in the script in the right order.
@@ -91,13 +99,18 @@ class MainApplication(Tk.Frame):
         self.clear_text()
         self.get_file_from_job_number()
         if self.mb_file_contents:
-            print('file found')
+            self.write_log_to_text_box("MB Labs file found, attempting to create WTX file.\n", True)
             parsing_script = Parse.EasyTraxParse(self.job_number, self.mb_file_contents)
-            samples_dictionary, job_dictionary = parsing_script.easy_trax_parse_controller()
+            samples_dictionary, job_dictionary, parse_log = parsing_script.easy_trax_parse_controller()
+            self.write_log_to_text_box(parse_log)
             converting_script = Convert.EasyTraxConvert(samples_dictionary, job_dictionary)
-            converting_script.easy_trax_convert_controller()
+            convert_log = converting_script.easy_trax_convert_controller()
+            self.write_log_to_text_box(convert_log)
         else:
-            print('no FirstChoice file found.')
+            self.write_log_to_text_box("No MB Labs file found with that job number.\n" +
+                                       "You either incorrectly typed it in, or it \n" +
+                                       "doesn't exist in Files_To_Report. Remember,\n" +
+                                       "don't type the 'W' before the job number.\n", True)
 
     def clear_text(self):
         """clears the text from job_number_entry, so another job can be entered.
@@ -118,8 +131,20 @@ class MainApplication(Tk.Frame):
         except FileNotFoundError:
             self.mb_file_contents = False
 
+    def write_log_to_text_box(self, passed_text, with_delete=False):
+        """clears any text in EasyTraxMakerLog, and then writes the passed text to the Text box."""
+
+        self.EasyTraxMakerLog.config(state=Tk.NORMAL)
+        if with_delete:
+            self.EasyTraxMakerLog.delete('1.0', Tk.END)
+        if len(self.EasyTraxMakerLog.get("1.0", Tk.END)) == 1:
+            self.EasyTraxMakerLog.insert(Tk.END, passed_text)
+        else:
+            self.EasyTraxMakerLog.insert(Tk.END, '\n' + passed_text)
+        self.EasyTraxMakerLog.config(state=Tk.DISABLED)
+
 
 root = Tk.Tk()
-root.geometry('475x100')
-MainApplication(root, height=100, width=475).grid()
+root.geometry('495x470')
+MainApplication(root, height=470, width=495).grid()
 root.mainloop()
