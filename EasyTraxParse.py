@@ -143,7 +143,7 @@ class EasyTraxParse:
         self.job_dictionary = {}
         self.samples_dictionary = {}
         self.metal_triplets_dictionary = {}
-        self.parse_log = "Parsed Successfully!\n"
+        self.parse_log = ""
 
     def easy_trax_parse_controller(self):
         """executes the various methods/functions in the script in the right order.
@@ -232,7 +232,8 @@ class EasyTraxParse:
         If a line has something in it, checks to see if the first index is 'SAMPLE'.
 
         If it is, adds the index of the line to sample_list_indexes. These indexes are used to parse
-        horizontal data tables.
+        horizontal data tables. Uses counter, otherwise will get first instance of list in mb_file_split_lines,
+        which can be an issue with tables of the same size, same units, same samples.
 
         Then checks if the first index is 'Samples:'. If it is, adds the index to backup_sample_list_indexes.
 
@@ -244,18 +245,30 @@ class EasyTraxParse:
         Finally checks if the first index is 'ELEMENTS'.
 
         If it is, adds the index to analyte_list_indexes. These indexes are used to parse vertical ICP style
-        data tables. """
+        data tables.
 
+        At the end of the method, there is functionality to report to the log the amount of data tables picked up,
+        and a warning message that fires if you have ICP tables and no backup sample metadata. """
+
+        counter = 0
         for item in self.mb_file_split_lines:
             if len(item) > 0:
                 if item[0] == 'SAMPLE':
-                    self.sample_list_indexes.append(self.mb_file_split_lines.index(item))
+                    self.sample_list_indexes.append(counter)
                 elif item[0] == 'Samples:':
-                    self.backup_sample_list_indexes.append(self.mb_file_split_lines.index(item))
+                    self.backup_sample_list_indexes.append(counter)
                 elif item[0] == 'ELEMENTS':
-                    self.analyte_list_indexes.append(self.mb_file_split_lines.index(item))
+                    self.analyte_list_indexes.append(counter)
                 else:
                     pass
+            counter += 1
+        # Error handling
+        self.parse_log += '\nThere are ' + str(len(self.sample_list_indexes)) + ' horizontal data tables, \n' +\
+            'and ' + str(len(self.analyte_list_indexes)) + ' vertical ICP data tables in this file.\n'
+        if len(self.sample_list_indexes) == 0:
+            if len(self.backup_sample_list_indexes) == 0:
+                self.parse_log += '\nThere is no backup sample data to accompany the ICP data. This build will fail.\n'
+        print(self.sample_list_indexes)
 
     def pre_generate_backup_samples_dictionary_entries(self):
         """generates backup samples dictionary metadata entries, so that ICP formatted data can be properly assigned.
@@ -426,14 +439,9 @@ class EasyTraxParse:
                 # sample_name_date_time_list = [name, sampling location (hopefully), date]
                 sample_date = sample_name_date_time_list.pop()
                 # sample_name_date_time_list = [name, sampling location (hopefully)]
-                check_for_digits = False
-                # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
-                # and assume that's the sampling location.
-                if len(sample_name_date_time_list[-1]) == 5:
-                    for sub_item in sample_name_date_time_list[-1]:
-                        if sub_item.isdigit():
-                            check_for_digits = True
-                if check_for_digits is True:
+                sampling_information = sample_name_date_time_list[-1]
+                sampling_information_check = self.check_to_see_if_bad_location_code(sampling_information)
+                if sampling_information_check is True:
                     # i.e. if the last item in the sample_name_date_time_list has a length of 5 with at least one int
                     sampling_information = sample_name_date_time_list.pop()
                 else:
@@ -446,6 +454,16 @@ class EasyTraxParse:
                 sample_name_date_time.append([sample_name, sampling_information, sample_date, sample_time])
                 sample_information.append(item[index_samples_start_at:])
         return [sample_name_date_time, sample_information]
+
+    def check_to_see_if_bad_location_code(self, sampling_information):
+        # checks for sampling information. All i can do is look for 5 character sequences with at least 1 number
+        # and assume that's the sampling location.
+        check_for_digits = False
+        if len(sampling_information) == 5:
+            for sub_item in sampling_information:
+                if sub_item.isdigit():
+                    check_for_digits = True
+        return check_for_digits
 
     def generate_samples_dictionary_entries(self, samples_binary_list):
         """creates the keys (sample name) in sample dictionary, populates with sample metadata (location, date, time)
@@ -505,11 +523,11 @@ class EasyTraxParse:
                     item_index += 1
                 sample_number_index += 1
             except IndexError:
-                self.parse_log = "At least one horizontal data table has issues preventing\n" +\
-                                 "it from being parsed properly.\n\n" +\
-                                 "Potential Issues:\n" +\
-                                 "1) There is a space in an analyte name, like 'Domoic Acid'.\n" +\
-                                 "turn the spaces into underscores, and try again.\n"
+                self.parse_log += "\nAt least one horizontal data table has issues preventing\n" +\
+                                  "it from being parsed properly.\n\n" +\
+                                  "Potential Issues:\n" +\
+                                  "1) There is a space in an analyte name, like 'Domoic Acid'.\n" +\
+                                  "turn the spaces into underscores, and try again.\n"
 
     def generate_backup_samples_dictionary_entries(self):
         """generates the backup sample dictionary metadata if no horizontal tables are in the report.
@@ -562,6 +580,10 @@ class EasyTraxParse:
                         time = sublist.pop()
                         date = sublist.pop()
                         location_code = sublist.pop()
+                        location_code_check = self.check_to_see_if_bad_location_code(location_code)
+                        if not location_code_check:
+                            self.parse_log += '\nBad location code identifier. Code is either longer than\n' +\
+                                '5 letters, or doesnt contain a number. WTX file will likely contain errors.\n'
                         sublist[0] = sample_number
                         new_key = ' '.join(sublist)
                         self.samples_dictionary[new_key] = [location_code, date, time]
@@ -668,15 +690,15 @@ class EasyTraxParse:
 
     def qc_check_for_samples_dictionary_keys_after_backups_made(self):
         if len(self.samples_dictionary.keys()) == 0:
-            self.parse_log = 'no samples dictionary keys have been created.\n' +\
-                             'script was unable to pull sample information\n' +\
-                             'from either horizontal data tables, or\n' +\
-                             'header information.\n\n'
+            self.parse_log += '\nno samples dictionary keys have been created.\n' +\
+                              'script was unable to pull sample information\n' +\
+                              'from either horizontal data tables, or\n' +\
+                              'header information.\n\n'
 
     def qc_check_for_metal_triplets_dictionary_keys_after_analyte_indexes(self):
         if len(self.metal_triplets_dictionary.keys()) == 0:
             if len(self.analyte_list_indexes) > 0:
-                self.parse_log = 'no ICP keys have been created.\n' +\
+                self.parse_log += '\nno ICP keys have been created.\n' +\
                                 'an issue with the vertical ICP tables\n' +\
                                 'has prevented the script from reading data.\n\n' +\
                                 'Possible errors:\n\n' +\

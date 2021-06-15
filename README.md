@@ -38,11 +38,11 @@ Currently supported data formats:
 
 - horizontally formatted chemistry data
 - vertically formatted icp data
+- microcystins data
 
 Not supported yet (May not be a complete list):
 
 - microbiology data
-- microcystins data
 
 It is possible to trim out the unsupported data, upload the supported data
 via .WTX file, and then upload the rest of the data manually with some 
@@ -61,7 +61,10 @@ fully documented files:
 - EasyTraxTK.py
 - EasyTraxParse.py
 
-partially documented files:
+files altered since last documentation on June 8th:
+
+- EasyTraxConvert.py
+- EasyTraxParse.py
 
 documentation can be found written into the python files themselves.
 Files have help() accessible docstrings as well as comments throughout.

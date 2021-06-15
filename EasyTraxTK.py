@@ -140,7 +140,7 @@ class MainApplication(Tk.Frame):
         if len(self.EasyTraxMakerLog.get("1.0", Tk.END)) == 1:
             self.EasyTraxMakerLog.insert(Tk.END, passed_text)
         else:
-            self.EasyTraxMakerLog.insert(Tk.END, '\n' + passed_text)
+            self.EasyTraxMakerLog.insert(Tk.END, passed_text)
         self.EasyTraxMakerLog.config(state=Tk.DISABLED)
 
 
