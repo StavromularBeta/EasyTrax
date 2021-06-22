@@ -204,6 +204,7 @@ class EasyTraxConvert:
                                          'W': [1010, 'Tungsten (Total)'],
                                          'V': [414, 'Vanadium (Total)'],
                                          'Zn': [210, 'Zinc (Total)'],
+                                         'U': [526, 'Uranium (Total)'],
                                          # Microcystins
                                          'MC-LR': [1235, 'Microcystin-LR'],
                                          'MC-YR': [4156, 'Microcystin-YR'],
@@ -299,7 +300,7 @@ class EasyTraxConvert:
                     unit_code = value_triplet[1]
                     value = value_triplet[2]
                     wtx_format_line = str(version_no) + '|' + str(transaction_purpose) + '|F|' + str(mb_labs_id) +\
-                        '||' + str(client_id) + '|' + str(sample_location) + '|' + str(report_id) + 'T||' +\
+                        '||' + str(client_id) + '|' + str(sample_location) + '|' + str(report_id) + '||' +\
                         self.job_dictionary['job number'] + '-' + str(sample_id) +\
                         '||' + str(sample_date) + '|' + str(sample_time) + '|||' + str(analyte_code) +\
                         '|' + str(value) + '|' + str(unit_code)

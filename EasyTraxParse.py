@@ -693,7 +693,7 @@ class EasyTraxParse:
             samples_dictionary_keys.append(key)
         for key, value in self.metal_triplets_dictionary.items():
             for item in samples_dictionary_keys:
-                if key in item:
+                if key in item[:len(key)]:
                     key = item
                     for triplet in value:
                         self.samples_dictionary[key].append(triplet)
